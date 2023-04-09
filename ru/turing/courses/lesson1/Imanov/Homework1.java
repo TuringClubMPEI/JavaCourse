@@ -9,7 +9,7 @@ public class Homework1 {
     private static final int MONTH = 4;
     private static final int DAY = 8;
     // Задача1: полных лет и полных месяцев
-    public static void getFullAge(String fio, String birthday){
+    public static void calculateFullAge(String fio, String birthday){
         int[] birthdayArray = new int[3];// страшно такое делать после С++ (выделение памяти под массив интов)
         String[] StringBirthdayArray = birthday.split("\\."); // дата рождения разделяется по точке
 
@@ -43,8 +43,8 @@ public class Homework1 {
     }
 
     // Задача2: приведение места жительства к нужному виду
-    public static void getAddress(String userAddress){
-        // разделение адреса по ": "
+    public static void parseAddress(String userAddress){
+        // разделение адреса по ","
         String[] splitAdress = userAddress.split(",");
         // префиксы для вывода информации
         String[] prefixes = {"", "Г. ", "Ул. ", "д. ", "кв. "};
@@ -59,23 +59,23 @@ public class Homework1 {
     }
 
     // решение всей домашней работы
-    public static void solution(String fio, String birthday, String userAddress){
-        getFullAge(fio, birthday);
-        getAddress(userAddress);
+    public static void userInformation(String fio, String birthday, String userAddress){
+        calculateFullAge(fio, birthday);
+        parseAddress(userAddress);
     }
 
     // можно (и вообще лучше сделать так) было конечно сделать так, чтобы не нужно было подтверждать постоянно корректность пройденных тестов, но я так не сделал
     public static boolean testExamplesPassed(){
-        solution("Путин Владимир Владимирович",
+        userInformation("Путин Владимир Владимирович",
                 "07.10.1952",
                 "страна: Россия, город: Москва, улица: самая крутая, дом: самый крутой, квартира: 777");
-        solution("Java Turing Turingвич",
+        userInformation("Java Turing Turingвич",
                 "29.03.2023",
                 "страна: Россия, город: Москва, улица: Красноказарменная, дом: 14, квартира: 007");
-        solution("F I O",
+        userInformation("F I O",
                 "07.07.0007",
                 "страна: страна, город: город, улица: улица, дом: дом, квартира: квартира");
-        solution("тут дополнительный тест: записана дата DAY.MONTH.YEAR-1 ",
+        userInformation("тут дополнительный тест: записана дата DAY.MONTH.YEAR-1 ",
                 "08.04.2022",
                 "страна: страна, город: город, улица: улица, дом: дом, квартира: квартира");
 
@@ -99,7 +99,7 @@ public class Homework1 {
                     " страна: Россия, город: Москва, улица: Авиамоторная, дом: 15, квартира: 24: ");
             String userAddress = scanner.nextLine();
 
-            solution(fio, birthday, userAddress);// запуск решения с заданными данными
+            userInformation(fio, birthday, userAddress); // запуск решения с заданными данными
         } else {
             System.out.println("кто-то не умеет писать код"); // :(
         }
