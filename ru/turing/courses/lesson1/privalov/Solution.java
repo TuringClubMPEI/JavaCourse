@@ -16,20 +16,20 @@ public class Solution {
         String birthDate = scanner.nextLine();
 
         //Создаем массив с числами из даты рождения
-        String[] stringBirthDates = birthDate.split("\\.");
+        String[] birthDatesStringArr = birthDate.split("\\.");
 
         //Выгружаем системную дату, переводим её в массив
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
-        String stringDate = formatter.format(date);
-        String[] stringCurrentDate = stringDate.split("\\.");
+        String formattedDateString = formatter.format(date);
+        String[] currentDateStringArr = formattedDateString.split("\\.");
 
         //Переводим оба массива к типу integer для удобства работы
-        int[] birthDates = new int[3];
-        int[] currentDates = new int[3];
+        int[] birthDatesIntArr = new int[3];
+        int[] currentDatesIntArr = new int[3];
         for (int i = 0; i < 3; i++) {
-            birthDates[i] = Integer.parseInt(stringBirthDates[i]);
-            currentDates[i] = Integer.parseInt(stringCurrentDate[i]);
+            birthDatesIntArr[i] = Integer.parseInt(birthDatesStringArr[i]);
+            currentDatesIntArr[i] = Integer.parseInt(currentDateStringArr[i]);
         }
 
         //Инициализируем переменные полных прожитых лет и месяцев
@@ -37,21 +37,21 @@ public class Solution {
         int wholeMonths;
 
         //Проводим подсчёт лет и месяцев с помощью условий: важно, месяц нынешний > или < месяца рождения и то же с днем.
-        if (currentDates[1] > birthDates[1]) {
-            if (currentDates[0] >= birthDates[0]) {
-                wholeYears = currentDates[2] - birthDates[2];
-                wholeMonths = currentDates[1] - birthDates[1] + wholeYears * 12;
+        if (currentDatesIntArr[1] > birthDatesIntArr[1]) {
+            if (currentDatesIntArr[0] >= birthDatesIntArr[0]) {
+                wholeYears = currentDatesIntArr[2] - birthDatesIntArr[2];
+                wholeMonths = currentDatesIntArr[1] - birthDatesIntArr[1] + wholeYears * 12;
             } else {
-                wholeYears = currentDates[2] - birthDates[2];
-                wholeMonths = currentDates[1] - birthDates[1] - 1 + wholeYears * 12;
+                wholeYears = currentDatesIntArr[2] - birthDatesIntArr[2];
+                wholeMonths = currentDatesIntArr[1] - birthDatesIntArr[1] - 1 + wholeYears * 12;
             }
         } else {
-            if (currentDates[0] >= birthDates[0]) {
-                wholeYears = currentDates[2] - birthDates[2] - 1;
-                wholeMonths = 12 - birthDates[1] + currentDates[1] + wholeYears * 12;
+            if (currentDatesIntArr[0] >= birthDatesIntArr[0]) {
+                wholeYears = currentDatesIntArr[2] - birthDatesIntArr[2] - 1;
+                wholeMonths = 12 - birthDatesIntArr[1] + currentDatesIntArr[1] + wholeYears * 12;
             } else {
-                wholeYears = currentDates[2] - birthDates[2] - 1;
-                wholeMonths = wholeYears * 12 + 12 - birthDates[1] + currentDates[1] - 1;
+                wholeYears = currentDatesIntArr[2] - birthDatesIntArr[2] - 1;
+                wholeMonths = wholeYears * 12 + 12 - birthDatesIntArr[1] + currentDatesIntArr[1] - 1;
             }
         }
 
