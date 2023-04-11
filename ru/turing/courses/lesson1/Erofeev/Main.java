@@ -48,9 +48,6 @@ public class Main
         var period = Period.between(birthDateLocalDate, LocalDate.now());
         int age = period.getYears();
 
-        //Получаем кол-во полных месяцев между текущей датой и датой рождения
-        int month = Period.between(birthDateLocalDate, LocalDate.now()).getMonths();
-
         //Вывод результата
         System.out.println("Количество полных лет: ");
         System.out.println(age);
