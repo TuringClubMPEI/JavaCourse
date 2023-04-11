@@ -1,22 +1,28 @@
 package ru.turing.courses.lesson1.Marchinskya;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Homework1 {
 
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in);) {
+        try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Введите ФИО: ");
             String fio = scanner.nextLine();
 
             System.out.println("Введите дату в формате дд.мм.гггг: ");
             String userDate = scanner.nextLine();
-            DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-            Date date = dateFormat.parse(userDate);
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            LocalDate date;
+
+            try {
+                date = LocalDate.parse(userDate, dateFormat);
+            } catch (DateTimeParseException parseException) {
+                System.out.println("Неверный формат даты");
+                return;
+            }
 
             System.out.println("Введите адрес в формате страна: Россия, " +
                     "город: Москва, " +
@@ -28,8 +34,6 @@ public class Homework1 {
 
             User user = new User(fio, AddressFormatter.formatAddress(address, "\n"), date);
             System.out.println(user);
-        } catch (ParseException parseException) {
-            System.out.println("Неверный формат даты");
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         } catch (Exception e) {
