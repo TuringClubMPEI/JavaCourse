@@ -20,8 +20,8 @@ public class Homework {
         person.setAddress(addressLine);
         person.setBirthDate(birthDateLine);
 
-        person.getFio();
-        person.getAddress();
+        person.printFio();
+        person.printAddress();
         System.out.println("Количество прожитых лет пользователя " + person.getFirstName() + ' ' + person.getSecondName() + ' ' + person.getMiddleName() + ": " + person.getYearAge());
         System.out.println("Количество прожитых месяцев пользователя " + person.getFirstName() + ' ' + person.getSecondName() + ' ' + person.getMiddleName() + ": " + person.getMonthAge());
     }
@@ -51,7 +51,7 @@ class Person {
     }
 
     //возврат информации о ФИО пользователя
-    public void getFio() {
+    public void printFio() {
         System.out.println(firstName);
         System.out.println(lastName);
         System.out.println(middleName);
@@ -80,7 +80,7 @@ class Person {
     //возврат количества прожитых полных месяцев пользователя
     public int getMonthAge() {
         LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
-        return Period.between(birthDate, LocalDate.now()).getMonths() + 12*Period.between(birthDate, LocalDate.now()).getYears();
+        return Period.between(birthDate, LocalDate.now()).getMonths() + 12*getYearAge();
     }
 
     //возврат количества прожитых полных лет пользователя
@@ -107,7 +107,7 @@ class Person {
     }
 
     //Вывод информации об адресе пользователя
-    public void getAddress() {
+    public void printAddress() {
         System.out.println("Адрес пользователя " + firstName + ' ' + lastName + ' ' + middleName + ": \n" + country + "\nг. " + city + " \nул. " + street + "\nд. " + house + "\nкв. " + flat);
     }
 }
