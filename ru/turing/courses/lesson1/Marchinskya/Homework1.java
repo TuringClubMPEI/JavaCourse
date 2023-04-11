@@ -26,15 +26,14 @@ public class Homework1 {
 
             String address = scanner.nextLine();
 
-            AddressFormatter.validate(address);
-
-            String[] addressPrefixes = {"", "г. ", "ул. ", "д. ", "кв. "};
-            User user = new User(fio, AddressFormatter.formatAddress(address, "\n", addressPrefixes), date);
+            User user = new User(fio, AddressFormatter.formatAddress(address, "\n"), date);
             System.out.println(user);
         } catch (ParseException parseException) {
             System.out.println("Неверный формат даты");
-        } catch (Exception exception) {
+        } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
+        } catch (Exception e) {
+            System.out.println("Неизвестная ошибка!");
         }
     }
 }

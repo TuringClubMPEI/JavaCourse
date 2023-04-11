@@ -29,7 +29,7 @@ public class User {
     /**
      * Метод получения количества полных месяцев пользователя
      */
-    public int getFullMonth() {
+    public int getFullMonths() {
         int year = dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).getYear();
         int months = dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).getMonthValue();
         return months + (Year.now().getValue() - year) * 12;
@@ -44,7 +44,7 @@ public class User {
                 getFullYears() +
                 "\n" +
                 "Количество месяцев: " +
-                getFullMonth() +
+                getFullMonths() +
                 "\n" +
                 "Адрес " +
                 "\n" +
