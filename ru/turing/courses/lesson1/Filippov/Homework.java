@@ -25,7 +25,7 @@ public class Homework {
 
     public static void main(String[] args) {
         //Регулярные выражения
-        String regexFIO = "(([А-Я][а-я]+)|([А-Я][а-я]+\\-[А-Я][а-я]+)) [А-Я][а-я]+(( [А-Я][а-я]+)|())";
+        String regexFio = "(([А-Я][а-я]+)|([А-Я][а-я]+\\-[А-Я][а-я]+)) [А-Я][а-я]+(( [А-Я][а-я]+)|())";
         String regexDate = "(([1,2][0-9])|(0[1-9])|(3[0,1]))\\.((0[1-9])|(1[0-2]))\\.((19[0-9][0-9])|(20[0,1][0-9])|(202[0-3]))";
         //\\d-любое число две черты, чтобы показать. что это метасимвол\\.-так пишется точка т.к. точка это метосимвол
         //не забывать про скобочки в регулярных выражениях
@@ -37,15 +37,15 @@ public class Homework {
         // я | добавил, чтобы обрабатывать двойные фамилии типо Филииппов-Соколовский
         //работа с ФИО
         System.out.print("Здравствуйте\nВведите ФИО(отчество,при наличии):");
-        String FIO = scanner.nextLine();//ввод фамилии
-        FIO = FIO.trim();//удалим последние и первые пробелы, простим пользователю такие ошибки
-        Pattern pattern = Pattern.compile(regexFIO);
-        Matcher match = pattern.matcher(FIO);
+        String fio = scanner.nextLine();//ввод фамилии
+        fio = fio.trim();//удалим последние и первые пробелы, простим пользователю такие ошибки
+        Pattern pattern = Pattern.compile(regexFio);
+        Matcher match = pattern.matcher(fio);
         while (!match.matches()) {
             System.out.print("Похоже вы ошиблись, проверьте, чтобы фамилия,имя,отчество(если оно есть) начинались с большой буквы:");
-            FIO = scanner.nextLine();//ввод фамилии
-            FIO = FIO.trim();//удалим последние и первые пробелы, простим пользователю такие ошибки
-            match = pattern.matcher(FIO);
+            fio = scanner.nextLine();//ввод фамилии
+            fio = fio.trim();//удалим последние и первые пробелы, простим пользователю такие ошибки
+            match = pattern.matcher(fio);
         }
 
         //работа с датой
@@ -76,7 +76,7 @@ public class Homework {
         String[] addressSplit = address.split("((: )|:|,)");//разделим либо ":", либо ",", либо ": "
 
         System.out.println("\n__________________________________________________________________________________________________________________\n");
-        System.out.println(FIO + ", проживающий по адрессу:");
+        System.out.println(fio + ", проживающий по адрессу:");
         System.out.println(addressSplit[1] + "\nг. " + addressSplit[3] + "\nул. " + addressSplit[5] + "\nд. " + addressSplit[7] + "\nкв. " + addressSplit[9]);
         System.out.println("Полных лет: " + ageString);
         System.out.println("Рады вручить вам повестку");
