@@ -1,21 +1,17 @@
 package ru.turing.courses.lesson1.Yemelyanov;
 
-import com.sun.source.util.SourcePositions;
-
-import java.net.SocketOption;
-import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class hw1 {
+public class Homework1{
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Введите ваши данные (ФИО), дату рождения: ");
 
 //Ввод ФИО и возраст
         String fio = input.nextLine();
-        String dateOfBirth = input.nextLine();
         String[] date;
+        String dateOfBirth = input.nextLine();
         date = dateOfBirth.split("\\.");
 
         System.out.print("Введите адрес: ");
@@ -41,25 +37,28 @@ public class hw1 {
         final int currentYear = 2023;
 
         int age = currentYear - year;
-        if (day > currentDay && mon > currentMon) {
-            if (age != 0) {
-                age--;
+        if (day < currentDay){
+            if(mon < currentMon){
+                if (age != 0) {
+                    age--;
+                }
             }
         }
+
         int ageMon = 0;
         if (year < currentYear) {
             ageMon = age * 12 + currentMon + (12 - mon);
             if (mon == currentMon) {
                 ageMon = age * 12;
                 if (day > currentDay) {
-                    ageMon = age * 12 - 1;
+                    ageMon--;
                 }
             }
             if (day > currentDay) {
                 ageMon--;
             }
         } else if (year == currentYear) {
-            ageMon = age * 12 + currentMon;
+            ageMon = currentMon;
             if (day < currentDay) {
                 ageMon--;
             }
