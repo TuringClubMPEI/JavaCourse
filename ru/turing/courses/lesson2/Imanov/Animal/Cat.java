@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Cat extends Animal {
     // не все кошки умеют пережёвывать пищу
-    boolean canChew;
+    private boolean canChew;
 
     // конструктор
     public Cat(String name, int age, Gender sex, int mood, boolean canChew) {
