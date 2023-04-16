@@ -3,13 +3,13 @@ package ru.turing.courses.lesson2.Imanov.Studying;
 import ru.turing.courses.lesson2.Imanov.Animal.Animal;
 import ru.turing.courses.lesson2.Imanov.Animal.Gender;
 
-public class NotTimur extends Animal implements Studying {
+public class SchoolStudent extends Animal implements Studying {
 
     // я снова извиняюсь
-    boolean balls;
+    private boolean balls;
 
     // конструктор
-    public NotTimur(String name, int age, Gender sex, int mood, boolean balls){
+    public SchoolStudent(String name, int age, Gender sex, int mood, boolean balls){
         super(name, age, sex, mood);
         if (sex != Gender.MALE){
             this.balls = false;
@@ -28,6 +28,7 @@ public class NotTimur extends Animal implements Studying {
     public void passExam(boolean passed) {
         if (passed){
             flyToThailand();
+            System.out.println("Поступаю в вуз");
         } else {
             study();
         }
@@ -36,7 +37,7 @@ public class NotTimur extends Animal implements Studying {
     // переопределенные функции-члены класса из абстрактного родителя
     @Override
     public void voice() {
-        System.out.println("я не Тимур");
+        System.out.println("я школьник");
     }
 
     @Override

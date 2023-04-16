@@ -37,7 +37,7 @@ public class Lama extends Animal {
 
     @Override
     public void sleep() {
-        if (this.mood + 1  <= 100) {
+        if (this.mood < 100) {
             this.mood += 1;
         } else {
             this.mood = 100;
@@ -46,7 +46,7 @@ public class Lama extends Animal {
 
     // ламы плюются
     public void spit(){
-        if (this.mood + 5  <= 100) {
+        if (this.mood <= 95) {
             this.mood += 5;
         } else {
             this.mood = 100;

@@ -20,7 +20,7 @@ public class Cat extends Animal {
 
     @Override
     public void sleep() {
-        if (this.mood + 50  <= 100) {
+        if (this.mood <= 50) {
             this.mood += 50;
         } else {
             this.mood = 100;

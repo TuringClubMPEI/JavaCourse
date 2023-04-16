@@ -3,9 +3,10 @@ package ru.turing.courses.lesson2.Imanov.Studying;
 import ru.turing.courses.lesson2.Imanov.Animal.Animal;
 import ru.turing.courses.lesson2.Imanov.Animal.Gender;
 
-public class Timur extends Animal implements Studying {
-    boolean drunk; // ну такие пироги
-    public Timur(int mood, boolean drunk){
+public class UniversityStudent extends Animal implements Studying {
+    private boolean drunk; // ну такие пироги
+
+    public UniversityStudent(int mood, boolean drunk){
         super("Timur", 19, Gender.MALE, mood);
         this.drunk = drunk;
     }
@@ -33,7 +34,7 @@ public class Timur extends Animal implements Studying {
 
     @Override
     public void voice() {
-        System.out.println("Я Тимурка");
+        System.out.println("Я Cтудент");
     }
 
     @Override
