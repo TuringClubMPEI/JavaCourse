@@ -6,8 +6,8 @@ import ru.turing.courses.lesson2.Imanov.Animal.Gender;
 public class UniversityStudent extends Animal implements Studying {
     private boolean drunk; // ну такие пироги
 
-    public UniversityStudent(int mood, boolean drunk){
-        super("Timur", 19, Gender.MALE, mood);
+    public UniversityStudent(String name, int age, Gender sex, int mood, boolean balls, boolean drunk){
+        super(name, age, sex, mood);
         this.drunk = drunk;
     }
 
