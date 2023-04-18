@@ -1,28 +1,7 @@
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.*;
-
 public class Homework {
-    private static String countAge(String data) {
-        String[] dataSplit = data.split("\\.");//создаем массив из дня месяца и года
-        int year = Integer.parseInt(dataSplit[2]);//переводим из типа стринг в тип инт
-        int months = Integer.parseInt(dataSplit[1]);//аналогично
-        String ageString = "";
-        if ((year == 2023) & (months > 4)) {
-            ageString = "Ошибка";
-        } else {
-            year = 2023 - year - 1;//считаем года
-            months = 12 - months + 4;//+4 т.к. сейчас апрель ;)считаем месяцы
-            if (months >= 12) {//проверка чтобы не писать 12 месяцев
-                year++;
-                months = months - 12;
-            }
-            //пусть я родился 20.03.2020, 4-ый месяц, я еще не прожил, поэтому 12-months+4
-            ageString = Integer.toString(year) + " лет(года) " + Integer.toString(months) + " месяцев(месяца)";
-        }
-        return ageString;
-    }
-
     public static void main(String[] args) {
         //Регулярные выражения
         String regexFio = "(([А-Я][а-я]+)|([А-Я][а-я]+\\-[А-Я][а-я]+)) [А-Я][а-я]+(( [А-Я][а-я]+)|())";
@@ -36,6 +15,9 @@ public class Homework {
         //регулярка +-означает что этот символ должен попаться как минимум один раз а |-это "или"
         // я | добавил, чтобы обрабатывать двойные фамилии типо Филииппов-Соколовский
         //работа с ФИО
+        UserProcessor person = new UserProcessor();
+
+
         System.out.print("Здравствуйте\nВведите ФИО(отчество,при наличии):");
         String fio = scanner.nextLine();//ввод фамилии
         fio = fio.trim();//удалим последние и первые пробелы, простим пользователю такие ошибки
@@ -47,22 +29,23 @@ public class Homework {
             fio = fio.trim();//удалим последние и первые пробелы, простим пользователю такие ошибки
             match = pattern.matcher(fio);
         }
+        person.setFio(fio);
 
         //работа с датой
         System.out.print("Введите дату рождения в в формате xx.xx.xxxx:");
         String date = scanner.nextLine();
-        String ageString = countAge(date);
         pattern = Pattern.compile(regexDate);
         match = pattern.matcher(date);
-        while (!match.matches() | ageString == "Ошибка") {
+        person.setDate(date);
+        while (!match.matches() || person.getCountAge() == "Ошибка") {
             System.out.print("Похоже вы ошиблись, проверьте,чтобы дата была в формате xx.xx.xxxx, или ,Вы, вводите несуществующую дату:");
             date = scanner.nextLine();//ввод даты
-            ageString = countAge(date);
+            person.setDate(date);
             match = pattern.matcher(date);
         }
+        person.setDate(date);
 
-
-        //работа с адресои
+        //работа с адресом
         System.out.print("Введите адресв формате(страна: Россия, город: Москва, улица: Авиамоторная, дом: 15, квартира: 24):");
         String address = scanner.nextLine();
         pattern = Pattern.compile(regexAddress);
@@ -72,13 +55,12 @@ public class Homework {
             address = scanner.nextLine();//ввод даты
             match = pattern.matcher(address);
         }
-
-        String[] addressSplit = address.split("((: )|:|,)");//разделим либо ":", либо ",", либо ": "
+        person.setAddress(address);
 
         System.out.println("\n__________________________________________________________________________________________________________________\n");
-        System.out.println(fio + ", проживающий по адрессу:");
-        System.out.println(addressSplit[1] + "\nг. " + addressSplit[3] + "\nул. " + addressSplit[5] + "\nд. " + addressSplit[7] + "\nкв. " + addressSplit[9]);
-        System.out.println("Полных лет: " + ageString);
+        System.out.println(person.getFio() + ", проживающий по адрессу:");
+        System.out.println(person.getShortAddress());
+        System.out.println("Полных лет: " + person.getCountAge());
         System.out.println("Рады вручить вам повестку");
         System.out.print("Если вы считатет, что повестку вам вручили по ошибке, \nобратитесь в Объединённый военный комиссариат Лефортовского района\n");
         System.out.println("или позвоните по номеру 8 (495) 177-54-10.\nНо лучше приходите) ");
