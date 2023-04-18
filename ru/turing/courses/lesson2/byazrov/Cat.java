@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class Cat extends Animal {
 
-    private int remainingNumberOfLives;
-    private boolean doesKnowHowToUseToilet;
+    private int numberOfLives; //remaining out of 9
+    private boolean canUseToilet;
 
     public Cat(String name, int age, int remainingNumberOfLives, boolean doesKnowHowToUseToilet) {
         super(name, age);
-        this.remainingNumberOfLives = remainingNumberOfLives;
-        this.doesKnowHowToUseToilet = doesKnowHowToUseToilet;
+        this.numberOfLives = remainingNumberOfLives;
+        this.canUseToilet = doesKnowHowToUseToilet;
     }
 
     @Override
@@ -28,19 +28,19 @@ public class Cat extends Animal {
     }
 
     public int getRemainingNumberOfLives() {
-        return remainingNumberOfLives;
+        return numberOfLives;
     }
 
     public void setRemainingNumberOfLives(int remainingNumberOfLives) {
-        this.remainingNumberOfLives = remainingNumberOfLives;
+        this.numberOfLives = remainingNumberOfLives;
     }
 
     public boolean isDoesKnowHowToUseToilet() {
-        return doesKnowHowToUseToilet;
+        return canUseToilet;
     }
 
     public void setDoesKnowHowToUseToilet(boolean doesKnowHowToUseToilet) {
-        this.doesKnowHowToUseToilet = doesKnowHowToUseToilet;
+        this.canUseToilet = doesKnowHowToUseToilet;
     }
 
     @Override
@@ -48,11 +48,11 @@ public class Cat extends Animal {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cat cat = (Cat) o;
-        return remainingNumberOfLives == cat.remainingNumberOfLives && doesKnowHowToUseToilet == cat.doesKnowHowToUseToilet;
+        return numberOfLives == cat.numberOfLives && canUseToilet == cat.canUseToilet;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(remainingNumberOfLives, doesKnowHowToUseToilet);
+        return Objects.hash(numberOfLives, canUseToilet);
     }
 }

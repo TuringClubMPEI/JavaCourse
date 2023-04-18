@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 public class UserProcessor {
 
     //задание нужного типа даты
-    public static LocalDate parseBirthDate(String birthDateLine) {
+    private static LocalDate parseBirthDate(String birthDateLine) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         return (LocalDate.parse(birthDateLine, formatter));
 
@@ -25,7 +25,7 @@ public class UserProcessor {
     }
 
     //вывод отформатированного адреса
-    public static void addressFormatting(String addressLine) {
+    public static void formatAddress(String addressLine) {
         String[] addressArr = addressLine.split(", ");
         String[] address = new String[5];
 

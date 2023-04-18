@@ -13,7 +13,7 @@ public class Homework {
 
         System.out.println(UserProcessor.getYearAge(birthDateLine));
         System.out.println(UserProcessor.getMonthAge(birthDateLine));
-        UserProcessor.addressFormatting(addressLine);
+        UserProcessor.formatAddress(addressLine);
 
         Animal cat1 = new Cat("Barsik", 10, 9, true);
         Animal dog1 = new Dog("Rex", 12, true, 10);

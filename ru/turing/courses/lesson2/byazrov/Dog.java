@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Dog extends Animal {
 
     private boolean isHound;
-    private int howLongCanHowlInSec;
+    private int maxHowlDuration; //in seconds
 
     public Dog(String name, int age, boolean isHound, int howLongCanHowlInSec) {
         super(name, age);
         this.isHound = isHound;
-        this.howLongCanHowlInSec = howLongCanHowlInSec;
+        this.maxHowlDuration = maxHowlDuration;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Dog extends Animal {
     }
 
     public void setHowLongCanHowlInSec(int howLongCanHowlInSec) {
-        this.howLongCanHowlInSec = howLongCanHowlInSec;
+        this.maxHowlDuration = howLongCanHowlInSec;
     }
 
     public boolean isHound() {
@@ -36,7 +36,7 @@ public class Dog extends Animal {
     }
 
     public int getHowLongCanHowlInSec() {
-        return howLongCanHowlInSec;
+        return maxHowlDuration;
     }
 
     public void howl() {
@@ -48,11 +48,11 @@ public class Dog extends Animal {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dog dog = (Dog) o;
-        return isHound == dog.isHound && howLongCanHowlInSec == dog.howLongCanHowlInSec;
+        return isHound == dog.isHound && maxHowlDuration == dog.maxHowlDuration;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isHound, howLongCanHowlInSec);
+        return Objects.hash(isHound, maxHowlDuration);
     }
 }
