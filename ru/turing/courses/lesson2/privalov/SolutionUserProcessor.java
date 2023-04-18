@@ -12,7 +12,7 @@ public class SolutionUserProcessor {
         System.out.println("Введите свою дату рождения (в формате дд.мм.гггг)");
         String birthDate = scanner.nextLine();
 
-        System.out.println("Вы прожили " + UserProcessor.wholeYearsLivedCalculator(birthDate) + " полных лет");
-        System.out.println("Вы прожили " + UserProcessor.wholeMonthsLivedCalculator(birthDate) + " полных месяцев");
+        System.out.println("Вы прожили " + UserProcessor.calculateWholeYears(birthDate) + " полных лет");
+        System.out.println("Вы прожили " + UserProcessor.calculateWholeMonths(birthDate) + " полных месяцев");
     }
 }

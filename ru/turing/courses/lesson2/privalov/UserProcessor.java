@@ -13,7 +13,7 @@ public class UserProcessor { //объявляем класс
         }
     }
 
-    public static int wholeYearsLivedCalculator(String birthDate) {
+    public static int calculateWholeYears(String birthDate) {
         String[] birthDatesStringArr = birthDate.split("\\.");
 
         Date date = new Date();
@@ -36,8 +36,8 @@ public class UserProcessor { //объявляем класс
         return wholeYears;
     }
 
-    public static int wholeMonthsLivedCalculator(String birthDate) {
-        int wholeYears = wholeYearsLivedCalculator(birthDate);
+    public static int calculateWholeMonths(String birthDate) {
+        int wholeYears = calculateWholeYears(birthDate);
 
         String[] birthDatesStringArr = birthDate.split("\\.");
 
