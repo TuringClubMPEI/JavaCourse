@@ -22,4 +22,20 @@ public class TuringStudent implements Studying {
             System.out.println("Наверное надо было лучше и вовремя делать домашку :(");
         }
     }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public int getMergedPullRequests() {
+        return mergedPullRequests;
+    }
+
+    public void setMergedPullRequests(int mergedPullRequests) {
+        this.mergedPullRequests = mergedPullRequests;
+    }
 }

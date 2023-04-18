@@ -49,4 +49,12 @@ public class UniversityStudent implements Studying {
             }
         }
     }
+
+    public int getLitersOfBeer() {
+        return litersOfBeer;
+    }
+
+    public void setLitersOfBeer(int litersOfBeer) {
+        this.litersOfBeer = litersOfBeer;
+    }
 }

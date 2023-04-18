@@ -41,4 +41,20 @@ public class Raccoon extends Animal {
     public int hashCode() {
         return Objects.hash(originContinent, isHungry, age, sex, speciesName);
     }
+
+    public String getOriginContinent() {
+        return originContinent;
+    }
+
+    public void setOriginContinent(String originContinent) {
+        this.originContinent = originContinent;
+    }
+
+    public boolean isHungry() {
+        return isHungry;
+    }
+
+    public void setHungry(boolean hungry) {
+        isHungry = hungry;
+    }
 }

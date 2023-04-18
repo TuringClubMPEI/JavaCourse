@@ -52,4 +52,20 @@ public class Bear extends Animal {
     public int hashCode() {
         return Objects.hash(color, isSleeping, speciesName, age, sex);
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public boolean isSleeping() {
+        return isSleeping;
+    }
+
+    public void setSleeping(boolean sleeping) {
+        isSleeping = sleeping;
+    }
 }
