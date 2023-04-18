@@ -11,6 +11,8 @@ public class SolutionUserProcessor {
 
         System.out.println("Введите свою дату рождения (в формате дд.мм.гггг)");
         String birthDate = scanner.nextLine();
-        UserProcessor.yearsAndMonthsCalculator(birthDate); //применяем метод для подсчета из прописанного класса
+
+        System.out.println("Вы прожили " + UserProcessor.wholeYearsLivedCalculator(birthDate) + " полных лет");
+        System.out.println("Вы прожили " + UserProcessor.wholeMonthsLivedCalculator(birthDate) + " полных месяцев");
     }
 }

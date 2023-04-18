@@ -10,7 +10,7 @@ public abstract class Animal { //объявляем класс
 
     protected abstract void makeSound(); //издать звук
 
-    //конструктор, геттеры и сеттеры через alt+ins
+    //конструктор, геттеры и сеттеры
     public Animal(int lengthInCm, GenderEnum gender) {
         this.lengthInCm = lengthInCm;
         this.gender = gender;
