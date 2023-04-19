@@ -11,7 +11,6 @@ public class Homework1 {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите фамилию:");
         String surname = in.nextLine();
-        //  System.out.println(surname);
         System.out.println("Введите имя:");
         String name = in.nextLine();
         System.out.println("Введите отчетсво:");
@@ -25,18 +24,23 @@ public class Homework1 {
         LocalDate birth = LocalDate.parse(birthday, format);
         long months = ChronoUnit.MONTHS.between(birth, today);
         long years = ChronoUnit.YEARS.between(birth, today);
-        System.out.printf(months + "mounth");
-        System.out.printf(years + "years");
-        System.out.println();
+        System.out.println(months + "mounth");
+        System.out.println(years + "years");
 
         //работа с адресом
         System.out.println("Введите каждую часть адреса через пробел");
-        System.out.println("Страна, город, улица, номер дома, номер квартиры");
+        System.out.println("страна: Россия, город: Москва, улица: Авиамоторная, дом: 15, квартира: 24");
         String adres = in.nextLine();
-        String[] sadres = adres.split(" ");
-        for (String word : sadres) {
-            System.out.println(word);
-        }
-
+        String[] sadres = adres.split(", ");
+        String country = sadres[0].split(": ")[1];
+        String city = sadres[1].split(": ")[1];
+        String street = sadres[2].split(": ")[1];
+        String house = sadres[3].split(": ")[1];
+        String room = sadres[4].split(": ")[1];
+        System.out.println(country);
+        System.out.println(city);
+        System.out.println(street);
+        System.out.println(house);
+        System.out.println(room);
     }
 }
