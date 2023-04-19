@@ -24,11 +24,11 @@ public class Homework1 {
         LocalDate birth = LocalDate.parse(birthday, format);
         long months = ChronoUnit.MONTHS.between(birth, today);
         long years = ChronoUnit.YEARS.between(birth, today);
-        System.out.println(months + "mounth");
-        System.out.println(years + "years");
+        System.out.println(months + " month");
+        System.out.println(years + " years");
 
         //работа с адресом
-        System.out.println("Введите каждую часть адреса через пробел");
+        System.out.println("Введите адрес проживания согласно формату");
         System.out.println("страна: Россия, город: Москва, улица: Авиамоторная, дом: 15, квартира: 24");
         String adres = in.nextLine();
         String[] sadres = adres.split(", ");
@@ -38,9 +38,9 @@ public class Homework1 {
         String house = sadres[3].split(": ")[1];
         String room = sadres[4].split(": ")[1];
         System.out.println(country);
-        System.out.println(city);
-        System.out.println(street);
-        System.out.println(house);
-        System.out.println(room);
+        System.out.println("г."+city);
+        System.out.println("ул."+street);
+        System.out.println("д."+house);
+        System.out.println("кв."+room);
     }
 }
