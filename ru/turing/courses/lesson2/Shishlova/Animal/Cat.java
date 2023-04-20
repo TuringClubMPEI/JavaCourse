@@ -17,11 +17,13 @@ public class Cat extends Animal {
     }
 
     // реализация метода makeSound() для кошки
+    @Override
     public String makeSound() {
         return "Мяу";
     }
 
     // переопределение метода sleep() для кошки
+    @Override
     public String sleep() {
         return "Кошка спит...";
     }
