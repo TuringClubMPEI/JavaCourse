@@ -2,7 +2,6 @@ package ru.turing.courses.lesson2.Shishlova.Study;
 
 import ru.turing.courses.lesson2.Shishlova.Study.StudyingConsole;
 import ru.turing.courses.lesson2.Shishlova.Study.Studying;
-import ru.turing.courses.lesson2.Shishlova.Study.Study;
 
 class StudyingMood implements Studying {
     private int mood; // настроение
@@ -12,12 +11,14 @@ class StudyingMood implements Studying {
     }
 
     // реализация метода study() для StudyingMood
+    @Override
     public void study() {
         mood -= 10; // учеба снижает настроение
         System.out.println("Учу математику...");
     }
 
     // реализация метода passExam() для StudyingMood
+    @Override
     public void passExam(boolean passed) {
         if (passed) {
             System.out.println("Экзамен сдан! :)");
