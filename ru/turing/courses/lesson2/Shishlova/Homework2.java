@@ -7,6 +7,10 @@ import java.util.Scanner;
 import java.util.Objects;
 
 public class Homework2 {
+    public Homework2() {
+        super();
+    }
+
     public static class UserProcessor {
         // метод для подсчета полных лет пользователя
         public static int calculateAgeInYears(LocalDate birthDate) {
