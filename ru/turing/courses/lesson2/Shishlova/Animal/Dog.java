@@ -19,6 +19,7 @@ import java.util.Objects;
     }
 
     // реализация метода makeSound() для собаки
+    @Override
     public String makeSound() {
         return "Гав";
     }
