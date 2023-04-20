@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.Objects;
 
 public class Homework2 {
     // метод для подсчета полных лет пользователя
@@ -121,6 +122,21 @@ class Cat extends Animal {
     public int getAge() {
         return age;
     }
+
+    // переопределение метода equals()
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cat cat = (Cat) o;
+        return age == cat.age && Objects.equals(name, cat.name) && Objects.equals(color, cat.color);
+    }
+
+    // переопределение метода hashCode()
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, color, age);
+    }
 }
 
 // класс собака (наследник класса животное)
@@ -142,5 +158,77 @@ class Dog extends Animal {
     // геттер для поля weight
     public int getWeight() {
         return weight;
+    }
+
+    // переопределение метода equals()
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dog dog = (Dog) o;
+        return weight == dog.weight && Objects.equals(name, dog.name) && Objects.equals(color, dog.color);
+    }
+
+    // переопределение метода hashCode()
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, color, weight);
+    }
+}
+
+
+// интерфейс Studying
+interface Studying {
+    void study();
+    void passExam(boolean passed);
+}
+
+// реализация интерфейса Studying
+class StudyingMood implements Studying {
+    private int mood; // настроение
+
+    public StudyingMood() {
+        mood = 50; // начальное настроение 50 из 100
+    }
+
+    // реализация метода study() для StudyingMood
+    public void study() {
+        mood -= 10; // учеба снижает настроение
+        System.out.println("Учу математику...");
+    }
+
+    // реализация метода passExam() для StudyingMood
+    public void passExam(boolean passed) {
+        if (passed) {
+            System.out.println("Экзамен сдан! :)");
+            mood += 20; // успешная сдача экзамена улучшает настроение
+        } else {
+            System.out.println("Экзамен не сдан :( Учись лучше!");
+            mood -= 20; // неуспешная сдача экзамена ухудшает настроение
+        }
+    }
+
+    // геттер для поля mood
+    public int getMood() {
+        return mood;
+    }
+}
+
+// вторая реализация интерфейса Studying
+class StudyingConsole implements Studying {
+
+    // реализация метода study() для StudyingConsole
+    public void study() {
+        System.out.println("Открываю консоль для учебы...");
+    }
+
+    // реализация метода passExam() для StudyingConsole
+    public void passExam(boolean passed) {
+        if (passed) {
+            System.out.println("Экзамен сдан! :)");
+        } else {
+            System.out.println("Экзамен не сдан :( Учись лучше!");
+        }
+        System.out.println("Закрываю консоль.");
     }
 }
