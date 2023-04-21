@@ -1,7 +1,6 @@
 package ru.turing.courses.lesson2.Karashtina;
 
 public abstract class Animal {
-
     // Определяем поля класса
     private String type;
     private String colour;
@@ -32,7 +31,7 @@ public abstract class Animal {
     // Создаем абстрактные методы
     public abstract void makeSound();
 
-    public abstract void getHabitat();
+    public abstract void printHabitat();
 
     // Создаем методы
     public void sleep() {

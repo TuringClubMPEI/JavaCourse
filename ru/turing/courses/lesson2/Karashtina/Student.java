@@ -1,7 +1,6 @@
 package ru.turing.courses.lesson2.Karashtina;
 
 public class Student implements Studying {
-
     // Определяем поле класса
     protected String Subject;
 

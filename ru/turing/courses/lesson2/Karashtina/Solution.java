@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
 
         // Считываем дату рождения пользователя
@@ -19,9 +18,9 @@ public class Solution {
         String address = scanner.nextLine();
 
         // Обращаемся к классу UserProcessor и выводим результаты методов
-        UserProcessor User = new UserProcessor();
-        User.AgeCalculation(birthdayString);
-        User.AddressFormatting(address);
+        UserProcessor user = new UserProcessor();
+        user.calculateAge(birthdayString);
+        user.formatTheAddress(address);
 
         // Создаем два объекта класса Fish
         Animal fishAnimal = new Fish("Дорадо", "Серебристый", 80);
@@ -29,7 +28,7 @@ public class Solution {
 
         // Выводим результаты работы методов класса Fish
         fishAnimal.makeSound();
-        fishAnimal.getHabitat();
+        fishAnimal.printHabitat();
         fishAnimal.foodExtraction();
         fishAnimal.sleep();
 
@@ -38,13 +37,11 @@ public class Solution {
         Animal penguinAnimal2 = new Penguin("Императорский пингвин", "Черный с белым", 150);
         // Выводим результаты работы методов класса Penguin
         penguinAnimal.makeSound();
-        penguinAnimal.getHabitat();
+        penguinAnimal.printHabitat();
         penguinAnimal.foodExtraction();
-        ((Penguin) penguinAnimal).swim();
 
         // Сравниваем объекты
         System.out.println(fishAnimal.equals(fishAnimal2));
         System.out.println(penguinAnimal.equals(penguinAnimal2));
-
     }
 }

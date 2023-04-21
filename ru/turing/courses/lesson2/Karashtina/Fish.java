@@ -19,7 +19,7 @@ public class Fish extends Animal {
     }
 
     @Override
-    public void getHabitat() {
+    public void printHabitat() {
         System.out.println("Рыбы обитают в морях и океанах, а также в пресных водоемах");
     }
 
@@ -34,9 +34,7 @@ public class Fish extends Animal {
         if (this == o) return true;
         if (!(o instanceof Fish)) return false;
         Fish fish = (Fish) o;
-        boolean b = speed == fish.speed && Double.compare(fish.getColour(), getColour()) == 0
-                && getType().equals(fish.getType());
-        return b;
+        return speed == fish.speed && getType().equals(fish.getType()) && getColour().equals(fish.getColour());
     }
 
     @Override

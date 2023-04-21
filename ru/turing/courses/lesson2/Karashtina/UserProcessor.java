@@ -5,7 +5,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public class UserProcessor {
-    public void AgeCalculation(String birthdayString) {
+    public void calculateAge(String birthdayString) {
         // Форматируем дату рождения в соответствии с шаблоном
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDate birthday = LocalDate.parse(birthdayString, formatter);
@@ -19,7 +19,7 @@ public class UserProcessor {
         System.out.println("Количество полных лет: " + years + ", количество прожитых месяцев: " + months);
     }
 
-    public void AddressFormatting(String address) {
+    public void formatTheAddress(String address) {
         // Разбиваем адрес на части по запятой
         String[] parts = address.split(", ");
 

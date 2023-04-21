@@ -3,7 +3,6 @@ package ru.turing.courses.lesson2.Karashtina;
 import java.util.Objects;
 
 public class Penguin extends Animal {
-
     // Определяем поле класса
     private int wingspan;
 
@@ -16,13 +15,11 @@ public class Penguin extends Animal {
     // Переопределяем абстрактные методы
     @Override
     public void makeSound() {
-
         System.out.println("Писк");
     }
 
     @Override
-    public void getHabitat() {
-
+    public void printHabitat() {
         System.out.println("Пингвины обитают в открытом море Южного полушария");
     }
 
@@ -37,8 +34,7 @@ public class Penguin extends Animal {
         if (this == o) return true;
         if (!(o instanceof Penguin)) return false;
         Penguin penguin = (Penguin) o;
-        return wingspan == penguin.wingspan && Double.compare(penguin.getColour(), getColour()) == 0
-                && getType().equals(penguin.getType());
+        return wingspan == penguin.wingspan && getType().equals(penguin.getType()) && getColour().equals(penguin.getColour());
     }
 
     @Override
