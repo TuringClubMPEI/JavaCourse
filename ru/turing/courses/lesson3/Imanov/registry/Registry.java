@@ -7,9 +7,23 @@ import java.util.List;
 
 import ru.turing.courses.lesson3.Imanov.user.User;
 
+/**
+ * @author itimur
+ */
+
 public class Registry<Type extends User> {
+
+    /**
+     * Структура, в которой хранятся записи
+     */
     private final Map<Integer, Type> info = new HashMap<>();
 
+    /**
+     * Добавление записи в реестр
+     *
+     * @param key - ключ, по которому получаем доступ к значению
+     * @param value - значение
+     */
     public void add(Integer key, Type value) {
         if (key == null){
             System.out.println("key is null");
@@ -22,7 +36,11 @@ public class Registry<Type extends User> {
         }
     }
 
-
+    /**
+     * Удаление записи по ключу
+     * @param key - ключ, по которому мы будем удалять
+     * @return значение которое соответствует key
+     */
     public Type removeByKey(Integer key){
         if (key == null) {
             System.out.println("key is null");
@@ -37,6 +55,12 @@ public class Registry<Type extends User> {
         }
     }
 
+    /**
+     * Удаление записей по значению
+     *
+     * @param value - значение, по которому мы будем удалять
+     * @return список ключей, соответсвующих удаленным значениям
+     */
     public List<Integer> removeByValue(Type value){
         List<Integer> KeyForRemovedValues = new ArrayList<>();
 
@@ -61,10 +85,19 @@ public class Registry<Type extends User> {
         return KeyForRemovedValues;
     }
 
+    /**
+     * удаление всех записей
+     */
     public void clear(){
         info.clear();
     }
 
+    /**
+     * Получение значения по ключу
+     *
+     * @param key - ключ, по которому получаем доступ к значению
+     * @return значение соответствующее ключу
+     */
     public Type getByKey(Integer key){
         if (info.containsKey(key)){
             return info.get(key);
@@ -74,6 +107,12 @@ public class Registry<Type extends User> {
         }
     }
 
+    /**
+     * Получение значений по имени
+     *
+     * @param name - имя, по которому мы будем искать значения
+     * @return список значений с именем name
+     */
     public List<Type> getByName(String name){
         List<Type> ValuesWithTheGivenName = new ArrayList<>();
 
@@ -88,6 +127,9 @@ public class Registry<Type extends User> {
         return ValuesWithTheGivenName;
     }
 
+    /**
+     * Вывод содержимого реестра в консоль
+     */
     public void printInfo(){
         if (!info.isEmpty()) {
             info.forEach((InfoKey, InfoValue) -> {
