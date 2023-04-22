@@ -1,9 +1,6 @@
 package ru.turing.courses.lesson3.Imanov.registry;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
+import java.util.*;
 
 import ru.turing.courses.lesson3.Imanov.user.User;
 
@@ -105,7 +102,7 @@ public class Registry<Type extends User> {
 
 
         info.forEach((infoKey, infoValue) -> {
-            if (infoValue.getUserName().equals(name)) {
+            if (infoValue != null && Objects.equals(infoValue.getUserName(), name)) {
                 valuesWithTheGivenName.add(infoValue);
             }
         });
