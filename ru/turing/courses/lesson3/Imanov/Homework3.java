@@ -50,7 +50,11 @@ public class Homework3 {
         PornhubUserRegisrtry.clear();
         PornhubUserRegisrtry.printInfo();
 
-
+        System.out.println("Ну и просто тот факт что я могу создать реестр пихнув в него другой тип");
+        InstagramUser LionelMessi = new InstagramUser("leomessi", true);
+        Registry<InstagramUser> InstagramUserRegistry = new Registry<>();
+        InstagramUserRegistry.add(LionelMessi.getUserId(), LionelMessi);
+        InstagramUserRegistry.printInfo();
 
     }
 }
