@@ -3,7 +3,7 @@ package ru.turing.courses.lesson3.Imanov.user;
 import java.util.Objects;
 
 public class InstagramUser extends User {
-    boolean accountVerified;
+    private boolean accountVerified;
 
     public InstagramUser(String UserName, boolean accountVerified) {
         super(UserName);
@@ -17,5 +17,17 @@ public class InstagramUser extends User {
         InstagramUser that = (InstagramUser) o;
         return accountVerified == that.accountVerified
                 && UserId == that.UserId && Objects.equals(UserName, that.UserName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountVerified);
+    }
+
+    @Override
+    public String toString() {
+        return "Имя: " + UserName + '\n' +
+                "Id: " + UserId + '\n' +
+                "Любимая категория: " + accountVerified + '\n';
     }
 }

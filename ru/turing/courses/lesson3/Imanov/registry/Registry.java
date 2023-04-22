@@ -27,9 +27,7 @@ public class Registry<Type extends User> {
     public void add(Integer key, Type value) {
         if (key == null){
             System.out.println("key is null");
-        } else if (value == null && !info.containsKey(key)){
-            info.put(key, value);
-        } else if (key.equals(value.getUserId())) {
+        } else if (value == null || key.equals(value.getUserId())) {
             info.put(key, value);
         } else {
             System.out.println("Wrong key for user");
@@ -46,9 +44,7 @@ public class Registry<Type extends User> {
             System.out.println("key is null");
             return null;
         } else if (info.containsKey(key)){
-            Type value = info.get(key);
-            info.remove(key);
-            return value;
+            return info.remove(key);
         } else {
             System.out.println("key not found");
             return null;
@@ -62,27 +58,18 @@ public class Registry<Type extends User> {
      * @return список ключей, соответсвующих удаленным значениям
      */
     public List<Integer> removeByValue(Type value){
-        List<Integer> KeyForRemovedValues = new ArrayList<>();
+        List<Integer> keyForRemovedValues = new ArrayList<>();
 
-        if (!info.isEmpty()) {
-            if (value != null) {
-                info.forEach((InfoKey, InfoValue) -> {
-                    if (InfoValue.equals(value)) {
-                        KeyForRemovedValues.add(InfoKey);
-                    }
-                });
-            } else {
-                for (Integer key : info.keySet()){
-                    if (info.get(key) == null){
-                        KeyForRemovedValues.add(key);
-                    }
-                }
+
+        info.forEach((infoKey, infoValue) -> {
+            if (value == null && infoValue == null || (infoValue != null && infoValue.equals(value))) {
+                keyForRemovedValues.add(infoKey);
             }
-        }
+        });
 
-        KeyForRemovedValues.forEach(this::removeByKey);
+        keyForRemovedValues.forEach(this::removeByKey);
 
-        return KeyForRemovedValues;
+        return keyForRemovedValues;
     }
 
     /**
@@ -114,17 +101,17 @@ public class Registry<Type extends User> {
      * @return список значений с именем name
      */
     public List<Type> getByName(String name){
-        List<Type> ValuesWithTheGivenName = new ArrayList<>();
+        List<Type> valuesWithTheGivenName = new ArrayList<>();
 
-        if (!info.isEmpty()) {
-            info.forEach((InfoKey, InfoValue) -> {
-                if (InfoValue.getUserName().equals(name)) {
-                    ValuesWithTheGivenName.add(InfoValue);
-                }
-            });
-        }
 
-        return ValuesWithTheGivenName;
+        info.forEach((infoKey, infoValue) -> {
+            if (infoValue.getUserName().equals(name)) {
+                valuesWithTheGivenName.add(infoValue);
+            }
+        });
+
+
+        return valuesWithTheGivenName;
     }
 
     /**
@@ -134,7 +121,7 @@ public class Registry<Type extends User> {
         if (!info.isEmpty()) {
             info.forEach((InfoKey, InfoValue) -> {
                 if (InfoValue != null) {
-                    System.out.println("id: " + InfoKey + ", Имя: " + InfoValue.getUserName());
+                    System.out.println(InfoValue.toString());
                 } else {
                     System.out.println("id: " + InfoKey + ", Запись: null");
                 }

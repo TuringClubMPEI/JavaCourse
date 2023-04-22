@@ -3,7 +3,7 @@ package ru.turing.courses.lesson3.Imanov.user;
 import java.util.Objects;
 
 public class PornhubUser extends User {
-    String favoriteCategory;
+    private String favoriteCategory;
     public PornhubUser(String UserName, String favoriteCategory){
         super(UserName);
         this.favoriteCategory = favoriteCategory;
@@ -16,5 +16,17 @@ public class PornhubUser extends User {
         PornhubUser that = (PornhubUser) o;
         return UserId == that.UserId
                 && Objects.equals(UserName, that.UserName) && Objects.equals(favoriteCategory, that.favoriteCategory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(favoriteCategory);
+    }
+
+    @Override
+    public String toString() {
+        return "Имя: " + UserName + '\n' +
+                "Id: " + UserId + '\n' +
+                "Любимая категория: "+ favoriteCategory + '\n';
     }
 }
