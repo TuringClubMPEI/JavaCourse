@@ -7,7 +7,6 @@ public class InstagramUser extends User {
 
     public InstagramUser(String UserName, boolean accountVerified) {
         super(UserName);
-        this.UserId = 1;
         this.accountVerified = accountVerified;
     }
 
