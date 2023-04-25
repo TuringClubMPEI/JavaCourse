@@ -5,9 +5,9 @@ import java.time.Period;
 import java.util.Arrays;
 
 public class UserProcessor {
-    public void convertAdress(Person person, String[] finalAdressPart) { //Парсинг входной строки по формату в массив строк для вывода с новой строчки
+    public String[] convertAdress(Person person) { //Парсинг входной строки по формату в массив строк для вывода с новой строчки
         int currentPosition = 0;
-
+        String[] finalAdressPart = new String[5];
         String adress = person.getAdress();
         String[] adressParts = adress.split(", ");
         for (String elem : adressParts) {
@@ -24,7 +24,7 @@ public class UserProcessor {
                 finalAdressPart[currentPosition] = "кв." + adressElem[1];
             currentPosition++;
         }
-        return;
+        return finalAdressPart;
     }
 
     // Метод для вывода адреса по формату
@@ -35,11 +35,12 @@ public class UserProcessor {
         return;
     }
 
-    // Метод для подсчета возрасат: если flag = 1 - расчет возраста в годах, иначе в месяцах
-    public int getAge(Person person, int flag) {
+    // Метод для подсчета возраста
+    public void getAge(Person person) {
         LocalDate birthDay = person.getDateOfBirth();
-        if (flag == 1) return Period.between(birthDay, LocalDate.now()).getYears();
-        else return Period.between(birthDay, LocalDate.now()).getMonths();
+        int age = (Period.between(birthDay, LocalDate.now())).getYears();
+        System.out.println("Кол-во прожитых лет: " + age);
+        System.out.println("Кол-во прожитых месяцев: " + Period.between(birthDay, LocalDate.now()).getMonths() + 12 * age);
     }
 
 

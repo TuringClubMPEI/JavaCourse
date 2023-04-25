@@ -1,4 +1,4 @@
-package ru.turing.courses.lesson2.animals;
+package ru.turing.courses.lesson2.Yemelyanov;
 
 import ru.turing.courses.lesson2.Yemelyanov.Studying;
 

@@ -1,11 +1,8 @@
-package ru.turing.courses.lesson2.animals;
+package ru.turing.courses.lesson2.Yemelyanov;
 
-import ru.turing.courses.lesson2.Yemelyanov.Studying;
-
-import java.time.LocalDate;
 import java.util.Random;
 
-public class VovaSidorov implements Studying {
+public class BadStudent implements Studying {
     //Переопределение методов во втором случае
     @Override
     public void study(){
