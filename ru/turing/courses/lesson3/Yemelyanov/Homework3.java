@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Homework3 {
     public static void main(String[] args) {
+
         VodkaContainedType vodkaContainedType1 = new VodkaContainedType("Пшеничная", " Водка");
         VodkaContainedType vodkaContainedType2 = new VodkaContainedType("Рисовый", "Сакэ");
         VodkaContainedType vodkaContainedType3 = new VodkaContainedType("Анисовая","Водка");

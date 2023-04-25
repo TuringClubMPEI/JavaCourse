@@ -6,4 +6,5 @@ public class VodkaContainedType extends Alcohol{
         super(itemName);
         this.itemId = vodkaType;
     }
+
 }

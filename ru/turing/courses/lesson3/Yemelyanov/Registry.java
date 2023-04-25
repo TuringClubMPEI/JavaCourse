@@ -14,22 +14,22 @@ import java.util.Map;
 public class Registry<T extends String, T1 extends Alcohol> {
     private Map<T, T1> registryEntry = new HashMap<>();
     private List<T> deletedKeys;
-    //Реализация добавления в реестр
-    public void add(T key, T1 value){
+
+    public void add(T key, T1 value){ //Реализация добавления в реестр
         registryEntry.put(key, value);
     }
-    //Реализация метода, возвращающего значение по ключу
-    public T1 getByKey(T key){
+
+    public T1 getByKey(T key){ //Реализация метода, возвращающего значение по ключу
         if (registryEntry.isEmpty()) return null;
         else if (!registryEntry.containsKey(key)) return null;
         return registryEntry.get(key);
     }
-    //Реализация полной очистки реестра
-    public void clear(){
+
+    public void clear(){ //Реализация полной очистки реестра
         registryEntry.clear();
     }
-    //Удаление по ключу - возвращается значение, состоящие в соответствии ключу в записи
-    public T1 removeByKey(T key){
+
+    public T1 removeByKey(T key){ //Удаление по ключу - возвращается значение, состоящие в соответствии ключу в записи
         T1 currentEntry;
         if (registryEntry.isEmpty()) return null;
         else if (!registryEntry.containsKey(key)) return null;
@@ -57,4 +57,5 @@ public class Registry<T extends String, T1 extends Alcohol> {
         }
         return deletedKeys;
     }
+
 }
