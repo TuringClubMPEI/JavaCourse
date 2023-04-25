@@ -9,6 +9,7 @@ public class Dog extends Animal {
         super(name, length, legsCount);
         this.haveStick = haveStick;
     }
+
     @Override
     public void soundAnimal() {
         System.out.println(getName() + " сказал гав");
@@ -19,7 +20,7 @@ public class Dog extends Animal {
         System.out.println(" собака встала на задние лапы");
     }
 
-    public void LetsPlay() {
+    public void letsPlay() {
         if (haveStick) {
             System.out.println("Игра начинается");
         } else {

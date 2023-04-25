@@ -29,7 +29,7 @@ public class Homework2 {
         Dog dog = new Dog("Шарик", 40, 4, true);
         Animal lion = new Lion("Бонифаций", 140, 4);
         dog.soundAnimal();
-        dog.LetsPlay();
+        dog.letsPlay();
         lion.stay();
         lion.soundAnimal();
 

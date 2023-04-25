@@ -14,9 +14,9 @@ public class Student11thClass implements Studying {
     @Override
     public void passExam(boolean passed) {
         if (passed) {
-            mood +=50;
+            mood += 50;
         } else {
-            mood -=50;
+            mood -= 50;
         }
         System.out.println("настроение: " + mood);
     }

@@ -19,8 +19,6 @@ public class Student9thClass implements Studying {
         } else {
             System.out.println("в колледж на платку");
         }
-
-
     }
 
     @Override
@@ -31,6 +29,5 @@ public class Student9thClass implements Studying {
             System.out.println("надо еще посидеть");
         }
     }
-
 }
 

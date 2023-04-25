@@ -6,6 +6,7 @@ public class Lion extends Animal {
     public Lion(String name, int length, int legsCount) {
         super(name, length, legsCount);
     }
+
     @Override
     public void soundAnimal() {
         System.out.println(getName() + " выкрикнул с недовольством рааар");
