@@ -4,13 +4,14 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class UserProcessor {
-    private static final int adressPositions = 5;
+
+    private static final int ADRESS_POSITIONS = 5;
 
     public String[] convertAdress(Person person) { //Парсинг входной строки по формату в массив строк для вывода с новой строчки
         String[] finalAdressPart = new String[5];
         String adress = person.getAdress();
         String[] adressParts = adress.split(", ");
-        for (int currentPosition = 0; currentPosition < adressPositions; currentPosition++) {
+        for (int currentPosition = 0; currentPosition < ADRESS_POSITIONS; currentPosition++) {
             String elem = adressParts[currentPosition];
             String[] adressElem = elem.split(":");
             if (adressElem[0].equals("страна"))

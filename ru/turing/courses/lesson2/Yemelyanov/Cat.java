@@ -1,5 +1,7 @@
 package ru.turing.courses.lesson2.Yemelyanov;
 
+import java.util.Objects;
+
 public class Cat extends Animal {
 
     private String animalClass;
@@ -27,8 +29,24 @@ public class Cat extends Animal {
     public void classify() {
         System.out.println("Является " + getAnimalClass());
     }
+
     @Override
     public void printPenisLength() {
         System.out.println("Длина детородного органа кота (прости господи) составляет " + getPenisLength() + " сантиметров");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cat cat = (Cat) o;
+        return penisLength == cat.penisLength &&
+                color.equals(cat.color) &&
+                Objects.equals(animalClass, cat.animalClass);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(animalClass, penisLength, color);
     }
 }
