@@ -5,7 +5,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public class UserProcessor {
-    public static void userProcessor(String dateOfBirth, String address) {
+    public static void processUserInfo(String dateOfBirth, String address) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDate birthday = LocalDate.parse(dateOfBirth, formatter);
         LocalDate currentDate = LocalDate.now();

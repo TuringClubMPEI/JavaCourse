@@ -1,11 +1,9 @@
 package ru.turing.courses.lesson2.Zheleznov.Study;
 
 public class Student11thClass implements Studying {
-    boolean passed;
-
-    int mood;
-
-    int tiredness;
+    protected boolean passed;
+    protected int mood;
+    protected int tiredness;
 
     public Student11thClass(boolean passed, int mood, int tiredness) {
         this.passed = passed;
@@ -16,12 +14,11 @@ public class Student11thClass implements Studying {
     @Override
     public void passExam(boolean passed) {
         if (passed) {
-            mood = 100;
-            System.out.println("настроение: " + mood);
+            mood +=50;
         } else {
-            mood = -100;
-            System.out.println("настроение: " + mood);
+            mood -=50;
         }
+        System.out.println("настроение: " + mood);
     }
 
     @Override

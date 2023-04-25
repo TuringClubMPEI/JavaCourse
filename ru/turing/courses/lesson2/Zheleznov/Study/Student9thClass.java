@@ -1,11 +1,9 @@
 package ru.turing.courses.lesson2.Zheleznov.Study;
 
 public class Student9thClass implements Studying {
-    boolean passed;
-
-    boolean summerMood;
-
-    boolean everythingIsLearned;
+    protected boolean passed;
+    protected boolean summerMood;
+    protected boolean everythingIsLearned;
 
     public Student9thClass(boolean passed, boolean summerMood, boolean everythingIsLearned) {
         this.passed = passed;

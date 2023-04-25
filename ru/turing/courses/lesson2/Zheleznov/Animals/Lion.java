@@ -6,13 +6,9 @@ public class Lion extends Animal {
     public Lion(String name, int length, int legsCount) {
         super(name, length, legsCount);
     }
-
-    String lionName = getName();
-
-
     @Override
     public void soundAnimal() {
-        System.out.println(lionName + " выкрикнул с недовольством рааар");
+        System.out.println(getName() + " выкрикнул с недовольством рааар");
     }
 
     @Override
@@ -25,11 +21,11 @@ public class Lion extends Animal {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Lion lion = (Lion) o;
-        return Objects.equals(lionName, lion.lionName);
+        return Objects.equals(getName(), lion.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lionName);
+        return Objects.hash(getName());
     }
 }
