@@ -21,11 +21,10 @@ public class Homework2 {
 
         UserProcessor personInfo = new UserProcessor();
 
-        String[] adressParts = new String[5]; //Инициализацяи массива строк для заполнения полей адреса
-        adressParts = personInfo.convertAdress(person); //Парсинг адреса
+        String[] adressParts = personInfo.convertAdress(person); //Парсинг адреса
 
         System.out.println("====================ИНФОКАРТОЧКА О ГРАЖДАНИНЕ======================");
-        personInfo.getAge(person); //Вызов метода с параметром для расчета прожитых лет и месяцев
+        personInfo.printAge(person); //Вызов метода с параметром для расчета прожитых лет и месяцев
         System.out.println("Адрес: ");
         personInfo.showAdress(adressParts);
 
@@ -41,7 +40,7 @@ public class Homework2 {
         System.out.print("Что говорит: ");
         cat.makeSound();
         System.out.print("Цвет: ");
-        System.out.println(cat.color);
+        System.out.println(cat.getColor());
         cat.printPenisLength();
         cat.sayAlive();
                                                                 //Это все тест наследников класса Animal
@@ -51,7 +50,7 @@ public class Homework2 {
         System.out.print("Что говорит: ");
         gorshok.makeSound();
         System.out.print("Цвет: ");
-        System.out.println(gorshok.color);
+        System.out.println(gorshok.getColor());
         gorshok.printPenisLength();
         gorshok.sayAlive();
 

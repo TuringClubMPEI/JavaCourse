@@ -5,12 +5,10 @@ public class Rocker extends Animal {
     private String name;
     private String rockerClass;
 
-    public Rocker(String name, String gorshokClass, int penisLength, String color) { //Конструктор с параметрами
+    public Rocker(String name, String rockerClass, int penisLength, String color) { //Конструктор с параметрами
         super(penisLength, color);
         this.name = name;
-
-        this.penisLength = penisLength;
-
+        this.rockerClass = rockerClass;
     }
 
     @Override

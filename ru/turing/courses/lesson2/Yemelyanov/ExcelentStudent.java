@@ -7,13 +7,11 @@ public class ExcelentStudent implements Studying {
     @Override
     public void study(){
         System.out.println("Реализовываю интерфейсы на джаве у учебной форме, привет Turing MPEI!");
-        return;
     }
 
     @Override
     public void passExam(boolean passed){
         String message = passed ? "Ура, сдал!" : "Вот незадача, провалился(";
         System.out.println(message);
-        return;
     }
 }

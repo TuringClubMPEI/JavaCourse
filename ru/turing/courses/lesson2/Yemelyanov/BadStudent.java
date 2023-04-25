@@ -11,7 +11,6 @@ public class BadStudent implements Studying {
         System.out.println("Настроение на учебу: " + Integer.toString(mood));
         int sleepTime = rand.nextInt(10);
         System.out.println("*Спит уже " + Integer.toString(sleepTime) + " часов*");
-        return;
     }
 
     @Override
@@ -20,6 +19,5 @@ public class BadStudent implements Studying {
         int mark = rand.nextInt(3,5);
         String markString = passed ? Integer.toString(mark) : Integer.toString(2);
         System.out.println("Оценка за экз: " + markString);
-        return;
     }
 }

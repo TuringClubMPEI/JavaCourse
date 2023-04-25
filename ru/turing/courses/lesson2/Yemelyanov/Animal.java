@@ -10,16 +10,24 @@ public abstract class Animal {
     }
 
     public abstract void makeSound();
+
     public abstract void classify();
-    public int getPenisLength(){
+
+    public int getPenisLength() {
         return penisLength;
     }
+
+    public String getColor() {
+        return color;
+    }
+
     public abstract void printPenisLength();
+
     public void setPenisLength(int penisLength) {
         this.penisLength = penisLength;
     }
 
-    public void sayAlive(){
+    public void sayAlive() {
         System.out.println("Я жив, покуда верю в чудо");
     }
 }

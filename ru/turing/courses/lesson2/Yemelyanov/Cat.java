@@ -7,7 +7,6 @@ public class Cat extends Animal {
     @Override
     public void makeSound() {
         System.out.println("Мяуууу");
-        return;
     }
 
     public Cat(String animalClass, int penisLength, String color) {
@@ -27,7 +26,6 @@ public class Cat extends Animal {
    @Override
     public void classify() {
         System.out.println("Является " + getAnimalClass());
-        return;
     }
     @Override
     public void printPenisLength() {
