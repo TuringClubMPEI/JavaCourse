@@ -19,6 +19,5 @@ public abstract class Record {
         return info;
     }
 
-    public abstract String getRecord();
 
 }

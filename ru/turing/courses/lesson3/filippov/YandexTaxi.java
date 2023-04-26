@@ -18,7 +18,7 @@ public class YandexTaxi extends Record {
 
 
     @Override
-    public String getRecord() {
+    public String toString() {
         return "Id:" + getId() + "\nPhone number:" + info + "\nYandex Rubels: " + yandexRubles;
     }
 

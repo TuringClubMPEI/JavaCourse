@@ -3,7 +3,7 @@ package ru.turing.courses.lesson3.filippov;
 import java.util.Objects;
 
 public class BanksRecords extends Record {
-    boolean availabilityOfCredit;
+    private boolean availabilityOfCredit;
 
     public BanksRecords(String id, String info, boolean availabilityOfCredit) {
         super(id, info);
@@ -11,7 +11,7 @@ public class BanksRecords extends Record {
     }
 
     @Override
-    public String getRecord() {
+    public String toString() {
         return "Id:" + getId() + "\nPhone number:" + info  + "\nКредит одобрен:"+availabilityOfCredit;
     }
 

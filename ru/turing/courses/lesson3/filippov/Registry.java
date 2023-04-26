@@ -21,18 +21,18 @@ public class Registry<T extends Record> {
         if (storage.containsKey(key)) {
             T removeRecord = storage.get(key);
             storage.remove(key);
-            System.out.println("Был удален пользователь:\n" + removeRecord.getRecord());
-        }
-        else {
+            System.out.println("Был удален пользователь:\n" + removeRecord);
+        } else {
             System.out.println("Пользователя с таким ключом нет(");
         }
     }
 
     //- removeByValue(value) - удалить из реестра все записи по заданному значению. Возвращать должен List ключей удаленных записей
 
-    public List removeByValue(T value) {
+    public List<String> removeByValue(T value) {
         List<String> tempList = new ArrayList<>();
-        if (storage.containsValue(value)) {
+
+        if (value != null && storage.containsValue(value)) {
             for (Map.Entry<String, T> entry : storage.entrySet()) {
                 if (value.equals(entry.getValue())) {
                     tempList.add(entry.getKey());
@@ -48,37 +48,35 @@ public class Registry<T extends Record> {
     //- clear() - полностью очистить реестр
 
     public void clear() {
-        if(!storage.isEmpty()){
+        if (!storage.isEmpty()) {
             storage.clear();
             System.out.println("Реестр очищен, все данные удалены");
-        }
-        else {
+        } else {
             System.out.println("Реестр уже пуст");
         }
     }
 
     // - getByKey(key) - найти значение по id. Возвращать значение с заданным id
-    public String getByKey(String key) {
-        if(storage.containsKey(key)) {
-            return storage.get(key).getRecord();
-        }
-        else{
+    public T getByKey(String key) {
+        if (storage.containsKey(key)) {
+            return storage.get(key);
+        } else {
             System.out.print("Пользователя с таким ключом нет:");
             return null;
         }
     }
     //- getByName(String name)
 
-    public List getByName(String info) {
-        List<String> tempList = new ArrayList<>();
-        boolean flag = true;
+    public List<T> getByName(String info) {
+        List<T> tempList = new ArrayList<>();
+        boolean foundMatchingRecord = true;
         for (Map.Entry<String, T> entry : storage.entrySet()) {
             if (entry.getValue().getInfo().equals(info)) {
-                tempList.add(entry.getValue().getRecord());
-                flag = false;
+                tempList.add(entry.getValue());
+                foundMatchingRecord = false;
             }
         }
-        if (flag) {
+        if (foundMatchingRecord) {
             System.out.println("В данном реестре нет записей с такими значений");
         }
         return tempList;
@@ -87,15 +85,14 @@ public class Registry<T extends Record> {
     //вывод всех множеств ключ+значение
 
     public void view() {
-        int c = 1;
+        int count = 1;
         if (!storage.isEmpty()) {
-            for (Map.Entry<String, T> entry : storage.entrySet()) {
-                System.out.println(c + ")" + "Ключ:" + entry.getKey() + "\nЗначение:\n" + entry.getValue().getRecord());
-                c++;
-            }
-        }
-        else {
             System.out.println("Реестр пуст");
+            return;
+        }
+        for (Map.Entry<String, T> entry : storage.entrySet()) {
+            System.out.println(count + ")" + "Ключ:" + entry.getKey() + "\nЗначение:\n" + entry.getValue());
+            count++;
         }
     }
 }
