@@ -18,7 +18,8 @@ public class BanksRecords extends Record {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof BanksRecords that)) return false;
+        if (!(o instanceof BanksRecords)) return false;
+        BanksRecords that = (BanksRecords) o;
         return ((availabilityOfCredit == that.availabilityOfCredit) && getId().equals(that.getId()) && getInfo().equals(that.getInfo()));
         //тут я явно написал сравнения для строк
     }

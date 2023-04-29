@@ -29,8 +29,9 @@ public class YandexTaxi extends Record {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof YandexTaxi yandexTaxi))//yandexTaxi это переменная в которую происходит приведение переменной o
+        if (!(o instanceof YandexTaxi))//yandexTaxi это переменная в которую происходит приведение переменной o
             return false;//instanceof проверяет явл ли о экземплярем класса YandexTAxi
+        YandexTaxi yandexTaxi = (YandexTaxi) o;
         return  Objects.equals(getInfo(), yandexTaxi.getInfo()) && (getYandexRubles()==yandexTaxi.getYandexRubles());
         //я так понимаю Object.equals он подстратвает сравнения для любого типа данных условно он понимает что getInfo это стринг и сравнивает как строки ?
     }
