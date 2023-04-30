@@ -27,9 +27,7 @@ public class Homework4 {
             Gender falseNameGender = Gender.ofName("Attack helicopter");
             Gender falseCharReprName = Gender.ofShortNameRepr("\n");
 
-        } catch(GenderException e) {
-            System.out.println(e.getWhat());
-        } catch (IllegalArgumentException e){
+        } catch(GenderException | IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
