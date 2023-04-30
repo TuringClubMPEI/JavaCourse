@@ -4,7 +4,8 @@ public abstract class Alcohol {
     protected String itemId;
     protected String itemName;
 
-    Alcohol(String itemName) {
+    Alcohol(String itemId, String itemName) {
+        this.itemId = itemId;
         this.itemName = itemName;
     }
 

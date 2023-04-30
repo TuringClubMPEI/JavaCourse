@@ -1,9 +1,6 @@
 package ru.turing.courses.lesson3.Yemelyanov;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  *
@@ -11,15 +8,14 @@ import java.util.Map;
  *
  */
 
-public class Registry<T extends String, T1 extends Alcohol> {
-    private Map<T, T1> registryEntry = new HashMap<>();
-    private List<T> deletedKeys;
+public class Registry<String, T extends Alcohol> {
+    private Map<String, T> registryEntry = new HashMap<>();
 
-    public void add(T key, T1 value){ //Реализация добавления в реестр
+    public void add(String key, T value){ //Реализация добавления в реестр
         registryEntry.put(key, value);
     }
 
-    public T1 getByKey(T key){ //Реализация метода, возвращающего значение по ключу
+    public T getByKey(String key){ //Реализация метода, возвращающего значение по ключу
         if (registryEntry.isEmpty()) return null;
         else if (!registryEntry.containsKey(key)) return null;
         return registryEntry.get(key);
@@ -29,10 +25,14 @@ public class Registry<T extends String, T1 extends Alcohol> {
         registryEntry.clear();
     }
 
-    public T1 removeByKey(T key){ //Удаление по ключу - возвращается значение, состоящие в соответствии ключу в записи
-        T1 currentEntry;
-        if (registryEntry.isEmpty()) return null;
-        else if (!registryEntry.containsKey(key)) return null;
+    public T removeByKey(String key){ //Удаление по ключу - возвращается значение, состоящие в соответствии ключу в записи
+        T currentEntry; // Это удалять нельзя, так как если объявлять currentEntry в теле else, он не виден return из-за локальной зоны видимости
+        if (registryEntry.isEmpty()) {
+            return null;
+        }
+        else if (!registryEntry.containsKey(key)) {
+            return null;
+        }
         else {
             currentEntry = registryEntry.get(key);
             registryEntry.remove(key);
@@ -41,21 +41,20 @@ public class Registry<T extends String, T1 extends Alcohol> {
     }
 
     //Удаление по значению - возвращается набор ключей, состоящий в соответствии значению в записи
-    public List<T> removeByValue(T1 value){
-        if(deletedKeys == null){
-            deletedKeys = new ArrayList<>();
-        } else {
-            if (!registryEntry.isEmpty() && registryEntry.containsValue(value)) {
-                for (Map.Entry<T, T1> entry : registryEntry.entrySet()) {
-                    T1 tempValue = entry.getValue();
-                    if (tempValue.equals(value)) {
-                        deletedKeys.add(entry.getKey());
-                        registryEntry.remove(entry.getKey());
-                    }
-                }
+    public List<String> removeByValue(T value){
+        List<String> deletedKeys = new ArrayList<>();
+
+        Iterator<Map.Entry<String, T>> iterator = registryEntry.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry<String, T> entry = iterator.next();
+            if(value.equals(entry.getValue())){
+                deletedKeys.add(entry.getKey());
+                iterator.remove();
             }
         }
         return deletedKeys;
     }
 
 }
+
+
