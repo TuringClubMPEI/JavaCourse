@@ -26,18 +26,15 @@ public class Registry<String, T extends Alcohol> {
     }
 
     public T removeByKey(String key){ //Удаление по ключу - возвращается значение, состоящие в соответствии ключу в записи
-        T currentEntry; // Это удалять нельзя, так как если объявлять currentEntry в теле else, он не виден return из-за локальной зоны видимости
+
         if (registryEntry.isEmpty()) {
             return null;
         }
         else if (!registryEntry.containsKey(key)) {
             return null;
         }
-        else {
-            currentEntry = registryEntry.get(key);
-            registryEntry.remove(key);
-        }
-        return currentEntry;
+
+        return registryEntry.remove(key);
     }
 
     //Удаление по значению - возвращается набор ключей, состоящий в соответствии значению в записи
@@ -47,9 +44,11 @@ public class Registry<String, T extends Alcohol> {
         Iterator<Map.Entry<String, T>> iterator = registryEntry.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry<String, T> entry = iterator.next();
-            if(value.equals(entry.getValue())){
-                deletedKeys.add(entry.getKey());
-                iterator.remove();
+            if (value != null){
+                if(value.equals(entry.getValue())){
+                    deletedKeys.add(entry.getKey());
+                    iterator.remove();
+                }
             }
         }
         return deletedKeys;
