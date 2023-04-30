@@ -16,8 +16,12 @@ public class Registry<String, T extends Alcohol> {
     }
 
     public T getByKey(String key){ //Реализация метода, возвращающего значение по ключу
-        if (registryEntry.isEmpty()) return null;
-        else if (!registryEntry.containsKey(key)) return null;
+        if (registryEntry.isEmpty()) {
+            return null;
+        }
+        else if (!registryEntry.containsKey(key)) {
+            return null;
+        }
         return registryEntry.get(key);
     }
 
