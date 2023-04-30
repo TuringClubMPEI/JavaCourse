@@ -2,6 +2,7 @@ package ru.turing.courses.lesson3.Zheleznov;
 import java.util.HashMap;
 import java.util.Map;
 import ru.turing.courses.lesson3.Zheleznov.Registry;
+import java.util.*;
 public class Homework3 {
     public static void main(String[] args) {
         //создание объектов
@@ -13,7 +14,8 @@ public class Homework3 {
         CarRegistry.add(NissanGtr.getCarId(), NissanGtr);
         CarRegistry.add(Niva.getCarId(), Niva);
         CarRegistry.add(LadaPriora.getCarId(), LadaPriora);
-        CarRegistry.removeByValue(Niva);
+        List<Integer> keys = CarRegistry.removeByValue(Niva);
+        System.out.println(keys);
         CarRegistry.removeByKey(3);
         CarRegistry.coutMaxSpeed();
     }

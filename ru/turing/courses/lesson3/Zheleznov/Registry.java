@@ -18,14 +18,13 @@ public class Registry<T extends Car> {
     //функция, отвечающая за удаление объектов по значению
     public List<Integer> removeByValue(T value) {
         List<Integer> keys = new ArrayList<>();
-        storage.entrySet()
-                .removeIf(entry -> entry.getValue().equals(value));
         for (Map.Entry<Integer, T> entry : storage.entrySet()) {
             if (entry.getValue().equals(value)) {
                 keys.add(entry.getKey());
             }
         }
-
+        storage.entrySet()
+                .removeIf(entry -> entry.getValue().equals(value));
         return keys;
     }
     //очистить всё
