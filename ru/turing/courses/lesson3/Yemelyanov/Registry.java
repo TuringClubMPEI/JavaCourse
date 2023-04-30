@@ -46,9 +46,18 @@ public class Registry<String, T extends Alcohol> {
         List<String> deletedKeys = new ArrayList<>();
 
         Iterator<Map.Entry<String, T>> iterator = registryEntry.entrySet().iterator();
-        while(iterator.hasNext()){
+
+        if (value == null){
             Map.Entry<String, T> entry = iterator.next();
-            if (value != null){
+            while(iterator.hasNext()){
+                if(entry.getValue() == null){
+                    deletedKeys.add(entry.getKey());
+                    iterator.remove();
+                }
+            }
+        } else{
+            Map.Entry<String, T> entry = iterator.next();
+            while(iterator.hasNext()){
                 if(value.equals(entry.getValue())){
                     deletedKeys.add(entry.getKey());
                     iterator.remove();
