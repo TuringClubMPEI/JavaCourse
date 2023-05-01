@@ -17,15 +17,19 @@ public class Registry<T extends Car> {
     }
     //функция, отвечающая за удаление объектов по значению
     public List<Integer> removeByValue(T value) {
-        List<Integer> keys = new ArrayList<>();
-        for (Map.Entry<Integer, T> entry : storage.entrySet()) {
-            if (entry.getValue().equals(value)) {
-                keys.add(entry.getKey());
+        List<Integer> listOfError = List.of(0) ;
+        if(value != null){
+            List<Integer> keys = new ArrayList<>();
+            for (Map.Entry<Integer, T> entry : storage.entrySet()) {
+                if (entry.getValue().equals(value)) {
+                    keys.add(entry.getKey());
+                }
             }
+            storage.entrySet()
+                    .removeIf(entry -> entry.getValue().equals(value));
+            return keys;
         }
-        storage.entrySet()
-                .removeIf(entry -> entry.getValue().equals(value));
-        return keys;
+        return listOfError;
     }
     //очистить всё
     public void clear() {
@@ -36,7 +40,7 @@ public class Registry<T extends Car> {
         return storage.get(key);
     }
     //функция выводит все объекты
-    public void coutMaxSpeed() {
+    public void printMaxSpeed() {
         for (Map.Entry<Integer, T> entry : storage.entrySet()) {
             System.out.println(entry.getKey() + ". Максимальная скорость = " + entry.getValue().getCarMaxSpeed());
         }

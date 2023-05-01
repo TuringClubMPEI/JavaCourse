@@ -6,17 +6,17 @@ import java.util.*;
 public class Homework3 {
     public static void main(String[] args) {
         //создание объектов
-        Car LadaPriora = new SportsCar(1, 200, 2);
-        Car Niva = new Suv(2, 160, 4);
-        Car NissanGtr = new SportsCar(3, 320, 6);
+        Car ladaPriora = new SportsCar(1, 200, 2);
+        Car niva = new Suv(2, 160, 4);
+        Car nissanGtr = new SportsCar(3, 320, 6);
         //создание мапы
-        Registry<Car> CarRegistry = new Registry<>();
-        CarRegistry.add(NissanGtr.getCarId(), NissanGtr);
-        CarRegistry.add(Niva.getCarId(), Niva);
-        CarRegistry.add(LadaPriora.getCarId(), LadaPriora);
-        List<Integer> keys = CarRegistry.removeByValue(Niva);
+        Registry<Car> carRegistry = new Registry<>();
+        carRegistry.add(nissanGtr.getCarId(), nissanGtr);
+        carRegistry.add(niva.getCarId(), niva);
+        carRegistry.add(ladaPriora.getCarId(), ladaPriora);
+        List<Integer> keys = carRegistry.removeByValue(niva);
         System.out.println(keys);
-        CarRegistry.removeByKey(3);
-        CarRegistry.coutMaxSpeed();
+        carRegistry.removeByKey(3);
+        carRegistry.printMaxSpeed();
     }
 }
