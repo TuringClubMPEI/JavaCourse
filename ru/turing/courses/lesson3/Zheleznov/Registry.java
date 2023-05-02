@@ -17,7 +17,6 @@ public class Registry<T extends Car> {
     }
     //функция, отвечающая за удаление объектов по значению
     public List<Integer> removeByValue(T value) {
-        List<Integer> listOfError = List.of(0) ;
         if(value != null){
             List<Integer> keys = new ArrayList<>();
             for (Map.Entry<Integer, T> entry : storage.entrySet()) {
@@ -29,7 +28,7 @@ public class Registry<T extends Car> {
                     .removeIf(entry -> entry.getValue().equals(value));
             return keys;
         }
-        return listOfError;
+        return Collections.emptyList();
     }
     //очистить всё
     public void clear() {

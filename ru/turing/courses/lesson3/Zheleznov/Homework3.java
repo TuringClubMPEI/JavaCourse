@@ -1,8 +1,7 @@
 package ru.turing.courses.lesson3.Zheleznov;
-import java.util.HashMap;
-import java.util.Map;
-import ru.turing.courses.lesson3.Zheleznov.Registry;
+
 import java.util.*;
+
 public class Homework3 {
     public static void main(String[] args) {
         //создание объектов
