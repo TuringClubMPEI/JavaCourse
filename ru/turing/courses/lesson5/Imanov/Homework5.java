@@ -1,12 +1,12 @@
 package ru.turing.courses.lesson5.Imanov;
 import java.util.Arrays;
-import java.util.UUID;
+// SNP
 
 public class Homework5 {
     public static void main(String[] args){
         try {
-            int[] intArray = {3, 2, 1};
-            String[] stringArray = {"111", null, "1", "11"};
+            int[] intArray = {3, 2002, 1};
+            String[] stringArray = {"в прекрасном городе Тамбов...", null, "В ", "2002 году, "};
             ScarfPlayer[] scarfArray = {
                     new ScarfPlayer(52, 100, 5L),
                     null,
@@ -19,7 +19,8 @@ public class Homework5 {
             ArraySorter.sort(scarfArray);
 
             Arrays.stream(intArray).forEach(System.out::println);
-            Arrays.stream(stringArray).forEach(System.out::println);
+            Arrays.stream(stringArray).forEach(System.out::print);
+            System.out.println();
             Arrays.stream(scarfArray).forEach(System.out::println);
 
 
