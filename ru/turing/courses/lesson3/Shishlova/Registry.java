@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Registry<T> {
+public class Registry<T extends NamedObject> {
     // HashMap для хранения записей
     private Map<String, T> data = new HashMap<>();
 
