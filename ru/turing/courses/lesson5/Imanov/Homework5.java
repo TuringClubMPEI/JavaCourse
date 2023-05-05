@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class Homework5 {
     public static void main(String[] args){
-        try {
-            int[] intArray = {3, 2002, 1};
+            Integer[] intArray = {3, 2002, 1};
             String[] stringArray = {"в прекрасном городе Тамбов...", null, "В ", "2002 году, "};
             ScarfPlayer[] scarfArray = {
                     new ScarfPlayer(52, 100, 5L),
@@ -22,11 +21,5 @@ public class Homework5 {
             Arrays.stream(stringArray).forEach(System.out::print);
             System.out.println();
             Arrays.stream(scarfArray).forEach(System.out::println);
-
-
-        } catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-        }
-
     }
 }

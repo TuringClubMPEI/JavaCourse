@@ -7,9 +7,10 @@ package ru.turing.courses.lesson5.Imanov;
  */
 
 public class ScarfPlayer {
-    private final int age;
-    private final int numberOfWins;
-    private final Long id;
+    private Long id;
+    private int age;
+    private int numberOfWins;
+
 
     public ScarfPlayer(int age, int numberOfWins, Long id){
         if (age < 50) {
