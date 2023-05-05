@@ -5,14 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Registry<T> { // тип T указывает на класс, который мы храним в реестре
+public class Registry<T> {
     // HashMap для хранения записей
     private Map<String, T> data = new HashMap<>();
+
     /**
      * Добавление новой записи в реестр
      *
      * @param key   ключ записи
      * @param value значение записи
+     * @throws IllegalArgumentException если value == null
      */
     public void add(String key, T value) {
         if (value == null) {
@@ -76,7 +78,7 @@ public class Registry<T> { // тип T указывает на класс, ко�
     public List<T> getByName(String name) {
         List<T> values = new ArrayList<>();
         for (T value : data.values()) {
-            if (value.getName().startsWith(name)) { // предполагается, что у класса T есть метод getName(), возвращающий имя
+            if (value instanceof NamedObject && ((NamedObject) value).getName().startsWith(name)) {
                 values.add(value);
             }
         }
