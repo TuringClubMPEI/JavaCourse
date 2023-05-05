@@ -5,16 +5,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Registry {
+public class Registry<T> { // тип T указывает на класс, который мы храним в реестре
     // HashMap для хранения записей
-    private Map<String, String> data = new HashMap<>();
+    private Map<String, T> data = new HashMap<>();
     /**
      * Добавление новой записи в реестр
      *
      * @param key   ключ записи
      * @param value значение записи
      */
-    public void add(String key, String value) {
+    public void add(String key, T value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Value cannot be null");
+        }
         data.put(key, value);
     }
 
@@ -24,7 +27,7 @@ public class Registry {
      * @param key ключ записи
      * @return значение удаленной записи или null, если такого ключа не было в реестре
      */
-    public String removeByKey(String key) {
+    public T removeByKey(String key) {
         return data.remove(key);
     }
 
@@ -34,9 +37,9 @@ public class Registry {
      * @param value значение записи
      * @return список ключей удаленных записей
      */
-    public List<String> removeByValue(String value) {
+    public List<String> removeByValue(T value) {
         List<String> deletedKeys = new ArrayList<>();
-        for (Map.Entry<String, String> entry : data.entrySet()) {
+        for (Map.Entry<String, T> entry : data.entrySet()) {
             if (entry.getValue().equals(value)) {
                 deletedKeys.add(entry.getKey());
             }
@@ -60,7 +63,7 @@ public class Registry {
      * @param key ключ записи
      * @return значение записи или null, если такого ключа не было в реестре
      */
-    public String getByKey(String key) {
+    public T getByKey(String key) {
         return data.get(key);
     }
 
@@ -70,10 +73,10 @@ public class Registry {
      * @param name начало имени записей для поиска
      * @return список значений записей, у которых имя начинается с заданной подстроки
      */
-    public List<String> getByName(String name) {
-        List<String> values = new ArrayList<>();
-        for (String value : data.values()) {
-            if (value.startsWith(name)) {
+    public List<T> getByName(String name) {
+        List<T> values = new ArrayList<>();
+        for (T value : data.values()) {
+            if (value.getName().startsWith(name)) { // предполагается, что у класса T есть метод getName(), возвращающий имя
                 values.add(value);
             }
         }
