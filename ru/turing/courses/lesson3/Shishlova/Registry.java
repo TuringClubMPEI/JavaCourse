@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Registry<T> {
+public class Registry<T extends NamedObject> {
     // HashMap для хранения записей
     private Map<String, T> data = new HashMap<>();
 
@@ -78,10 +78,11 @@ public class Registry<T> {
     public List<T> getByName(String name) {
         List<T> values = new ArrayList<>();
         for (T value : data.values()) {
-            if (value instanceof NamedObject && ((NamedObject) value).getName().startsWith(name)) {
+            if (value != null && value.getName() != null && value.getName().startsWith(name)) {
                 values.add(value);
             }
         }
         return values;
     }
+
 }
