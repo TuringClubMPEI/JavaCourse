@@ -58,24 +58,20 @@ public class ScarfPlayer implements Comparable<ScarfPlayer> {
 
     @Override
     public int compareTo(ScarfPlayer o) {
-        if (this.equals(o)){
-            return 0;
-        }
-
         if (o == null) {
             return -1;
         }
 
-        if (this.getId() > o.getId()){
-            return 1;
+        if (!Objects.equals(this.getId(), o.getId())){
+            return (int) (this.getId() - o.getId());
         }
 
-        if (Objects.equals(this.getId(), o.getId()) &&  this.getNumberOfWins() > o.getNumberOfWins()){
-            return 1;
+        if (this.getNumberOfWins() != o.getNumberOfWins()){
+            return this.getNumberOfWins() - o.getNumberOfWins();
         }
 
-        if (Objects.equals(this.getId(), o.getId()) && this.getNumberOfWins() == o.getNumberOfWins() && this.getAge() > this.getAge()){
-            return 1;
+        if (this.getAge() != o.getAge()){
+            return this.getAge() - o.getAge();
         }
 
         return 0;
