@@ -65,20 +65,11 @@ public class ArraySorter {
 
         for (int i = 0; i < array.length - 1; ++i){
             for (int j = 0; j < array.length - i - 1; ++j){
-
                 if (array[j] == null) {
                     swap(array, j, j + 1);
-                } else if (array[j + 1] != null){
-                    if (array[j].getId() >  array[j + 1].getId()){
-                        swap(array, j, j + 1);
-                    } else if (Objects.equals(array[j].getId(), array[j + 1].getId()) &&  array[j].getNumberOfWins() > array[j + 1].getNumberOfWins()){
-                        swap(array, j, j + 1);
-                    } else if (Objects.equals(array[j].getId(), array[j + 1].getId()) &&  array[j].getNumberOfWins() == array[j + 1].getNumberOfWins() &&
-                            array[j].getAge() > array[j + 1].getAge()){
-                        swap(array, j, j + 1);
-                    }
+                } else if (array[j].compareTo(array[j + 1]) > 0){
+                    swap(array, j, j + 1);
                 }
-
             }
         }
     }
