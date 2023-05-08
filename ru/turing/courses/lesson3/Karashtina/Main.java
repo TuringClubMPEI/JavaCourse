@@ -4,32 +4,32 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        //создаем регистр
-        ProductRegistry productRegistry = ProductRegistry.getInstance();
-        //прописываем ключ - значение, хранящиеся в регистре
-        productRegistry.add(1, "Молоко");
-        productRegistry.add(2, "Сыр");
-        productRegistry.add(3, "Курица");
-        productRegistry.add(4, "Сыр");
-        productRegistry.add(5, "Помидоры");
-        //выводим размер регистра
-        System.out.println(productRegistry.numberOfKeys());
-        //проверям содержит ли регистр определенный ключ
-        System.out.println(productRegistry.containsKey(6));
-        //выводим значения, у которых определенный ключ
-        System.out.println(productRegistry.getByKey(1));
-        System.out.println(productRegistry.getByKey(2));
-        System.out.println(productRegistry.getByKey(3));
-
-        //создаем список, находим определенное значение, удаляем и выводим ключ удаленной записи
-        List<Integer> keysToRemove = ProductRegistry.removeByValue("Сыр");
-        for (Integer key : keysToRemove) {
-            System.out.println(key);
-        }
-        //создаем список и выводим значение найденной записи
-        List<Integer> valueToGet = productRegistry.getByName("Молоко");
-        for (Integer value : valueToGet) {
-            System.out.println(value);
-        }
+        //создаем реестр для объектов класса Fruit
+        Registry<Fruit> fruitRegistry = new Registry<>();
+        //Создаем и добавляем объекты Fruit в реестр
+        Fruit apple = new Fruit(1, "яблоко", 90, 176, "красный");
+        Fruit banana = new Fruit(2, "банан", 120, 150, "желтый");
+        Fruit kiwi = new Fruit(3, "киви", 140, 80, "зеленый");
+        fruitRegistry.add(apple);
+        fruitRegistry.add(banana);
+        fruitRegistry.add(kiwi);
+        //выводим размер реестра
+        System.out.println("Размер реестра = " + fruitRegistry.size());
+        //проверям содержит ли реестр ключ 6
+        System.out.println("Реестр содержит ключ 6: " + fruitRegistry.containsKey(6));
+        //получаем объект по ключу
+        Fruit result = fruitRegistry.getByKey(1);
+        System.out.println(result);
+        //находим все объекты с именем "банан"
+        List<Fruit> result2 = fruitRegistry.getByName("банан");
+        System.out.println(result2);
+        //удаляем объект по ключу
+        Fruit removedFruit = fruitRegistry.removeByKey(1);
+        System.out.println(removedFruit);
+        //удаляем все объекты Kiwi
+        List<Integer> removedKeys = fruitRegistry.removeByValue(kiwi);
+        System.out.println("Ключ удаленного объекта: " + removedKeys);
+        //очищаем реестр
+        fruitRegistry.clear();
     }
 }
