@@ -44,7 +44,7 @@ public class Registry<T extends FruitQuantity> {
                     data.remove(key);
                 }
             }
-            return (deletedKeys);
+            return deletedKeys;
         }
         return Collections.emptyList();
     }
@@ -63,7 +63,7 @@ public class Registry<T extends FruitQuantity> {
      * @return запись, соответствующую переданному key, либо null если переданному key не соответствует ни одной записи
      */
     public T getByKey(Integer key) {
-        return data.getOrDefault(key, null);
+        return data.get(key);
     }
 
     /**
