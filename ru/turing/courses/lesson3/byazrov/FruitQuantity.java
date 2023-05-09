@@ -2,29 +2,30 @@ package ru.turing.courses.lesson3.byazrov;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 public abstract class FruitQuantity {
 
     protected Integer amountOfFruits;
     protected String nameOfQuantity;
-    protected HashSet<String> namesOfFruits;
+    protected Set<String> namesOfFruits;
     protected boolean isFruitsFresh;
     protected Integer amountOfRottenFruits;
 
-    public FruitQuantity(Integer amountOfFruits, String nameOfFruits, boolean isFruitsFresh, Integer amountOfRottenFruits, String nameOfQuantity) {
+    public FruitQuantity(Integer amountOfFruits, Set<String> namesOfFruits, boolean isFruitsFresh, Integer amountOfRottenFruits, String nameOfQuantity) {
         this.nameOfQuantity = nameOfQuantity;
         this.amountOfFruits = amountOfFruits;
-        this.namesOfFruits = new HashSet<>(Arrays.asList(nameOfFruits.split(",")));
+        this.namesOfFruits = namesOfFruits;
         this.isFruitsFresh = isFruitsFresh;
         if (!isFruitsFresh){
             this.amountOfRottenFruits = amountOfRottenFruits;
         }
     }
 
-    public FruitQuantity(Integer amountOfFruits, String nameOfFruits, boolean isFruitsFresh, String nameOfQuantity) {
+    public FruitQuantity(Integer amountOfFruits, Set<String> namesOfFruits, boolean isFruitsFresh, String nameOfQuantity) {
         this.nameOfQuantity = nameOfQuantity;
         this.amountOfFruits = amountOfFruits;
-        this.namesOfFruits = new HashSet<>(Arrays.asList(nameOfFruits.split(",")));
+        this.namesOfFruits = namesOfFruits;
         this.isFruitsFresh = isFruitsFresh;
     }
 
@@ -44,11 +45,11 @@ public abstract class FruitQuantity {
         this.nameOfQuantity = nameOfQuantity;
     }
 
-    public HashSet<String> getNamesOfFruits() {
+    public Set<String> getNamesOfFruits() {
         return namesOfFruits;
     }
 
-    public void setNamesOfFruits(HashSet<String> namesOfFruits) {
+    public void setNamesOfFruits(Set<String> namesOfFruits) {
         this.namesOfFruits = namesOfFruits;
     }
 

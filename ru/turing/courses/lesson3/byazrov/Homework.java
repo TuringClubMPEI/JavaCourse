@@ -1,9 +1,12 @@
 package ru.turing.courses.lesson3.byazrov;
 
+import java.util.*;
+
 public class Homework{
     public static void main(String[] args) {
-        FruitQuantity installationInHall = new FruitInstallation(40, "Яблоко,Банан", true, 20, "Инсталляция в коридоре", true);
-        FruitQuantity installationInLounge = new FruitInstallation(60, "Яблоко,Банан,Апельсин", true, "Инсталляция в гостиной", true);
+        Set<String> namesOfFruits = new HashSet<>(List.of("Яблоко", "Банан"));
+        FruitQuantity installationInHall = new FruitInstallation(40, namesOfFruits, true, 20, "Инсталляция в коридоре", true);
+        FruitQuantity installationInLounge = new FruitInstallation(60, namesOfFruits, true, "Инсталляция в гостиной", true);
 
         Registry<FruitQuantity> registry = new Registry<>();
 

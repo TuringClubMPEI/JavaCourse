@@ -8,13 +8,13 @@ public class FruitInstallation extends FruitQuantity{
 
     private boolean areAllInPlace;
 
-    public FruitInstallation(Integer amountOfFruits, String nameOfFruits, boolean isFruitsFresh, Integer amountOfRottenFruits, String nameOfQuantity, boolean areAllInPlace) {
-        super(amountOfFruits, nameOfFruits, isFruitsFresh, amountOfRottenFruits, nameOfQuantity);
+    public FruitInstallation(Integer amountOfFruits, Set<String> namesOfFruits, boolean isFruitsFresh, Integer amountOfRottenFruits, String nameOfQuantity, boolean areAllInPlace) {
+        super(amountOfFruits, namesOfFruits, isFruitsFresh, amountOfRottenFruits, nameOfQuantity);
         this.areAllInPlace = areAllInPlace;
     }
 
-    public FruitInstallation(Integer amountOfFruits, String nameOfFruits, boolean isFruitsFresh, String nameOfQuantity, boolean areAllInPlace) {
-        super(amountOfFruits, nameOfFruits, isFruitsFresh, nameOfQuantity);
+    public FruitInstallation(Integer amountOfFruits, Set<String> namesOfFruits, boolean isFruitsFresh, String nameOfQuantity, boolean areAllInPlace) {
+        super(amountOfFruits, namesOfFruits, isFruitsFresh, nameOfQuantity);
         this.areAllInPlace = areAllInPlace;
     }
 }
