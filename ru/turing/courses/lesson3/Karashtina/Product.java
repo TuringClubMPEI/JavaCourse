@@ -2,25 +2,25 @@ package ru.turing.courses.lesson3.Karashtina;
 
 //Создаем абстрактный класс Product
 public abstract class Product {
-    private Integer key;
-    private String value;
+    private Integer id;
+    private String name;
     private Integer cost;
     private Integer weigth;
 
-    public Product(Integer key, String value, Integer cost, Integer weigth) {
-        this.key = key;
-        this.value = value;
+    public Product(Integer id, String name, Integer cost, Integer weigth) {
+        this.id = id;
+        this.name = name;
         this.cost = cost;
         this.weigth = weigth;
     }
 
     //прописываем геттеры к полям класса
-    public Integer getKey() {
-        return key;
+    public Integer getId() {
+        return id;
     }
 
-    public String getValue() {
-        return value;
+    public String getName() {
+        return name;
     }
 
     public Integer getCost() {

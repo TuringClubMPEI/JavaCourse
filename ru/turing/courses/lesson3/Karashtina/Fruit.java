@@ -4,8 +4,8 @@ package ru.turing.courses.lesson3.Karashtina;
 public class Fruit extends Product {
     private String colour;
 
-    public Fruit(Integer key, String value, Integer cost, Integer weigth, String colour) {
-        super(key, value, cost, weigth);
+    public Fruit(Integer id, String name, Integer cost, Integer weigth, String colour) {
+        super(id, name, cost, weigth);
         this.colour = colour;
     }
 
@@ -14,10 +14,11 @@ public class Fruit extends Product {
     }
 
     //строковое представление объекта Fruit
+    @Override
     public String toString() {
         return "Fruit{" +
-                "key = " + getKey() +
-                ", value = " + getValue() +
+                "key = " + getId() +
+                ", value = " + getName() +
                 ", cost = " + getCost() +
                 ", weight = " + getWeigth() +
                 ", colour = " + getColour() + '}';

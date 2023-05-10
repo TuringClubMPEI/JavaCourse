@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Registry<T extends Product> {
+public class Registry<T> {
     private final Map<Integer, T> storage = new HashMap<>();
 
     //добавляем объекты
-    public void add(T object) {
-        storage.put(object.getKey(), object);
+    public void add(Integer key, T object) {
+        storage.put(key, object);
     }
 
     //получаем объект по ключу
@@ -31,9 +31,9 @@ public class Registry<T extends Product> {
     //находим все объекты с определенным именем
     public List<T> getByName(String name) {
         List<T> results = new ArrayList<>();
-        for (T object : storage.values()) {
-            if (object.getValue().equals(name)) {
-                results.add(object);
+        for (T value : storage.values()) {
+            if (value.equals(name)) {
+                results.add(value);
             }
         }
         return results;
@@ -43,7 +43,7 @@ public class Registry<T extends Product> {
     public List<Integer> removeByValue(T value) {
         List<Integer> keysToRemove = new ArrayList<>();
         for (Map.Entry<Integer, T> entry : storage.entrySet()) {
-            if (entry.getValue() == value) {
+            if (entry.getValue() != null && entry.getValue().equals(value)) {
                 keysToRemove.add(entry.getKey());
             }
         }
