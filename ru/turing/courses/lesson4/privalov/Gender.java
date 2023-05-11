@@ -31,7 +31,9 @@ public enum Gender {
      * @return возвращает пол, найденный по имени, либо выбрасывает исключение
      */
     public static Gender ofName(String name) {
-        if (name == null) throw new GenderNotFoundException("Пустое значение");
+        if (name == null) {
+            throw new GenderNotFoundException("Пустое значение");
+        }
 
         Gender genderReturn = null;
         for(Gender gender: Gender.values()){
@@ -40,7 +42,10 @@ public enum Gender {
             }
         }
 
-        if (genderReturn==null) throw new GenderNotFoundException("Не найдено");
+        if (genderReturn==null) {
+            throw new GenderNotFoundException("Не найдено");
+        }
+
         return genderReturn;
     }
 
@@ -52,7 +57,9 @@ public enum Gender {
     public static Gender ofShortNameRepr(Character shortNameRepr) {
         Gender genderReturn = null;
 
-        if (shortNameRepr == null) throw new GenderNotFoundException("Пустое значение");
+        if (shortNameRepr == null) {
+            throw new GenderNotFoundException("Пустое значение");
+        }
 
         Character shortNameReprUpperCase = Character.toUpperCase(shortNameRepr);
         for(Gender gender: Gender.values()){
@@ -60,7 +67,9 @@ public enum Gender {
                 genderReturn = gender;
             }
         }
-        if (genderReturn==null) throw new GenderNotFoundException("Не найдено");
+        if (genderReturn==null) {
+            throw new GenderNotFoundException("Не найдено");
+        }
         return genderReturn;
     }
 
