@@ -1,11 +1,8 @@
 package ru.turing.courses.lesson3.Karashtina;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class Registry<T> {
+public class Registry<T extends Product> {
     private final Map<Integer, T> storage = new HashMap<>();
 
     //добавляем объекты
@@ -31,19 +28,19 @@ public class Registry<T> {
     //находим все объекты с определенным именем
     public List<T> getByName(String name) {
         List<T> results = new ArrayList<>();
-        for (T value : storage.values()) {
-            if (value.equals(name)) {
-                results.add(value);
+        for (T object : storage.values()) {
+            if (Objects.equals(object.getName(), name)) {
+                results.add(object);
             }
         }
         return results;
     }
 
     //удаляем все определенные объекты
-    public List<Integer> removeByValue(T value) {
+    public List<Integer> removeByValue(T object) {
         List<Integer> keysToRemove = new ArrayList<>();
         for (Map.Entry<Integer, T> entry : storage.entrySet()) {
-            if (entry.getValue() != null && entry.getValue().equals(value)) {
+            if (Objects.equals(entry.getValue(), object)) {
                 keysToRemove.add(entry.getKey());
             }
         }
