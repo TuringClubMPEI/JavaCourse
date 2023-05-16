@@ -48,7 +48,7 @@ public enum Gender {
             }
         }
 
-        return null;
+        throw new UnknownGenderException("Unknown gender");
     }
 
     /**
@@ -67,7 +67,7 @@ public enum Gender {
             }
         }
 
-        return null;
+        throw new UnknownGenderException("Unknown gender");
     }
 
     public String getName() {
