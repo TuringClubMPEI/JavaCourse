@@ -17,10 +17,10 @@ public class Main {
         //Иниц. массив zoo с тремя животными, заполняем массив, сортируем и выводим
         Animal[] zoo = new Animal[3];
         zoo[0] = new Animal(10, "capybara igor", 28);
-        zoo[1] = new Animal(25,"flamingo pinky", 10);
+        zoo[1] = new Animal(25, "flamingo pinky", 10);
         zoo[2] = new Animal(85, "lion cat", 130);
         BubbleSorter.bubbleSort(zoo);
-        for (Animal animal : zoo){
+        for (Animal animal : zoo) {
             System.out.println(animal);
         }
     }
