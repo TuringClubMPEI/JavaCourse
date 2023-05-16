@@ -1,5 +1,7 @@
 package ru.turing.courses.lesson4.Yemelyanov;
 
+import java.util.Objects;
+
 /**
  * Пол человека
  *
@@ -35,21 +37,18 @@ public enum Gender {
      * @param name имя, по которому происходит поиск гендера
      */
     public static Gender ofName(String name) {
+
         if(name == null){
             throw new UnknownGenderException("Gender name is unknown or missing");
         }
-        Gender finalGender = null;
+
         for(Gender currentGender : Gender.values()){
-            if(currentGender.getName().toUpperCase().equals(name.toUpperCase())){
-                finalGender = currentGender;
+            if(currentGender.name.toUpperCase().equals(name.toUpperCase())){
+                return currentGender;
             }
         }
 
-        if(finalGender == null){
-            throw new UnknownGenderException("Unknown gender");
-        }
-
-        return finalGender;
+        return null;
     }
 
     /**
@@ -57,21 +56,18 @@ public enum Gender {
      * @param shortNameRepr символ, по которому производится поиск гендера
      */
     public static Gender ofShortNameRepr(Character shortNameRepr) {
+
         if(shortNameRepr == null){
             throw new UnknownGenderException("Gender name is unknown or missing");
         }
-        Gender finalGender = null;
+
         for(Gender currentGender : Gender.values()){
-            if(currentGender.getName().toUpperCase().equals(shortNameRepr.toString().toUpperCase())){
-                finalGender = currentGender;
+            if(Objects.equals(shortNameRepr, currentGender.shortNameRepr)){
+                return currentGender;
             }
         }
 
-        if(finalGender == null){
-            throw new UnknownGenderException("Unknown gender");
-        }
-
-        return finalGender;
+        return null;
     }
 
     public String getName() {
