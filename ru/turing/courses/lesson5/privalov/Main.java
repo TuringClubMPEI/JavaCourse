@@ -22,6 +22,6 @@ public class Main {
         BubbleSorter.bubbleSort(zoo);
         for (Animal animal : zoo){
             System.out.println(animal);
-        };
+        }
     }
 }
