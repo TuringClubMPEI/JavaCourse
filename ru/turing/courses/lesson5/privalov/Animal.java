@@ -47,15 +47,15 @@ public class Animal implements Comparable<Animal> {
      */
     @Override
     public int compareTo(Animal o) {
-        if (this.name != null && o.name != null && this.name.length() > o.name.length()) {
+        if (this.name != null && o.name != null && this.name.length() != o.name.length()) {
             return this.name.length() - o.name.length();
         }
 
-        if (this.id != null && o.id != null && this.id > o.id) {
+        if (this.id != null && o.id != null && !this.id.equals(o.id)) {
             return (int) (this.id - o.id);
         }
 
-        if (this.weightInKg > o.weightInKg) {
+        if (this.weightInKg != o.weightInKg) {
             return this.weightInKg - o.weightInKg;
         }
         return 0;

@@ -10,7 +10,7 @@ public class Main {
         System.out.println(Arrays.toString(integerArray));
 
         //Иниц. строчный массив, сортируем и выводим
-        String[] stringArray = {"кодзима", "гений", null, "", "сдам", "гараж"};
+        String[] stringArray = {null, "кодзима", "гений", "", "сдам", "гараж"};
         BubbleSorter.bubbleSort(stringArray);
         System.out.println(Arrays.toString(stringArray));
 
