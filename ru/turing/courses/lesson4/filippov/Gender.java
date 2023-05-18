@@ -35,7 +35,7 @@ public enum Gender {
     //todo реализовать с кастомным эксепшном
     public static Gender ofName(String name) {
         if (name == null) {
-            throw new NotFoundError();
+            throw new NotFoundException();
         }
         for (Gender gender : Gender.values()) {
             if (name.toUpperCase().equals(gender.name.toUpperCase())) {
@@ -43,13 +43,13 @@ public enum Gender {
                 return gender;
             }
         }
-        throw new NotFoundError(name);
+        throw new NotFoundException(name);
     }
 
     //todo реализовать с кастомным эксепшном
     public static Gender ofShortNameRepr(Character shortNameRepr) {
         if (shortNameRepr == null) {
-            throw new NotFoundError();
+            throw new NotFoundException();
         }
         String shortName = String.valueOf(shortNameRepr);
         for (Gender gender : Gender.values()) {
@@ -58,7 +58,7 @@ public enum Gender {
                 return gender;
             }
         }
-        throw new NotFoundError(String.valueOf(shortNameRepr));
+        throw new NotFoundException(String.valueOf(shortNameRepr));
 
     }
 
