@@ -2,7 +2,7 @@ package ru.turing.courses.lesson5.Yemelyanov;
 
 public class BubbleSort implements Sort{
     @Override
-    public int[] bubbleSort(int[] intArr) {
+    public int[] sort(int[] intArr) {
         for(int i = 0; i < intArr.length - 1; i++) {
             for (int j = 0; j < intArr.length - i - 1; j++) {
                 if (intArr[j] > intArr[j + 1]){
@@ -17,7 +17,7 @@ public class BubbleSort implements Sort{
     }
 
     @Override
-    public String[] bubbleSort(String[] stringArr) {
+    public String[] sort(String[] stringArr) {
         for (int i = 0; i < stringArr.length - 1; i++) {
             for (int j = 0; j < stringArr.length - i - 1; j++) {
                 if (stringArr[j].length() > stringArr[j + 1].length()){
@@ -32,7 +32,7 @@ public class BubbleSort implements Sort{
     }
 
     @Override
-    public Guitar[] bubbleSort(Guitar[] guitarArr, Field field) {
+    public Guitar[] sort(Guitar[] guitarArr, FieldCase field) {
 
         switch (field){
             case ID_FIELD : {
