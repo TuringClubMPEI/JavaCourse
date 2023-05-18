@@ -15,9 +15,9 @@ public class BadStudent implements Studying {
 
     @Override
     public void passExam(boolean passed){
-        Random rand = new Random();
-        int mark = rand.nextInt(2) + 3;
+        /*Random rand = new Random();
+        int mark = rand.nextInt(3,5);
         String markString = passed ? Integer.toString(mark) : Integer.toString(2);
-        System.out.println("Оценка за экз: " + markString);
+        System.out.println("Оценка за экз: " + markString);*/
     }
 }
