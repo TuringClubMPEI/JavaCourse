@@ -20,7 +20,7 @@ public class BubbleSort implements Sort{
     public String[] sort(String[] stringArr) {
         for (int i = 0; i < stringArr.length - 1; i++) {
             for (int j = 0; j < stringArr.length - i - 1; j++) {
-                if (stringArr[j].length() > stringArr[j + 1].length()){
+                if (stringArr[j] == null || (stringArr[j + 1] != null && stringArr[j].length() > stringArr[j + 1].length())){
                     String elem = stringArr[j];
                     stringArr[j] = stringArr[j + 1];
                     stringArr[j + 1] = elem;
@@ -50,7 +50,8 @@ public class BubbleSort implements Sort{
             case NAME_FIELD : {
                 for (int i = 0; i < guitarArr.length - 1; i++) {
                     for (int j = 0; j < guitarArr.length - i - 1; j++) {
-                        if(guitarArr[j].getName().length() > guitarArr[j + 1].getName().length()){
+                        if(guitarArr[j].getName() == null ||(guitarArr[j + 1].getName() != null &&
+                                guitarArr[j].getName().length() > guitarArr[j + 1].getName().length())){
                             Guitar elem = guitarArr[j];
                             guitarArr[j] = guitarArr[j + 1];
                             guitarArr[j + 1] = elem;
