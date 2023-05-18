@@ -48,21 +48,21 @@ public class Homework5 {
         Guitar[] guitarArr = {schecter, gibson, cort, jackson};
 
         System.out.print("Отсортированный по полю id массив объектов: ");
-        guitarArr = bSort.sort(guitarArr, FieldCase.ID_FIELD);
+        guitarArr = bSort.sort(guitarArr, GuitarFieldEnum.ID_FIELD);
         for(Guitar elem : guitarArr){
             System.out.print(elem.getId() + " ");
         }
         System.out.print("\n");
 
         System.out.print("Отсортированный по полю name массив объектов: ");
-        guitarArr = bSort.sort(guitarArr, FieldCase.NAME_FIELD);
+        guitarArr = bSort.sort(guitarArr, GuitarFieldEnum.NAME_FIELD);
         for(Guitar elem : guitarArr){
             System.out.print(elem.getName() + " ");
         }
         System.out.print("\n");
 
         System.out.print("Отсортированный по полю price массив объектов: ");
-        guitarArr = bSort.sort(guitarArr, FieldCase.PRICE_FIELD);
+        guitarArr = bSort.sort(guitarArr, GuitarFieldEnum.PRICE_FIELD);
         for(Guitar elem : guitarArr){
             System.out.print(elem.getPrice() + " ");
         }

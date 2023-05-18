@@ -32,7 +32,7 @@ public class BubbleSort implements Sort{
     }
 
     @Override
-    public Guitar[] sort(Guitar[] guitarArr, FieldCase field) {
+    public Guitar[] sort(Guitar[] guitarArr, GuitarFieldEnum field) {
 
         switch (field){
             case ID_FIELD : {
