@@ -1,15 +1,15 @@
 package ru.turing.courses.lesson4.filippov;
 
-public class NotFoundError extends RuntimeException {
+public class NotFoundException extends RuntimeException {
     String name=null;
-    public NotFoundError(String name) {
+    public NotFoundException(String name) {
         super();
         this.name = name;
     }
-    public NotFoundError() {
+    public NotFoundException() {
         super();
-    }
-    public String reasonOfMistake() {
+    }@Override
+    public String getMessage() {
         if (name==null || name.length() == 0) {
             return "Вы ничего не ввели";
         }
