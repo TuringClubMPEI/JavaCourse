@@ -10,11 +10,17 @@ public enum Gender {
     FEMALE("Female", 'F', "Женский пол");
 
 
-    /** Техническое название */
+    /**
+     * Техническое название
+     */
     private final String name;
-    /** Символьное представление */
+    /**
+     * Символьное представление
+     */
     private final char shortNameRepr;
-    /** Описание */
+    /**
+     * Описание
+     */
     private final String description;
 
     Gender(String name, char shortNameRepr, String description) {
@@ -24,43 +30,41 @@ public enum Gender {
     }
 
     /**
-     *Поиск константы гендера по переданному названию гендера
+     * Поиск константы гендера по переданному названию гендера
+     *
      * @param name название гендера без учета регистра
      * @return константа Gender соответствующая переданному параметру
      * @throws GenderNotFoundException если не была найдена соответствующая константа Gender
      */
     public static Gender ofName(String name) throws GenderNotFoundException {
-        if (name==null){
+        if (name == null) {
             throw new GenderNotFoundException("Пустота - не гендер");
         }
-        if (name.equalsIgnoreCase(MALE.name))
-        {
-            return MALE;
-        } else if (name.equalsIgnoreCase(FEMALE.name)){
-            return FEMALE;
-        } else {
-            throw new GenderNotFoundException("Введенного гендера не существует в нормальном мире");
+        for (Gender gender : Gender.values()) {
+            if (name.equalsIgnoreCase(gender.name)) {
+                return gender;
+            }
         }
+        throw new GenderNotFoundException("Введенного гендера не существует в нормальном мире");
     }
 
     /**
      * Поиск константы гендера по переданному сокращенному названию гендера
+     *
      * @param shortNameRepr сокращенное название гендера без учета регистра
      * @return константа Gender соответствующая переданному параметру
      * @throws GenderNotFoundException если не была найдена соответствующая константа Gender
      */
-    public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderNotFoundException{
-        if (shortNameRepr==null){
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderNotFoundException {
+        if (shortNameRepr == null) {
             throw new GenderNotFoundException("Пустота - не гендер");
         }
-        if (Character.toUpperCase(shortNameRepr)==Character.toUpperCase(MALE.shortNameRepr))
-        {
-            return MALE;
-        } else if (Character.toUpperCase(shortNameRepr)==Character.toUpperCase(FEMALE.shortNameRepr)){
-            return FEMALE;
-        } else {
-            throw new GenderNotFoundException("Введенного гендера не существует в нормальном мире");
+        for (Gender gender : Gender.values()) {
+            if (Character.toUpperCase(shortNameRepr) == Character.toUpperCase(gender.shortNameRepr)) {
+                return gender;
+            }
         }
+        throw new GenderNotFoundException("Введенного гендера не существует в нормальном мире");
     }
 
     public String getName() {
