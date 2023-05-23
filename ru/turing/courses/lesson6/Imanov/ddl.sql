@@ -5,7 +5,7 @@
 -- Dumped from database version 14.7 (Ubuntu 14.7-0ubuntu0.22.04.1)
 -- Dumped by pg_dump version 14.7 (Ubuntu 14.7-0ubuntu0.22.04.1)
 
--- Started on 2023-05-21 01:41:58 MSK
+-- Started on 2023-05-24 00:48:39 MSK
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -132,29 +132,29 @@ ALTER TABLE public.tag ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 --
 -- TOC entry 209 (class 1259 OID 16393)
--- Name: user; Type: TABLE; Schema: public; Owner: postgres
+-- Name: usr; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."user" (
-                               id bigint NOT NULL,
-                               avatar bytea,
-                               decription character varying(250),
-                               username character varying(100) NOT NULL,
-                               full_name character varying(250),
-                               email character varying(250),
-                               password character varying(250),
-                               brith_date date
+CREATE TABLE public.usr (
+                            id bigint NOT NULL,
+                            avatar bytea,
+                            decription character varying(250),
+                            username character varying(100) NOT NULL,
+                            full_name character varying(250),
+                            email character varying(250),
+                            password character varying(250),
+                            brith_date date
 );
 
 
-ALTER TABLE public."user" OWNER TO postgres;
+ALTER TABLE public.usr OWNER TO postgres;
 
 --
 -- TOC entry 216 (class 1259 OID 16480)
 -- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-ALTER TABLE public."user" ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+ALTER TABLE public.usr ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
     SEQUENCE NAME public.user_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -163,59 +163,6 @@ ALTER TABLE public."user" ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
     CACHE 1
 );
 
-
---
--- TOC entry 3381 (class 0 OID 16405)
--- Dependencies: 210
--- Data for Name: article; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.article (id, title, text, "like", thumbnail, created_date, id_user) OVERRIDING SYSTEM VALUE VALUES (1, 'Что делать, если у вас не запускается sql скрипт', 'Сказать "отлично" и попытаться запустить еще раз', NULL, NULL, NULL, 2);
-INSERT INTO public.article (id, title, text, "like", thumbnail, created_date, id_user) OVERRIDING SYSTEM VALUE VALUES (2, 'Методика обучения студентов с помощью мангала', 'Окунуть за каждую переменную с большой буквы', NULL, NULL, NULL, 3);
-INSERT INTO public.article (id, title, text, "like", thumbnail, created_date, id_user) OVERRIDING SYSTEM VALUE VALUES (3, 'Как писать код, чтобы ПРы сразу же мержили', 'Никак', NULL, NULL, NULL, 4);
-INSERT INTO public.article (id, title, text, "like", thumbnail, created_date, id_user) OVERRIDING SYSTEM VALUE VALUES (4, 'Навыки которые пригодятся в жизни', 'знать первые 100 чисел, которые либо кратны 7, либо содержат 7', NULL, NULL, NULL, 3);
-
-
---
--- TOC entry 3388 (class 0 OID 16481)
--- Dependencies: 217
--- Data for Name: article_tag; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.article_tag (id_article, id_tag) VALUES (1, 1);
-INSERT INTO public.article_tag (id_article, id_tag) VALUES (2, 1);
-INSERT INTO public.article_tag (id_article, id_tag) VALUES (3, 1);
-
-
---
--- TOC entry 3382 (class 0 OID 16412)
--- Dependencies: 211
--- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- TOC entry 3383 (class 0 OID 16417)
--- Dependencies: 212
--- Data for Name: tag; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.tag (id, name, parent_id) OVERRIDING SYSTEM VALUE VALUES (1, 'программирование', NULL);
-
-
---
--- TOC entry 3380 (class 0 OID 16393)
--- Dependencies: 209
--- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public."user" (id, avatar, decription, username, full_name, email, password, brith_date) OVERRIDING SYSTEM VALUE VALUES (2, NULL, 'Придумываю сложные пароли', 'PashaPythonDestroyer', 'Павел', 'BezBab@mail.ru', '12345', NULL);
-INSERT INTO public."user" (id, avatar, decription, username, full_name, email, password, brith_date) OVERRIDING SYSTEM VALUE VALUES (3, NULL, 'Переменные с маленькой буквы', 'Шиша', 'Михаил', 'Sasin@mail.ru', '112358', NULL);
-INSERT INTO public."user" (id, avatar, decription, username, full_name, email, password, brith_date) OVERRIDING SYSTEM VALUE VALUES (4, NULL, 'Забываю сказать тост перед тем как выпить', 'giTimur', 'Тимур', 'SNP@mail.ru', '777777', NULL);
-
-
---
 -- TOC entry 3394 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: article_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
@@ -271,10 +218,10 @@ ALTER TABLE ONLY public.comment
 
 --
 -- TOC entry 3227 (class 2606 OID 16399)
--- Name: user id_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: usr id_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."user"
+ALTER TABLE ONLY public.usr
     ADD CONSTRAINT id_pk PRIMARY KEY (id);
 
 
@@ -297,20 +244,20 @@ ALTER TABLE ONLY public.article_tag
 
 
 --
--- TOC entry 3237 (class 2606 OID 16427)
--- Name: comment artical_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.comment
-    ADD CONSTRAINT artical_fk FOREIGN KEY (id_article) REFERENCES public.article(id);
-
-
---
 -- TOC entry 3239 (class 2606 OID 16486)
 -- Name: article_tag article_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.article_tag
+    ADD CONSTRAINT article_fk FOREIGN KEY (id_article) REFERENCES public.article(id);
+
+
+--
+-- TOC entry 3238 (class 2606 OID 24576)
+-- Name: comment article_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comment
     ADD CONSTRAINT article_fk FOREIGN KEY (id_article) REFERENCES public.article(id);
 
 
@@ -329,19 +276,19 @@ ALTER TABLE ONLY public.article_tag
 --
 
 ALTER TABLE ONLY public.article
-    ADD CONSTRAINT user_fk FOREIGN KEY (id_user) REFERENCES public."user"(id);
+    ADD CONSTRAINT user_fk FOREIGN KEY (id_user) REFERENCES public.usr(id);
 
 
 --
--- TOC entry 3238 (class 2606 OID 16432)
+-- TOC entry 3237 (class 2606 OID 16432)
 -- Name: comment user_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.comment
-    ADD CONSTRAINT user_fk FOREIGN KEY (id_user) REFERENCES public."user"(id);
+    ADD CONSTRAINT user_fk FOREIGN KEY (id_user) REFERENCES public.usr(id);
 
 
--- Completed on 2023-05-21 01:41:59 MSK
+-- Completed on 2023-05-24 00:48:40 MSK
 
 --
 -- PostgreSQL database dump complete
