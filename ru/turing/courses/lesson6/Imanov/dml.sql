@@ -1,4 +1,4 @@
-INSERT INTO public.user(decription, username, full_name, email, password)
+INSERT INTO public.usr(decription, username, full_name, email, password)
 VALUES ('Придумываю сложные пароли', 'PashaPythonDestroyer', 'Павел', 'BezBab@mail.ru', '12345'),
        ('Переменные с маленькой буквы', 'Шиша', 'Михаил', 'Sasin@mail.ru', '112358'),
        ('Забываю сказать тост перед тем как выпить', 'giTimur', 'Тимур', 'SNP@mail.ru', '777');
@@ -34,15 +34,15 @@ SELECT DISTINCT id_user FROM public.article;
 
 SELECT title FROM public.article WHERE id_user = 3;
 
-SELECT COUNT(*) FROM public.user;
+SELECT COUNT(*) FROM public.usr;
 
-SELECT COUNT(DISTINCT full_name) FROM public.user;
+SELECT COUNT(DISTINCT full_name) FROM public.usr;
 
 SELECT title FROM public.article ORDER BY id_user;;
 
-UPDATE public.user SET "password" = '777777' WHERE full_name ='Тимур'
+UPDATE public.usr SET "password" = '777777' WHERE full_name ='Тимур'
 
-SELECT full_name, title FROM public.user u
+SELECT full_name, title FROM public.usr u
     LEFT JOIN public.article a on u.id = a.id_user;
 
 
