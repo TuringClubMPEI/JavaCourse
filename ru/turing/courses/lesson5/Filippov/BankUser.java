@@ -1,11 +1,11 @@
 package ru.turing.courses.lesson5.Filippov;
 
-public class BankUsers {
+public class BankUser {
     private long id;
     private double amountOfMoney;
 
     private int age;
-    public BankUsers(long id, double amountOfMoney, int age ){
+    public BankUser(long id, double amountOfMoney, int age ){
         this.id=id;
         this.age=age;
         this.amountOfMoney=amountOfMoney;
