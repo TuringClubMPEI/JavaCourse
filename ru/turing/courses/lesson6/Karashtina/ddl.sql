@@ -6,33 +6,32 @@
 
 -- Database creation must be performed outside a multi lined SQL file.
 -- These commands were put in this file only as a convenience.
---
 -- object: blog | type: DATABASE --
 
 
--- object: public."user" | type: TABLE --
--- DROP TABLE IF EXISTS public."user" CASCADE;
-CREATE TABLE public."user" (
-                               id bigint NOT NULL,
+-- object: public.usr | type: TABLE --
+-- DROP TABLE IF EXISTS public.usr CASCADE;
+CREATE TABLE public.usr (
+                               id bigint NOT NULL GENERATED ALWAYS AS IDENTITY,
                                avatar bytea,
-                               description varchar(250),
+                               description varchar(250) NOT NULL,
                                username varchar(100) NOT NULL,
-                               full_name varchar(250),
+                               full_name varchar(250) NOT NULL,
                                email varchar(250) NOT NULL,
                                password varchar(200) NOT NULL,
                                birth_date date,
                                CONSTRAINT id_pk PRIMARY KEY (id) );
 -- ddl-end --
-ALTER TABLE public."user" OWNER TO postgres;
+ALTER TABLE public.usr OWNER TO postgres;
 -- ddl-end --
 
 -- object: public.article | type: TABLE --
 -- DROP TABLE IF EXISTS public.article CASCADE;
 CREATE TABLE public.article (
                                 id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ,
-                                id_user bigint,
+                                id_author bigint NOT NULL,
                                 title varchar(200) NOT NULL DEFAULT 'Без темы',
-                                text text NOT NULL,
+                                content text NOT NULL,
                                 "like" smallint DEFAULT 0,
                                 thumbnail bytea,
                                 created_date timestamp NOT NULL DEFAULT NOW(),
@@ -44,13 +43,13 @@ ALTER TABLE public.article OWNER TO postgres;
 -- object: public.comment | type: TABLE --
 -- DROP TABLE IF EXISTS public.comment CASCADE;
 CREATE TABLE public.comment (
-                                id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ,
-                                id_article bigint,
-                                id_user bigint,
-                                text varchar(240) NOT NULL,
+                                id bigint NOT NULL GENERATED ALWAYS AS IDENTITY,
+                                id_article bigint NOT NULL,
+                                id_author bigint NOT NULL,
+                                content varchar(240) NOT NULL,
                                 "like" smallint DEFAULT 0,
                                 created_date timestamp NOT NULL DEFAULT NOW(),
-                                number bigint NOT NULL DEFAULT 1,
+                                ordinal_number bigint NOT NULL DEFAULT 1,
                                 CONSTRAINT comment_pk PRIMARY KEY (id) );
 -- ddl-end --
 ALTER TABLE public.comment OWNER TO postgres;
@@ -58,8 +57,8 @@ ALTER TABLE public.comment OWNER TO postgres;
 
 -- object: user_fk | type: CONSTRAINT --
 -- ALTER TABLE public.article DROP CONSTRAINT IF EXISTS user_fk CASCADE;
-ALTER TABLE public.article ADD CONSTRAINT user_fk FOREIGN KEY (id_user)
-    REFERENCES public."user" (id) MATCH FULL
+ALTER TABLE public.article ADD CONSTRAINT user_fk FOREIGN KEY (id_author)
+    REFERENCES public.usr (id) MATCH FULL
     ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
@@ -74,24 +73,24 @@ CREATE TABLE public.tag (
 ALTER TABLE public.tag OWNER TO postgres;
 -- ddl-end --
 
--- object: public.many_article_has_many_tag | type: TABLE --
--- DROP TABLE IF EXISTS public.many_article_has_many_tag CASCADE;
-CREATE TABLE public.many_article_has_many_tag (
+-- object: public.articles_tags | type: TABLE --
+-- DROP TABLE IF EXISTS public.articles_tags CASCADE;
+CREATE TABLE public.articles_tags (
                                     id_article bigint NOT NULL,
                                     id_tag bigint NOT NULL,
-                                    CONSTRAINT many_article_has_many_tag_pk PRIMARY KEY (id_article,id_tag) );
+                                    CONSTRAINT articles_tags_pk PRIMARY KEY (id_article,id_tag) );
 -- ddl-end --
 
 -- object: article_fk | type: CONSTRAINT --
--- ALTER TABLE public.many_article_has_many_tag DROP CONSTRAINT IF EXISTS article_fk CASCADE;
-ALTER TABLE public.many_article_has_many_tag ADD CONSTRAINT article_fk FOREIGN KEY (id_article)
+-- ALTER TABLE public.articles_tags DROP CONSTRAINT IF EXISTS article_fk CASCADE;
+ALTER TABLE public.articles_tags ADD CONSTRAINT article_fk FOREIGN KEY (id_article)
     REFERENCES public.article (id) MATCH FULL
     ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: tag_fk | type: CONSTRAINT --
--- ALTER TABLE public.many_article_has_many_tag DROP CONSTRAINT IF EXISTS tag_fk CASCADE;
-ALTER TABLE public.many_article_has_many_tag ADD CONSTRAINT tag_fk FOREIGN KEY (id_tag)
+-- ALTER TABLE public.articles_tags DROP CONSTRAINT IF EXISTS tag_fk CASCADE;
+ALTER TABLE public.articles_tags ADD CONSTRAINT tag_fk FOREIGN KEY (id_tag)
     REFERENCES public.tag (id) MATCH FULL
     ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
@@ -105,8 +104,8 @@ ALTER TABLE public.comment ADD CONSTRAINT article_fk FOREIGN KEY (id_article)
 
 -- object: user_fk | type: CONSTRAINT --
 -- ALTER TABLE public.comment DROP CONSTRAINT IF EXISTS user_fk CASCADE;
-ALTER TABLE public.comment ADD CONSTRAINT user_fk FOREIGN KEY (id_user)
-    REFERENCES public."user" (id) MATCH FULL
+ALTER TABLE public.comment ADD CONSTRAINT user_fk FOREIGN KEY (id_author)
+    REFERENCES public.usr (id) MATCH FULL
     ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
