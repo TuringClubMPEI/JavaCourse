@@ -1,0 +1,500 @@
+openapi: 3.0.3
+info:
+  title: Персональный блог разработчика
+  version: 0.0.1
+servers:
+  - url: ...
+    description: server
+paths:
+  /users:
+    post:
+      summary: Метод добавления пользователя
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '405':
+          description: Неправильные входные данные
+    put:
+      summary: Метод изменения пользователя
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "405":
+          description: Неправильные входные данные
+
+  /users/{id}:
+    get:
+      summary: Метод получения пользователя по id
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id пользователя
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '404':
+          description: Пользователь не найден
+
+  /users/{id}/articles:
+    get:
+      summary: Метод получения всех статей пользователя по id
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id пользователя
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Articles"
+        '404':
+          description: Пользователь не найден
+
+  /articles:
+    post:
+      summary: Метод добавления статьи
+      tags:
+        - Articles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Article"
+
+
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article"
+        '405':
+          description: Неправильные входные данные
+    put:
+      summary: Метод изменения статьи
+      tags:
+        - Articles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Article"
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article"
+        "405":
+          description: Неправильные входные данные
+
+  /articles/{id}:
+    delete:
+      summary: Метод удаления статьи по id
+      tags:
+        - Articles
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id статьи
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json: {}
+        "404":
+          description: статья не найдена
+
+    get:
+      summary: Метод получения статьи по id
+      tags:
+        - Articles
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id статьи
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article"
+        "404":
+          description: статья не найдена
+
+  /articles/{id}/comments:
+    get:
+      summary: получение всех комментов к статье
+      tags:
+        - Articles
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id статьи
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comments"
+        "404":
+          description: статья не найдена
+
+  /comments:
+    post:
+      summary: метод добавления комментария
+      tags:
+        - Comments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "405":
+          description: некорректные входные данные
+
+    put:
+      summary: Метод изменения комментария
+      tags:
+        - Comments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "405":
+          description: Неправильные входные данные
+
+  /comments/{id}:
+    get:
+      summary: получение коммента по id
+      tags:
+        - Comments
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id комментария
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "404":
+          description: комментарий не найден
+    delete:
+      summary: удаление коммента по id
+      tags:
+        - Comments
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id комментария
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json: {}
+        "404":
+          description: комментарий не найден
+
+  /tags:
+    post:
+      summary: метод добавления тега
+      tags:
+        - Tags
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tag"
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tag"
+        "405":
+          description: некорректные входные данные
+
+    put:
+      summary: Метод изменения тега
+      tags:
+        - Tags
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tag"
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tag"
+        "405":
+          description: Неправильные входные данные
+
+  /tags/{id}:
+    get:
+      summary: получение тега по id
+      tags:
+        - Tags
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id тега
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tag"
+        "404":
+          description: тег не найден
+
+    delete:
+      summary: удаление тега по id
+      tags:
+        - Tags
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id тега
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json: {}
+        "404":
+          description: тег не найден
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - username
+        - email
+      properties:
+        id:
+          type: integer
+          example: 1
+        avatar:
+          type: object
+          required:
+            - url
+          properties:
+            url:
+              type: string
+              example: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+        description:
+          type: string
+          example: я Миша
+        username:
+          type: string
+          example: Магистр пива ЕПТЕ
+        full_name:
+          type: string
+          example: Шиша Сасин
+        email:
+          type: string
+          example: Misha@mail.ru
+        birth_date:
+          type: string
+          format: ГГГГ-ММ-ДД
+          example: 0000-00-00
+    Article:
+      type: object
+      required:
+        - id_user
+        - title
+        - text
+      properties:
+        id:
+          type: integer
+          example: 123
+        id_user:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: "SNP"
+        text:
+          type: string
+          example: ...
+        like:
+          type: integer
+          example: 0
+        tnumbnail:
+          type: object
+        created_date:
+          type: integer
+          format: ГГГГ-ММ-ДД
+          example: 7777-77-77
+        tags:
+          type: array
+          items:
+            $ref: "#/components/schemas/Tag"
+    Articles:
+      type: array
+      items:
+        $ref: "#/components/schemas/Article"
+    Comment:
+      type: object
+      required:
+        - id_article
+        - id_user
+        - text
+        - number
+      properties:
+        id:
+          type: integer
+          example: 456
+        id_article:
+          type: integer
+          example: 123
+        id_user:
+          type: integer
+          example: 1
+        text:
+          type: string
+          example: комментарий
+        like:
+          type: integer
+          example: 2003
+        created_date:
+          type: string
+          format: ГГГГ-ММ-ДД
+          example: 2023-09-07
+        number:
+          type: integer
+          example: 1
+    Comments:
+      type: array
+      items:
+        $ref: "#/components/schemas/Comment"
+    Tag:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          example: 2002
+        parent_id:
+          type: integer
+          example: 2001
+        name:
+          type: string
+          example: "1С" 
+        
+          
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
