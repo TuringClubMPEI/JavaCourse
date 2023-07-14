@@ -1,0 +1,815 @@
+openapi: 3.0.3
+info:
+  title: Блог
+  version: 0.0.1
+servers:
+  - url: https://localhost:8080/api/v1/
+    description: Dev server
+paths:
+  /users:
+    get:
+      summary: Метод получения списка пользователей
+      tags:
+        - Users
+      operationId: getAllUsers
+      responses:
+        '200':
+          description: Успешный ответ со списком пользователей
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод добавления нового пользователя
+      tags:
+        - Users
+      operationId: addUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        '200':
+          description: Успешный ответ с добавленным пользователем
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users/login:
+    get:
+      summary: Метод регистрации пользователя в блоге
+      tags:
+        - Users
+      operationId: loginUser
+      parameters:
+        - name: email
+          in: query
+          required: false
+          description: Почта для регистрации
+          schema:
+            type: string
+        - name: password
+          in: query
+          required: false
+          description: Пароль для регистрации
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Успешный ответ с одним зарегестрированным пользователем
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users/logout:
+    get:
+      summary: Метод выхода пользователя из блога
+      tags:
+        - Users
+      operationId: logoutUser
+      parameters: []
+      responses:
+        default:
+          description: Успешный выход пользователя из блога
+  /users/{username}:
+    get:
+      summary: Метод получения пользователя по имени пользователя
+      tags:
+        - Users
+      operationId: getUserByName
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: Имя пользователя
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Успешный ответ с одним пользователем
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users/{user_id}:
+    get:
+      summary: Метод получения пользователя по идентификатору
+      tags:
+        - Users
+      operationId: getUserById
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: Идентификатор пользователя
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с одним пользователем
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Метод обновления данных о пользователе
+      tags:
+        - Users
+      operationId: updateUserById
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: Обновление пользователя
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с обновленными данными о пользователе
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Метод удаления пользователя
+      tags:
+        - Users
+      operationId: deleteUserById
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: Идентификатор пользователя
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешное удаление
+          content:
+            aplication/json: {}
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /articles:
+    get:
+      summary: Метод получения списка статей
+      tags:
+        - Articles
+      operationId: getAllArticles
+      responses:
+        '200':
+          description: Успешный ответ со списком статей
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Articles"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод создания новой статьи
+      tags:
+        - Articles
+      operationId: createArticle
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Articles"
+      responses:
+        '200':
+          description: Успешный ответ с созданной статьей
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Articles"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /articles/{title}:
+    get:
+      summary: Метод получения статьи по названию
+      tags:
+        - Articles
+      operationId: getArticleByTitle
+      parameters:
+        - name: title
+          in: path
+          required: true
+          description: Название статьи
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Успешный ответ с одной статьей
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Articles"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /articles/{user_id}:
+    get:
+      summary: Метод получения статьи по идентификатору пользователя
+      tags:
+        - Articles
+      operationId: getArticleByUserId
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: Идентификатор пользователя
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с одной статьей
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Articles"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /articles/{article_id}:
+    get:
+      summary: Метод получения статьи по идентификатору
+      tags:
+        - Articles
+      operationId: getArticleById
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          description: Идентификатор статьи
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с одной статьей
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Articles"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Метод обновления данных о статье
+      tags:
+        - Articles
+      operationId: updateArticlerById
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          description: Обновление статьи
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с обновленными данными о статье
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Articles"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Метод удаления статьи
+      tags:
+        - Articles
+      operationId: deleteArticlerById
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          description: Идентификатор статьи
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешное удаление
+          content:
+            aplication/json: {}
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /comments:
+    get:
+      summary: Метод получения списка комментариев
+      tags:
+        - Comments
+      operationId: getAllComments
+      responses:
+        '200':
+          description: Успешный ответ со списком комментариев
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Comments"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод создания нового комментария
+      tags:
+        - Comments
+      operationId: createComment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comments"
+      responses:
+        '200':
+          description: Успешный ответ с созданным комментарием
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Comments"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /articles/{id_article}/comments:
+    get:
+      summary: Метод получения комментария(ев) по идентификатору статьи
+      tags:
+        - Comments
+      operationId: getCommentByArticleId
+      parameters:
+        - name: id_article
+          in: path
+          required: true
+          description: Идентификатор статьи
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с комментариями(ем) к статье
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Articles"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users/{user_id}/comments:
+    get:
+      summary: Метод получения комментария(ев) по идентификатору пользователя
+      tags:
+        - Comments
+      operationId: getCommentByUserId
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: Идентификатор пользователя
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с комментариями(ем) к статье
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /comments/{commentId}:
+    get:
+      summary: Метод получения комментария по идентификатору
+      tags:
+        - Сomments
+      operationId: getСommentById
+      parameters:
+        - name: commentId
+          in: path
+          required: true
+          description: Идентификатор комментария
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с одним комментарием
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Comments"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Метод обновления данных о комментарии
+      tags:
+        - Сomments
+      operationId: updateСommentrById
+      parameters:
+        - name: commentId
+          in: path
+          required: true
+          description: Обновление комментария
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с обновленными данными о комментарии
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Comments"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Метод удаления комментария
+      tags:
+        - Сomments
+      operationId: deleteСommentById
+      parameters:
+        - name: commentId
+          in: path
+          required: true
+          description: Идентификатор комментария
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешное удаление
+          content:
+            aplication/json: {}
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /tags:
+    get:
+      summary: Метод получения списка тегов
+      tags:
+        - Tags
+      operationId: getAllTags
+      responses:
+        '200':
+          description: Успешный ответ со списком тегов
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Tags"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод создания нового тега
+      tags:
+        - Tags
+      operationId: createTag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tags"
+      responses:
+        '200':
+          description: Успешный ответ с созданным тегом
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Tags"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /tags/{parent_id}:
+    get:
+      summary: Метод получения тега(ов) по идентификатору родительского тега
+      tags:
+        - Tags
+      operationId: getTagByParentId
+      parameters:
+        - name: parent_id
+          in: path
+          required: true
+          description: Идентификатор родительского тега
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с тегом(ми)
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Tags"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /tags/{name}:
+    get:
+      summary: Метод получения тега(ов) по названию
+      tags:
+        -  Tags
+      operationId: getTagByName
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Название тега
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Успешный ответ с тегом
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Tags"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /tags/{tag_id}:
+    get:
+      summary: Метод получения комментария по идентификатору
+      tags:
+        - Tags
+      operationId: getTagById
+      parameters:
+        - name: tag_id
+          in: path
+          required: true
+          description: Идентификатор тега
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с одним тегом
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Tags"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Метод обновления данных о теге
+      tags:
+        - Tags
+      operationId: updateTagById
+      parameters:
+        - name: tag_id
+          in: path
+          required: true
+          description: Обновление тега
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ с обновленными данными о теге
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Tags"
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Метод удаления тега
+      tags:
+        - Tags
+      operationId: deleteTagById
+      parameters:
+        - name: tag_id
+          in: path
+          required: true
+          description: Идентификатор тега
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешное удаление
+          content:
+            aplication/json: {}
+        'default':
+          description: Все нестандартное
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - username
+        - full_name
+        - email
+        - password
+      properties:
+        user_id:
+          type: integer
+        avatar:
+          type: object
+          required:
+            - url
+          properties:
+            url:
+              type: string
+        description:
+          type: string
+        username:
+          type: string
+        full_name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        birth_date:
+          type: string
+          format: 2023-07-03T15:00:00+01
+    Users:
+      type: array
+      items:
+        $ref: "#/components/schemas/User"
+    Article:
+      type: object
+      required:
+        - id_user
+        - title
+        - text
+        - created_date
+      properties:
+        article_id:
+          type: integer
+        id_user:
+          type: integer
+        thumbnail:
+          type: object
+        title:
+          type: string
+        text:
+          type: string
+        like:
+          type: integer
+        created_date:
+          type: string
+          format: 2023-07-03T15:00:00+01
+    Articles:
+      type: array
+      items:
+        $ref: "#/components/schemas/Article"
+    Comment:
+      type: object
+      required:
+        - id_article
+        - id_user
+        - text
+        - created_date
+      properties:
+        commentId:
+          type: integer
+        id_article:
+          type: integer
+        id_user:
+          type: integer
+        text:
+          type: string
+        like:
+          type: integer
+        created_date:
+          type: string
+          format: 2023-07-03T15:00:00+01
+        number:
+          type: integer
+    Comments:
+      type: array
+      items:
+        $ref: "#/components/schemas/Comment"
+    Tag:
+      type: object
+      required:
+        - name
+      properties:
+        tag_id:
+          type: integer
+        parent_id:
+          type: integer
+        name:
+          type: string
+    Tags:
+      type: array
+      items:
+        $ref: "#/components/schemas/Tag"
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
