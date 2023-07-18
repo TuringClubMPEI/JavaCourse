@@ -9,13 +9,17 @@ public class Main {
         String[] strings1 = {null, null, "1234", "123", null, "12345", null, "12", "1", null, null};
         String[] strings2 = null;
 
-        BubbleSort.intArray(intArray);
-        System.out.println(Arrays.toString(intArray));
+        try {
+            BubbleSort.intArray(null);
+            System.out.println(Arrays.toString(intArray));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
         try {
-            BubbleSort.stringArrayByLength(strings1);
-            System.out.println(Arrays.toString(strings1));
-        } catch (NullPointerException e) {
+            BubbleSort.stringArrayByLength(strings2);
+            System.out.println(Arrays.toString(strings2));
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
@@ -28,10 +32,10 @@ public class Main {
         User[] nullUsers = null;
 
         try {
-            BubbleSort.sortObjectsArray(users, UserFields.USER_NAME.getFieldName());
+            BubbleSort.sortObjectsArray(users, UserFields.USER_NAME);
             System.out.println(Arrays.toString(users));
-        } catch(NoSuchFieldException | IllegalAccessException | NullPointerException e) {
-            System.out.println(e.toString());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
 
