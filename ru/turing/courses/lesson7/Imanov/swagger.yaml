@@ -69,9 +69,8 @@ paths:
         '404':
           description: Пользователь не найден
 
-  /users/{id}/articles:
-    get:
-      summary: Метод получения всех статей пользователя по id
+    delete:
+      summary: Метод удаления пользователя по id
       tags:
         - Users
       parameters:
@@ -85,10 +84,7 @@ paths:
       responses:
         "200":
           description: Успех!
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Articles"
+          content: {}
         '404':
           description: Пользователь не найден
 
@@ -177,16 +173,16 @@ paths:
         "404":
           description: статья не найдена
 
-  /articles/{id}/comments:
+  /articles/users/{id}:
     get:
-      summary: получение всех комментов к статье
+      summary: Метод получения всех статей пользователя по id
       tags:
         - Articles
       parameters:
         - name: id
           in: path
           required: true
-          description: id статьи
+          description: id пользователя
           schema:
             type: integer
             example: 1
@@ -196,9 +192,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Comments"
-        "404":
-          description: статья не найдена
+                $ref: "#/components/schemas/Articles"
+        '404':
+          description: Пользователь не найден
 
   /comments:
     post:
@@ -282,6 +278,30 @@ paths:
             application/json: {}
         "404":
           description: комментарий не найден
+
+  /comments/articles/{id}:
+    get:
+      summary: получение всех комментов к статье
+      tags:
+        - Comments
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id статьи
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comments"
+        "404":
+          description: статья не найдена
+
 
   /tags:
     post:
