@@ -1,0 +1,680 @@
+openapi: 3.0.3
+info:
+  title: Менеджер бюджета
+  description: |-
+    CRUD для личного проекта
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://localhost:8080/api/v1
+tags:
+  - name: transaction
+    description: Всё о совершенных операциях
+  - name: debt
+    description: Доступ к долгам
+  - name: contact
+    description: Доступ к контактам
+  - name: account
+    description: Доступ к своим счетам
+paths:
+  /transactions:
+    get:
+      summary: Метод получения всех транзакций
+      tags:
+        - transaction
+      operationId: getAllTransactions
+      responses:
+        '200':
+          description: Успешный ответ со списком всех транзакций
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transactions"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод добавления транзакции
+      tags:
+        - transaction
+      operationId: addTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction"
+      responses:
+        '200':
+          description: Успешный ответ с одной транзакцией
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /transactions/{id}:
+    get:
+      summary: Метод получения одной транзакции по ID
+      tags:
+        - transaction
+      operationId: getTransactionById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор транзакции
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одной транзакцией
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Метод обновления транзакции по ID
+      tags:
+        - transaction
+      operationId: updateTransactionById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор транзакции
+          schema:
+            type: number
+          example: 132
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction"
+      responses:
+        '200':
+          description: Успешный ответ с одной транзакцией
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Метод удаления одной транзакции по ID
+      tags:
+        - transaction
+      operationId: deleteTransactionById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор транзакции
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одной транзакцией
+          content:
+            application/json: {}
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+
+  /debt:
+    get:
+      summary: Метод получения списка долгов
+      tags:
+        - debt
+      operationId: getAllDebts
+      responses:
+        '200':
+          description: Успешный ответ со списком всех долгов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Debts"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод добавления долга
+      tags:
+        - debt
+      operationId: addDebt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Debt"
+      responses:
+        '200':
+          description: Успешный ответ с одним долгом
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Debt"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /debt/{id}:
+    get:
+      summary: Метод получения долга по ID
+      tags:
+        - debt
+      operationId: getDebtById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор долга
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним долгом
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Debt"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Метод обновления долга по ID
+      tags:
+        - debt
+      operationId: updateDebtById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор долга
+          schema:
+            type: number
+          example: 132
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Debt"
+      responses:
+        '200':
+          description: Успешный ответ с одним долгом
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Debt"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Метод удаления одного долга по ID
+      tags:
+        - debt
+      operationId: deleteDebtById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор долга
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним долгом
+          content:
+            application/json: {}
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /contact:
+    get:
+      summary: Метод получения списка контактов
+      tags:
+        - contact
+      operationId: getAllContacts
+      responses:
+        '200':
+          description: Успешный ответ со списком всех контактов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contacts"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод добавления контакта
+      tags:
+        - contact
+      operationId: addContact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+      responses:
+        '200':
+          description: Успешный ответ с одним контактом
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /contact/{id}:
+    get:
+      summary: Метод получения долга по ID
+      tags:
+        - contact
+      operationId: getContactById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор контакта
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним контактом
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Метод обновления контакта по ID
+      tags:
+        - contact
+      operationId: updateContactById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор контакта
+          schema:
+            type: number
+          example: 132
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+      responses:
+        '200':
+          description: Успешный ответ с одним контактом
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Метод удаления одного контакта по ID
+      tags:
+        - contact
+      operationId: deleteContactById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор контакта
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним контактом
+          content:
+            application/json: {}
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+
+  /account:
+    get:
+      summary: Метод получения списка счетов
+      tags:
+        - account
+      operationId: getAllAccounts
+      responses:
+        '200':
+          description: Успешный ответ со списком всех счетов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Accounts"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Метод добавления счета
+      tags:
+        - account
+      operationId: addAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Account"
+      responses:
+        '200':
+          description: Успешный ответ с одним счетом
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /account/{id}:
+    get:
+      summary: Метод получения счета по ID
+      tags:
+        - contact
+      operationId: getAccountById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор счета
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним счетом
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Метод обновления счета по ID
+      tags:
+        - account
+      operationId: updateAccountById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор счета
+          schema:
+            type: number
+          example: 132
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Account"
+      responses:
+        '200':
+          description: Успешный ответ с одним счетом
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Метод удаления одного счета по ID
+      tags:
+        - account
+      operationId: deleteAccountById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор счета
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним счетом
+          content:
+            application/json: {}
+        'default':
+          description: Нестандартный ответ
+          content:
+            appliction/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    Transaction:
+      type: object
+      required:
+        - name
+        - amount
+        - currency_id
+      properties:
+        id:
+          type: number
+          example: 12
+        name:
+          type: string
+          example: Плата за уведомления
+        amount:
+          type: number
+          example: 122.99
+        currency_id:
+          type: number
+          example: 2
+        date_time:
+          type: string
+          format: 2023-07-23T15:00:00+01
+        type_id:
+          type: number
+          example: 2
+        from_acc_id:
+          type: number
+          example: 1
+        to_acc_id:
+          type: number
+          example: 2
+
+    Transactions:
+      type: array
+      items:
+        $ref: "#/components/schemas/Transaction"
+
+    Debt:
+      type: object
+      required:
+        - name
+        - amount
+        - currency_id
+      properties:
+        id:
+          type: number
+          example: 12
+        name:
+          type: string
+          example: Долг за ресторан
+        amount:
+          type: number
+          example: 122.99
+        currency:
+          type: number
+          example: 2
+        date_start:
+          type: string
+          format: 2023-07-23T15:00:00+01
+        date_due:
+          type: string
+          format: 2023-07-23T15:00:00+01
+        contact_id:
+          type: number
+          example: 2
+        type_id:
+          type: number
+          example: 2
+
+    Debts:
+      type: array
+      items:
+        $ref: "#/components/schemas/Debt"
+
+    Contact:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: number
+          example: 12
+        name:
+          type: string
+          example: Дон
+        surname:
+          type: string
+          example: Трамп
+        ph_number:
+          type: string
+          example: +78005553535
+        bank_card_number:
+          type: number
+          example: 2202002123256666
+        note:
+          type: string
+          format: Переводить на тиньк через сбп
+
+    Contacts:
+      type: array
+      items:
+        $ref: "#/components/schemas/Contact"
+
+    Account:
+      type: object
+      required:
+        - name
+        - amount
+        - currency_id
+      properties:
+        id:
+          type: number
+          example: 12
+        name:
+          type: string
+          example: Дон
+        amount:
+          type: number
+          example: 15000
+        currency_id:
+          type: number
+          example: 2
+        bank_name:
+          type: string
+          example: Тинькофф
+
+    Accounts:
+      type: array
+      items:
+        $ref: "#/components/schemas/Account"
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
