@@ -26,7 +26,7 @@ paths:
                 $ref: "#/components/schemas/User"
         '405':
           description: Неправильные входные данные
-    put:
+    patch:
       summary: Метод изменения пользователя
       tags:
         - Users
@@ -110,7 +110,7 @@ paths:
                 $ref: "#/components/schemas/Article"
         '405':
           description: Неправильные входные данные
-    put:
+    patch:
       summary: Метод изменения статьи
       tags:
         - Articles
@@ -217,7 +217,7 @@ paths:
         "405":
           description: некорректные входные данные
 
-    put:
+    patch:
       summary: Метод изменения комментария
       tags:
         - Comments
@@ -238,6 +238,25 @@ paths:
           description: Неправильные входные данные
 
   /comments/{id}:
+    delete:
+      summary: удаление коммента по id
+      tags:
+        - Comments
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id комментария
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Успех!
+          content:
+            application/json: {}
+        "404":
+          description: комментарий не найден
     get:
       summary: получение коммента по id
       tags:
@@ -257,25 +276,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Comment"
-        "404":
-          description: комментарий не найден
-    delete:
-      summary: удаление коммента по id
-      tags:
-        - Comments
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: id комментария
-          schema:
-            type: integer
-            example: 1
-      responses:
-        "200":
-          description: Успех!
-          content:
-            application/json: {}
         "404":
           description: комментарий не найден
 
@@ -324,7 +324,7 @@ paths:
         "405":
           description: некорректные входные данные
 
-    put:
+    patch:
       summary: Метод изменения тега
       tags:
         - Tags
