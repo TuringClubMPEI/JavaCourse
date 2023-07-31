@@ -38,12 +38,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transactions"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
     post:
       summary: Метод добавления транзакции
       tags:
@@ -62,12 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '405':
+          description: Введена некорректная информация
   /transactions/{id}:
     get:
       summary: Метод получения одной транзакции по ID
@@ -89,12 +79,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Транзакция не найдена
     put:
       summary: Метод обновления транзакции по ID
       tags:
@@ -121,12 +109,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Транзакция не найдена
+        '405':
+          description: Ошибка в валидации
     delete:
       summary: Метод удаления одной транзакции по ID
       tags:
@@ -145,12 +133,10 @@ paths:
           description: Успешный ответ с одной транзакцией
           content:
             application/json: {}
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Транзакция не найдена
 
 
   /debt:
@@ -166,12 +152,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debts"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
     post:
       summary: Метод добавления долга
       tags:
@@ -190,12 +170,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '405':
+          description: Введена некорректная информация
   /debt/{id}:
     get:
       summary: Метод получения долга по ID
@@ -217,12 +193,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Долг не найден
     put:
       summary: Метод обновления долга по ID
       tags:
@@ -249,12 +223,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Долг не найден
+        '405':
+          description: Ошибка в валидации
     delete:
       summary: Метод удаления одного долга по ID
       tags:
@@ -273,12 +247,10 @@ paths:
           description: Успешный ответ с одним долгом
           content:
             application/json: {}
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Долг не найден
 
   /contact:
     get:
@@ -293,12 +265,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contacts"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
     post:
       summary: Метод добавления контакта
       tags:
@@ -317,12 +283,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '405':
+          description: Введена некорректная информация
   /contact/{id}:
     get:
       summary: Метод получения долга по ID
@@ -344,12 +306,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Контакт не найден
     put:
       summary: Метод обновления контакта по ID
       tags:
@@ -376,12 +336,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Контакт не найден
+        '405':
+          description: Ошибка в валидации
     delete:
       summary: Метод удаления одного контакта по ID
       tags:
@@ -400,12 +360,10 @@ paths:
           description: Успешный ответ с одним контактом
           content:
             application/json: {}
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Контакт не найден
 
 
   /account:
@@ -421,12 +379,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Accounts"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
     post:
       summary: Метод добавления счета
       tags:
@@ -445,17 +397,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '405':
+          description: Введена некорректная информация
   /account/{id}:
     get:
       summary: Метод получения счета по ID
       tags:
-        - contact
+        - account
       operationId: getAccountById
       parameters:
         - name: id
@@ -472,12 +420,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Счет не найден
     put:
       summary: Метод обновления счета по ID
       tags:
@@ -504,12 +450,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        'default':
-          description: Нестандартный ответ
-          content:
-            appliction/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Счет не найден
+        '405':
+          description: Ошибка в валидации
     delete:
       summary: Метод удаления одного счета по ID
       tags:
@@ -528,12 +474,236 @@ paths:
           description: Успешный ответ с одним счетом
           content:
             application/json: {}
-        'default':
-          description: Нестандартный ответ
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Счет не найден
+
+  /debt_type:
+    get:
+      summary: Метод получения типов долгов
+      tags:
+        - debt_type
+      operationId: getAllDebtTypes
+      responses:
+        '200':
+          description: Успешный ответ со списком всех типов
           content:
-            appliction/json:
+            application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/Debt_types"
+    post:
+      summary: Метод добавления типа долга
+      tags:
+        - debt_type
+      operationId: addDebtType
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Debt_type"
+      responses:
+        '200':
+          description: Успешный ответ с одним типом долга
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Debt_type"
+        '405':
+          description: Введена некорректная информация
+  /debt_type/{id}:
+    get:
+      summary: Метод получения типа долга по ID
+      tags:
+        - debt_type
+      operationId: getDebtTypeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор типа долга
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним типом долга
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Debt_type"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Тип долга не найден
+    put:
+      summary: Метод обновления типа долга по ID
+      tags:
+        - debt_type
+      operationId: updateDebtTypeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор типа долга
+          schema:
+            type: number
+          example: 132
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Debt_type"
+      responses:
+        '200':
+          description: Успешный ответ с одним типом долга
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Debt_type"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Тип долга не найден
+        '405':
+          description: Ошибка в валидации
+    delete:
+      summary: Метод удаления одного типа долга по ID
+      tags:
+        - debt_type
+      operationId: deleteDebtTypeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор типа долга
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним типом долга
+          content:
+            application/json: {}
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Тип долга не найден
+
+  /transaction_type:
+    get:
+      summary: Метод получения типов транзакций
+      tags:
+        - transaction_type
+      operationId: getAllTransactionTypes
+      responses:
+        '200':
+          description: Успешный ответ со списком всех типов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction_types"
+    post:
+      summary: Метод добавления типа транзакции
+      tags:
+        - transaction_type
+      operationId: addTransactionType
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction_type"
+      responses:
+        '200':
+          description: Успешный ответ с одним типом транзакции
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction_type"
+        '405':
+          description: Введена некорректная информация
+  /transaction_type/{id}:
+    get:
+      summary: Метод получения типа транзакции по ID
+      tags:
+        - transaction_type
+      operationId: getTransactionTypeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор типа транзакции
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним типом транзакции
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction_type"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Тип транзакции не найден
+    put:
+      summary: Метод обновления типа транзакции по ID
+      tags:
+        - transaction_type
+      operationId: updateTransactionTypeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор типа транзакции
+          schema:
+            type: number
+          example: 132
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction_type"
+      responses:
+        '200':
+          description: Успешный ответ с одним типом транзакции
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction_type"
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Тип транзакции не найден
+        '405':
+          description: Ошибка в валидации
+    delete:
+      summary: Метод удаления одного типа долга по ID
+      tags:
+        - transaction_type
+      operationId: deleteTransactionTypeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор типа транзакции
+          schema:
+            type: number
+          example: 132
+      responses:
+        '200':
+          description: Успешный ответ с одним типом транзакции
+          content:
+            application/json: {}
+        '400':
+          description: Введен некорректный ID
+        '404':
+          description: Тип транзакции не найден
 
 components:
   schemas:
@@ -542,7 +712,7 @@ components:
       required:
         - name
         - amount
-        - currency_id
+        - currency_name
       properties:
         id:
           type: number
@@ -553,21 +723,17 @@ components:
         amount:
           type: number
           example: 122.99
-        currency_id:
-          type: number
-          example: 2
+        currency_name:
+          $ref: "#/components/schemas/Currency/properties/name"
         date_time:
           type: string
           format: 2023-07-23T15:00:00+01
-        type_id:
-          type: number
-          example: 2
-        from_acc_id:
-          type: number
-          example: 1
-        to_acc_id:
-          type: number
-          example: 2
+        type:
+          $ref: "#/components/schemas/Transaction_type/properties/name"
+        from_acc:
+          $ref: "#/components/schemas/Account/properties/name"
+        to_acc:
+          $ref: "#/components/schemas/Account/properties/name"
 
     Transactions:
       type: array
@@ -579,7 +745,7 @@ components:
       required:
         - name
         - amount
-        - currency_id
+        - currency_name
       properties:
         id:
           type: number
@@ -590,21 +756,18 @@ components:
         amount:
           type: number
           example: 122.99
-        currency:
-          type: number
-          example: 2
+        currency_name:
+          $ref: "#/components/schemas/Currency/properties/name"
         date_start:
           type: string
           format: 2023-07-23T15:00:00+01
         date_due:
           type: string
           format: 2023-07-23T15:00:00+01
-        contact_id:
-          type: number
-          example: 2
-        type_id:
-          type: number
-          example: 2
+        contact:
+          $ref: "#/components/schemas/Contact/properties/name"
+        type:
+          $ref: "#/components/schemas/Debt_type/properties/name"
 
     Debts:
       type: array
@@ -645,20 +808,19 @@ components:
       required:
         - name
         - amount
-        - currency_id
+        - currency_name
       properties:
         id:
           type: number
           example: 12
         name:
           type: string
-          example: Дон
+          example: Сбер-МЭИ карта
         amount:
           type: number
           example: 15000
-        currency_id:
-          type: number
-          example: 2
+        currency_name:
+          $ref: "#/components/schemas/Currency/properties/name"
         bank_name:
           type: string
           example: Тинькофф
@@ -668,13 +830,57 @@ components:
       items:
         $ref: "#/components/schemas/Account"
 
-    Error:
+
+    Currency:
       type: object
-      required:
-        - code
-        - message
       properties:
-        code:
-          type: integer
-        message:
+        id:
+          type: number
+          example: 12
+        name:
           type: string
+          example: Рубль
+        course_to_rubble:
+          type: number
+          example: 76.25
+
+    Currencies:
+      type: array
+      items:
+        $ref: "#/components/schemas/Currency"
+
+    Debt_type:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 12
+        name:
+          type: string
+          example: Исходящий
+        note:
+          type: string
+          example: Деньги, которые одолжил я
+
+    Debt_types:
+      type: array
+      items:
+        $ref: "#/components/schemas/Debt_type"
+
+    Transaction_type:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 12
+        name:
+          type: string
+          example: Стипендия
+        note:
+          type: string
+          example: Получение в 20х числах каждого месяца
+
+    Transaction_types:
+      type: array
+      items:
+        $ref: "#/components/schemas/Transaction_type"
