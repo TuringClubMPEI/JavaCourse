@@ -48,7 +48,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Transaction"
+              $ref: "#/components/schemas/TransactionWithoutJoins"
       responses:
         '200':
           description: Успешный ответ с одной транзакцией
@@ -56,7 +56,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
-        '405':
+        '400':
           description: Введена некорректная информация
   /transactions/{id}:
     get:
@@ -101,7 +101,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Transaction"
+              $ref: "#/components/schemas/TransactionWithoutJoins"
       responses:
         '200':
           description: Успешный ответ с одной транзакцией
@@ -113,8 +113,6 @@ paths:
           description: Введен некорректный ID
         '404':
           description: Транзакция не найдена
-        '405':
-          description: Ошибка в валидации
     delete:
       summary: Метод удаления одной транзакции по ID
       tags:
@@ -162,7 +160,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Debt"
+              $ref: "#/components/schemas/DebtWithoutJoins"
       responses:
         '200':
           description: Успешный ответ с одним долгом
@@ -170,7 +168,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt"
-        '405':
+        '400':
           description: Введена некорректная информация
   /debt/{id}:
     get:
@@ -215,7 +213,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Debt"
+              $ref: "#/components/schemas/DebtWithoutJoins"
       responses:
         '200':
           description: Успешный ответ с одним долгом
@@ -227,8 +225,6 @@ paths:
           description: Введен некорректный ID
         '404':
           description: Долг не найден
-        '405':
-          description: Ошибка в валидации
     delete:
       summary: Метод удаления одного долга по ID
       tags:
@@ -283,7 +279,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-        '405':
+        '400':
           description: Введена некорректная информация
   /contact/{id}:
     get:
@@ -340,8 +336,6 @@ paths:
           description: Введен некорректный ID
         '404':
           description: Контакт не найден
-        '405':
-          description: Ошибка в валидации
     delete:
       summary: Метод удаления одного контакта по ID
       tags:
@@ -389,7 +383,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Account"
+              $ref: "#/components/schemas/AccountWithoutJoins"
       responses:
         '200':
           description: Успешный ответ с одним счетом
@@ -397,7 +391,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        '405':
+        '400':
           description: Введена некорректная информация
   /account/{id}:
     get:
@@ -442,7 +436,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Account"
+              $ref: "#/components/schemas/AccountWithoutJoins"
       responses:
         '200':
           description: Успешный ответ с одним счетом
@@ -454,8 +448,6 @@ paths:
           description: Введен некорректный ID
         '404':
           description: Счет не найден
-        '405':
-          description: Ошибка в валидации
     delete:
       summary: Метод удаления одного счета по ID
       tags:
@@ -492,26 +484,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt_types"
-    post:
-      summary: Метод добавления типа долга
-      tags:
-        - debt_type
-      operationId: addDebtType
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Debt_type"
-      responses:
-        '200':
-          description: Успешный ответ с одним типом долга
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Debt_type"
-        '405':
-          description: Введена некорректная информация
+
   /debt_type/{id}:
     get:
       summary: Метод получения типа долга по ID
@@ -533,60 +506,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt_type"
-        '400':
-          description: Введен некорректный ID
-        '404':
-          description: Тип долга не найден
-    put:
-      summary: Метод обновления типа долга по ID
-      tags:
-        - debt_type
-      operationId: updateDebtTypeById
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: Идентификатор типа долга
-          schema:
-            type: number
-          example: 132
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Debt_type"
-      responses:
-        '200':
-          description: Успешный ответ с одним типом долга
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Debt_type"
-        '400':
-          description: Введен некорректный ID
-        '404':
-          description: Тип долга не найден
-        '405':
-          description: Ошибка в валидации
-    delete:
-      summary: Метод удаления одного типа долга по ID
-      tags:
-        - debt_type
-      operationId: deleteDebtTypeById
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: Идентификатор типа долга
-          schema:
-            type: number
-          example: 132
-      responses:
-        '200':
-          description: Успешный ответ с одним типом долга
-          content:
-            application/json: {}
         '400':
           description: Введен некорректный ID
         '404':
@@ -623,7 +542,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction_type"
-        '405':
+        '400':
           description: Введена некорректная информация
   /transaction_type/{id}:
     get:
@@ -680,30 +599,6 @@ paths:
           description: Введен некорректный ID
         '404':
           description: Тип транзакции не найден
-        '405':
-          description: Ошибка в валидации
-    delete:
-      summary: Метод удаления одного типа долга по ID
-      tags:
-        - transaction_type
-      operationId: deleteTransactionTypeById
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: Идентификатор типа транзакции
-          schema:
-            type: number
-          example: 132
-      responses:
-        '200':
-          description: Успешный ответ с одним типом транзакции
-          content:
-            application/json: {}
-        '400':
-          description: Введен некорректный ID
-        '404':
-          description: Тип транзакции не найден
 
 components:
   schemas:
@@ -734,6 +629,34 @@ components:
           $ref: "#/components/schemas/Account/properties/name"
         to_acc:
           $ref: "#/components/schemas/Account/properties/name"
+
+    TransactionWithoutJoins:
+      type: object
+      required:
+        - name
+        - amount
+        - currency_name
+      properties:
+        id:
+          type: number
+          example: 12
+        name:
+          type: string
+          example: Плата за уведомления
+        amount:
+          type: number
+          example: 122.99
+        currency_id:
+          $ref: "#/components/schemas/Currency/properties/id"
+        date_time:
+          type: string
+          format: 2023-07-23T15:00:00+01
+        type_id:
+          $ref: "#/components/schemas/Transaction_type/properties/id"
+        from_acc_id:
+          $ref: "#/components/schemas/Account/properties/id"
+        to_acc_id:
+          $ref: "#/components/schemas/Account/properties/id"
 
     Transactions:
       type: array
@@ -768,6 +691,35 @@ components:
           $ref: "#/components/schemas/Contact/properties/name"
         type:
           $ref: "#/components/schemas/Debt_type/properties/name"
+
+    DebtWithoutJoins:
+      type: object
+      required:
+        - name
+        - amount
+        - currency_name
+      properties:
+        id:
+          type: number
+          example: 12
+        name:
+          type: string
+          example: Долг за ресторан
+        amount:
+          type: number
+          example: 122.99
+        currency_name:
+          $ref: "#/components/schemas/Currency/properties/id"
+        date_start:
+          type: string
+          format: 2023-07-23T15:00:00+01
+        date_due:
+          type: string
+          format: 2023-07-23T15:00:00+01
+        contact:
+          $ref: "#/components/schemas/Contact/properties/id"
+        type:
+          $ref: "#/components/schemas/Debt_type/properties/id"
 
     Debts:
       type: array
@@ -821,6 +773,28 @@ components:
           example: 15000
         currency_name:
           $ref: "#/components/schemas/Currency/properties/name"
+        bank_name:
+          type: string
+          example: Тинькофф
+
+    AccountWithoutJoins:
+      type: object
+      required:
+        - name
+        - amount
+        - currency_name
+      properties:
+        id:
+          type: number
+          example: 12
+        name:
+          type: string
+          example: Сбер-МЭИ карта
+        amount:
+          type: number
+          example: 15000
+        currency_name:
+          $ref: "#/components/schemas/Currency/properties/id"
         bank_name:
           type: string
           example: Тинькофф
