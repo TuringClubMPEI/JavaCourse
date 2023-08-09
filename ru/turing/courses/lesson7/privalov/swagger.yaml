@@ -56,8 +56,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
-        '400':
-          description: Введена некорректная информация
   /transactions/{id}:
     get:
       summary: Метод получения одной транзакции по ID
@@ -79,8 +77,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Транзакция не найдена
     put:
@@ -109,8 +105,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Транзакция не найдена
     delete:
@@ -131,8 +125,6 @@ paths:
           description: Успешный ответ с одной транзакцией
           content:
             application/json: {}
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Транзакция не найдена
 
@@ -168,8 +160,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt"
-        '400':
-          description: Введена некорректная информация
   /debt/{id}:
     get:
       summary: Метод получения долга по ID
@@ -191,8 +181,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Долг не найден
     put:
@@ -221,8 +209,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Долг не найден
     delete:
@@ -243,8 +229,6 @@ paths:
           description: Успешный ответ с одним долгом
           content:
             application/json: {}
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Долг не найден
 
@@ -279,8 +263,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-        '400':
-          description: Введена некорректная информация
   /contact/{id}:
     get:
       summary: Метод получения долга по ID
@@ -302,8 +284,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Контакт не найден
     put:
@@ -332,8 +312,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Contact"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Контакт не найден
     delete:
@@ -354,8 +332,6 @@ paths:
           description: Успешный ответ с одним контактом
           content:
             application/json: {}
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Контакт не найден
 
@@ -391,8 +367,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        '400':
-          description: Введена некорректная информация
   /account/{id}:
     get:
       summary: Метод получения счета по ID
@@ -414,8 +388,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Счет не найден
     put:
@@ -444,8 +416,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Счет не найден
     delete:
@@ -466,8 +436,6 @@ paths:
           description: Успешный ответ с одним счетом
           content:
             application/json: {}
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Счет не найден
 
@@ -506,8 +474,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Debt_type"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Тип долга не найден
 
@@ -542,8 +508,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction_type"
-        '400':
-          description: Введена некорректная информация
   /transaction_type/{id}:
     get:
       summary: Метод получения типа транзакции по ID
@@ -565,8 +529,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction_type"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Тип транзакции не найден
     put:
@@ -595,8 +557,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction_type"
-        '400':
-          description: Введен некорректный ID
         '404':
           description: Тип транзакции не найден
 
