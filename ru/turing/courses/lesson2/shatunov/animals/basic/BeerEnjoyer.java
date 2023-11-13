@@ -1,5 +1,5 @@
 package ru.turing.courses.lesson2.shatunov.animals.basic;
 
-public interface IBeerEnjoyer {
+public interface BeerEnjoyer {
     void drinkBeer(float beerAmount);
 }

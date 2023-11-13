@@ -3,6 +3,7 @@ package ru.turing.courses.lesson2.shatunov.animals;
 public class LolPlayer extends Human{
 
     private float skill;
+
     public LolPlayer(String name, int age, float weight, int workExperienceInYears, float skill) {
         super(name, age, weight, workExperienceInYears);
         this.skill = skill;

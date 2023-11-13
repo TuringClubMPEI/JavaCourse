@@ -19,6 +19,7 @@ public class Main {
         System.out.println("Полных месяцев: " + countMonthAge(birthDate));
         System.out.println("\n"+getShortAddress(address));
     }
+
     private static int countYearAge(String[] birthDate){
         return countMonthAge(birthDate) / 12;
     }
@@ -43,6 +44,7 @@ public class Main {
         }
         return result;
     }
+
     private static String getShortAddress(String longAddress){
         longAddress = longAddress.replace("страна: ", "");
         longAddress = longAddress.replace("город: ", "г. ");
