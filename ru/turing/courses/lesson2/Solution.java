@@ -25,7 +25,7 @@ public class Solution {
     }
 
     private static User getUser(String name1) {
-        String dateOfBirth1 = "14/08/1990";
+        String dateOfBirth1 = "14/12/1990";
         int dayOfBirth1 = 14;
         int monthOfBirth1 = 12;
         int yearOfBirth1 = 1990;

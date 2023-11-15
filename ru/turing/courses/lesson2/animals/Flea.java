@@ -11,7 +11,16 @@ public class Flea extends Animal{
         System.out.print("trtrtr\n");
     }
     public void heal() {
-
+        if (numberOfPaws < maxNumberOfPaws && isAlive) {
+            System.out.printf("%s has been healed\n", name);
+            numberOfPaws = maxNumberOfPaws;
+        } else {
+            if (isAlive) {
+                System.out.print("Veterinarian cannot revive fleas, sorry\n");
+            } else {
+                System.out.printf("%s was healthy before going to veterinarian, chill out\n", name);
+            }
+        }
     }
     public void tryKill() {
         if (!isAlive) {
