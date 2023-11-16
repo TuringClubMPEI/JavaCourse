@@ -61,7 +61,18 @@ public class Flea extends Animal{
                 }
             }
         }
+    }
 
+    public void fight(Flea main) {
+        int tries = 0;
+        while (isAlive() && tries <= 12) {
+            tries++;
+            makeSound();
+            tryKill();
+            tryJump(tries / (Math.random() * 5));
+        }
+        main.makeSound();
+        heal();
     }
 
     public Flea() {

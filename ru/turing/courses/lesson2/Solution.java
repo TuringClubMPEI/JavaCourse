@@ -59,27 +59,17 @@ public class Solution {
         Flea justJump = new Flea("Jumpy", false, false, 6,
                 2, 3, true, false);
 
-        fleaFight(hater1, haterMain);
+        hater1.fight(haterMain);
         System.out.print("-----------\n");
-        fleaFight(hater2, haterMain);
+        hater2.fight(haterMain);
         System.out.print("-----------\n");
         haterMain.makeSound();
         haterMain.heal();
-        fleaFight(haterMain, haterMain);
+        haterMain.fight(haterMain);
         System.out.print("-----------\n");
         while (justJump.isAlive()) {
             justJump.tryJump(3 / (Math.random() * 1.5));
         }
     }
-    public static void fleaFight(Flea character, Flea main) {
-        int tries = 0;
-        while (character.isAlive() && tries <= 12) {
-            tries++;
-            character.makeSound();
-            character.tryKill();
-            character.tryJump(tries / (Math.random() * 5));
-        }
-        main.makeSound();
-        character.heal();
-    }
+
 }
