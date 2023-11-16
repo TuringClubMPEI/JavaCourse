@@ -7,6 +7,9 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.tan;
+
 public class Solution {
     public static void main(String[] args) throws IOException {
         //Количество полных лет, количество полных месяцев
@@ -37,16 +40,27 @@ public class Solution {
         countYear=difYears;
         countMonth=difYears*12+difMonths;
         //особенности при расчете количества полных лет, количества полных месяцев
-        if(difDays<0){
-            if(( countYear==0)&&( difMonths!=0))
+        if(difDays>0){
+            if(( countYear!=0)&&(difMonths<0))
+                countYear-=1;
+        }
+        if(difDays<=0){
+            if(( countYear==0)&&(difMonths>0))
                 countMonth -= 1;
-            if(( countYear!=0)&&(countMonth!=0)) {
+            if(( countYear!=0)&&(difMonths<0)) {
                 countMonth -= 1;
                 countYear-=1;
             }
-            if(( countYear!=0)&&(countMonth==0))
-                countYear-=1;
+            if(( countYear!=0)&&(difMonths>0))
+                countMonth -= 1;
+            if(( countYear==0)&&(difMonths<0))
+                countMonth -= 1;
+            if(( countYear!=0)&&(difMonths==0)) {
+                countYear -= 1;
+                countMonth -= 1;
+            }
         }
+
         System.out.println("Количество полных лет = "+countYear);
         System.out.println("Количество полных месяцев = "+countMonth);
         System.out.println("Введите адрес: (напр, страна: Россия, город: Москва, улица: Авиамоторная, дом: 15, квартира: 24)");
