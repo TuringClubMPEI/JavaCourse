@@ -1,6 +1,9 @@
 package ru.turing.courses.lesson2;
+
+import ru.turing.courses.lesson2.animals.Panda;
+import ru.turing.courses.lesson2.animals.Whale;
+
 import java.time.LocalDate;
-import ru.turing.courses.lesson2.animals.*;
 
 public class Solution {
     public static void main(String[] args) {

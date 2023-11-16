@@ -1,7 +1,9 @@
 package ru.turing.courses.lesson2;
+
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 public class User {
     private final LocalDate birthday;
     private String address; //страна: Россия, город: Москва, улица: Авиамоторная, дом: 15, квартира: 24
