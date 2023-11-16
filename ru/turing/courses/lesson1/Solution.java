@@ -40,9 +40,11 @@ public class Solution {
         if(difDays<0){
             if(( countYear==0)&&( difMonths!=0))
                 countMonth -= 1;
-            if(( countYear!=0)&&(countMonth!=0))
+            if(( countYear!=0)&&(countMonth!=0)) {
                 countMonth -= 1;
-            else
+                countYear-=1;
+            }
+            if(( countYear!=0)&&(countMonth==0))
                 countYear-=1;
         }
         System.out.println("Количество полных лет = "+countYear);
