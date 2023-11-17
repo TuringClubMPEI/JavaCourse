@@ -1,10 +1,39 @@
 package ru.turing.courses.lesson2.animals;
 
 public class Cat extends Animal {
-    private boolean wanna_play; // 1 - want to ... 0 - don't want to
-    private int mice_count = 0;
+    private boolean wannaPlay; // 1 - want to ... 0 - don't want to
+    private int miceCount = 0;
     private double hapiness;
+    private String name;
+    private int age;
 
+    public void setMiceCount(int miceCount) {
+        this.miceCount = miceCount;
+    }
+
+    public void setHapiness(double hapiness) {
+        this.hapiness = hapiness;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Cat() {}
+
+    public Cat(String name, int age) {this.name = name; this.age = age;}
     public void petTheCat() {
         hapiness += 1.0;
         System.out.println("Mrrrr");
@@ -13,19 +42,20 @@ public class Cat extends Animal {
     public double getHapiness () {return hapiness;}
 
     public void cath_mouse() {
-        mice_count += 1;
+        hapiness += 1.0;
+        miceCount -= 1;
     }
 
-    public int getMice_count() {
-        return mice_count;
+    public int getMiceCount() {
+        return miceCount;
     }
 
-    public boolean isWanna_play() {
-        return wanna_play;
+    public boolean isWannaPlay() {
+        return wannaPlay;
     }
 
-    public void setWanna_play(boolean wanna_play) {
-        this.wanna_play = wanna_play;
+    public void setWannaPlay(boolean wannaPlay) {
+        this.wannaPlay = wannaPlay;
     }
 
     @Override
