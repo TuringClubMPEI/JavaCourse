@@ -2,8 +2,13 @@ package ru.turing.courses.lesson2.animals;
 
 public abstract class Animal {
     protected String type;
-    protected int year;
+    protected int age;
     protected String color;
+
+    protected double weight;
+
+    public Animal() {}
+    public Animal(String type, int year, String color) {this.type = type;this.age = year;this.color = color;}
 
     public String getType() {
         return type;
@@ -14,11 +19,11 @@ public abstract class Animal {
     }
 
     public int getYear() {
-        return year;
+        return age;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setYear(int age) {
+        this.age = age;
     }
 
     public String getColor() {
@@ -37,7 +42,6 @@ public abstract class Animal {
         this.weight = weight;
     }
 
-    protected double weight;
 
 
     public void sound() {}

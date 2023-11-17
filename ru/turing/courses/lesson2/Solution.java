@@ -15,6 +15,8 @@ public class Solution {
         // Cat
         Cat cat1 = new Cat();
         cat1.sound();
+        cat1.setName("Barsik");
+        System.out.println(cat1.getName());
         cat1.setMiceCount(3);
         cat1.cath_mouse();
         System.out.println(cat1.getHapiness());

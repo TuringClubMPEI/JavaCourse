@@ -5,8 +5,6 @@ public class Cat extends Animal {
     private int miceCount = 0;
     private double hapiness;
     private String name;
-    private int age;
-
     public void setMiceCount(int miceCount) {
         this.miceCount = miceCount;
     }
@@ -31,9 +29,19 @@ public class Cat extends Animal {
         this.age = age;
     }
 
-    public Cat() {}
 
-    public Cat(String name, int age) {this.name = name; this.age = age;}
+    public Cat() {}
+    public Cat(String type, int age, String color, boolean wannaPlay, int miceCount, double hapiness, String name) {
+        super(type, age, color);
+        this.wannaPlay = wannaPlay;
+        this.miceCount = miceCount;
+        this.hapiness = hapiness;
+        this.name = name;
+        this.age = age;
+    }
+//public Cat() {super(String type, int age, String color);}
+
+
     public void petTheCat() {
         hapiness += 1.0;
         System.out.println("Mrrrr");
