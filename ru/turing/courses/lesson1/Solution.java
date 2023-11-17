@@ -12,7 +12,7 @@ public class Solution {
         System.out.print("Фамилия: ");
         String surname = sc.nextLine();
         System.out.print("Отчество(пропустить если отсутствует): ");
-        String sec_name = sc.nextLine();
+        String secondName = sc.nextLine();
 
         // дата рождения
         System.out.println("Ведите дату рождения (в формате дд.мм.гггг)");
