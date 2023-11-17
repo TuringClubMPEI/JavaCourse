@@ -26,14 +26,15 @@ public class Mouse extends Animal {
         this.hoursOfSleep = hoursOfSleep;
     }
 
-    public void eat(String favoriteTypeOfCheese){
-
+    public void eat(String favoriteTypeOfCheese) {
+        System.out.println("Мышич поел своего любимого сыра " + favoriteTypeOfCheese);
     }
 
-    public void sleep(int hoursOfsleep){
-
+    public void sleep(String hoursOfsleep) {
+        System.out.println("Мышич подремал " + hoursOfsleep + " минут");
     }
-    public void krodetsya(){
+
+    public void krodetsya() {
         System.out.println("Мыш......(кродеться)...");
     }
 }

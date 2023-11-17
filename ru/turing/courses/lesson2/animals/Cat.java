@@ -1,6 +1,6 @@
 package ru.turing.courses.lesson2.animals;
 
-public class Cat extends Animal{
+public class Cat extends Animal {
 
     protected String playWithLaser;
     protected String favoriteTypeOfFeed;
@@ -27,14 +27,17 @@ public class Cat extends Animal{
         this.favoriteTypeOfFeed = favoriteTypeOfFeed;
     }
 
-    public void play(String playWithLaser){
+    public void play(String playWithLaser) {
+        System.out.println("Вы поиграли с котом лазерной указкой " + playWithLaser + " минут");
 
     }
-    public void eat(String favoriteTypeOfFeed){
-        System.out.println("Вы покормили кота");
+
+    public void eat(String favoriteTypeOfFeed) {
+        System.out.println("Вы покормили кота его любимым " + favoriteTypeOfFeed);
     }
 
-    public void cheel(String placeOfCheel){
+    public void cheel() {
+        System.out.println("Котярыч отдохнул");
 
     }
 }

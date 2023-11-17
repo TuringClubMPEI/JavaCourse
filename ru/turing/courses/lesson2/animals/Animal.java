@@ -5,6 +5,7 @@ public class Animal {
     protected String color;
     protected String breed;
     protected int age;
+    protected int numberOfPaws;
 
     public String getKlichka() {
         return klichka;
@@ -46,17 +47,15 @@ public class Animal {
         this.numberOfPaws = numberOfPaws;
     }
 
-    protected int numberOfPaws;
-
-    public void play(String anyActivity){
+    public void play(String anyActivity) {
 
     }
 
-    public void sleep(int hoursOfSleep){
+    public void sleep(int hoursOfSleep) {
 
     }
 
-    public void eat(String eat){
+    public void eat(String eat) {
 
     }
 

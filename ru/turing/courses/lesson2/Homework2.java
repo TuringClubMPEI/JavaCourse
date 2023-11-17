@@ -1,12 +1,28 @@
 package ru.turing.courses.lesson2;
 
 
+import ru.turing.courses.lesson2.animals.Animal;
+import ru.turing.courses.lesson2.animals.Cat;
+import ru.turing.courses.lesson2.animals.Mouse;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Homework2 {
     public static void main(String[] args) {
+
+        //Животные
+        Mouse mouse = new Mouse("Мышыч", "серая", "basic", 10, 4, "Бри", "8");
+        mouse.sleep(mouse.getHoursOfSleep());
+        mouse.krodetsya();
+        mouse.eat(mouse.getFavoriteTypeOfCheese());
+
+        Cat cat = new Cat("Барсик", "Коричневый", "Британский", 5, 4, "10", "Whiskas");
+        cat.play(cat.getPlayWithLaser());
+        cat.eat(cat.getFavoriteTypeOfFeed());
+        cat.cheel();
+
         //подключаю библиотеку и создаю переменную с текущим годом
         Calendar calendar = new GregorianCalendar();
         int currentYear = calendar.get(Calendar.YEAR);
@@ -58,13 +74,18 @@ public class Homework2 {
 
         System.out.println("Количество полных месяцев ползователя: " + countMonth(countAge(currentYear, year)));
 
-        //перевожу адрес пользователя в краткий формат каждый пункт с новой строки
+        //вызываю функцию перевода адресса
+        shorAdressFormat(strana, gorod, ulica, dom, kvartira);
+
+
+    }
+
+    public static void shorAdressFormat(String strana, String gorod, String ulica, String dom, String kvartira) {
         System.out.println(strana);
         System.out.println("г." + gorod);
         System.out.println("ул." + ulica);
         System.out.println("д." + dom);
         System.out.println("кв." + kvartira);
-
     }
 
     public static int countAge(int currentYear, int year) {
@@ -72,7 +93,7 @@ public class Homework2 {
         return ageOfUser;
     }
 
-    public static int countMonth(int ageOfUser){
+    public static int countMonth(int ageOfUser) {
         int monthOfUser = ageOfUser * 12;
         return monthOfUser;
     }
