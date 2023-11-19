@@ -11,15 +11,15 @@ public class Person {
     private String name, surname, secondName, address;
     private LocalDate data;
 
-    public String getIm() {
+    public String getName() {
         return name;
     } //геты
 
-    public String getFam() {
+    public String getSurname() {
         return surname;
     }
 
-    public String getOtch() {
+    public String getSecondName() {
         return secondName;
     }
 
@@ -48,10 +48,10 @@ public class Person {
         }
     }
 
-    public int getmonth() {//вывод всех прожитых месяцев
+    public int getMonth() {//вывод всех прожитых месяцев
         LocalDate now = LocalDate.now();//нынешняя дата
-        Period otl = Period.between(this.data, now);//нахождение разницы
-        return otl.getMonths() + 12 * otl.getYears();
+        Period difference = Period.between(this.data, now);//нахождение разницы
+        return difference.getMonths() + 12 * difference.getYears();
     }
 
     public int getyears() {//вывод всех прожитых лет
@@ -71,7 +71,7 @@ public class Person {
             c = address.charAt(index);
         }
         s += "\nг.";
-        index = this.address.indexOf("город:")+7;//переводим индекс на первую букву города
+        index = this.address.indexOf("город:") + 7;//переводим индекс на первую букву города
         c = this.address.charAt(index);
         while (c != ',') {//цикл для записи страны
             s += c;
@@ -79,7 +79,7 @@ public class Person {
             c = this.address.charAt(index);
         }
         s += "\nул.";
-        index = this.address.indexOf("улица:")+7;//переводим индекс на первую букву улицы
+        index = this.address.indexOf("улица:") + 7;//переводим индекс на первую букву улицы
         c = this.address.charAt(index);
         while (c != ',') {//цикл для записи города
             s += c;
@@ -87,7 +87,7 @@ public class Person {
             c = this.address.charAt(index);
         }
         s += "\nд.";
-        index = this.address.indexOf("дом:")+5;//переводим индекс на первую цифру номера дома
+        index = this.address.indexOf("дом:") + 5;//переводим индекс на первую цифру номера дома
         c = this.address.charAt(index);
         while (c != ',') {//цикл для записи дома
             s += c;
@@ -95,12 +95,12 @@ public class Person {
             c = this.address.charAt(index);
         }
         s += "\nкв.";
-        index = this.address.indexOf("квартира:")+10;//переводим индекс на первую цифру номера квартиры
+        index = this.address.indexOf("квартира:") + 10;//переводим индекс на первую цифру номера квартиры
         c = this.address.charAt(index);
         while (c != ',') {//цикл для записи квартиры
             s += c;
             index++;
-            if(index==this.address.length())
+            if (index == this.address.length())
                 break;
             c = this.address.charAt(index);
         }

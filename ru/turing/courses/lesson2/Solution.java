@@ -20,7 +20,7 @@ public class Solution {
         entity.setFIO(surname, name, secondName);
         System.out.print("Введите дату рождения ");
         String date = in.next();
-        while (!entity.setData(date, DataRegex)){
+        while (!entity.setData(date, DataRegex)) {
             System.out.print("Введите дату рождения нормально ");
             date = in.next();
         }
@@ -35,7 +35,7 @@ public class Solution {
         System.out.print("количество полных лет, которые прожил: ");
         System.out.print(entity.getyears());
         System.out.print("\nколичество полных месяцев, которые прожил: ");
-        System.out.print(entity.getmonth());
+        System.out.print(entity.getMonth());
         System.out.print(entity.splitAddress());
 
         Wolf firstAminal = new Wolf();
@@ -44,6 +44,6 @@ public class Solution {
         firstAminal.eat();
         secondAnimal.eat();
         firstAminal.sleep();
-        System.out.println("волк спит"+firstAminal.getAmountOfSleep()+" часов");
+        System.out.println("волк спит" + firstAminal.getAmountOfSleep() + " часов");
     }
 }

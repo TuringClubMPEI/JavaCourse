@@ -1,9 +1,10 @@
 package ru.turing.courses.lesson2.animals;
 
-public class Wolf extends Animal{
+public class Wolf extends Animal {
     {
-        amountOfSleep=8;
+        amountOfSleep = 8;
     }
+
     @Override
     public void eat() {
         System.out.println("кушает мясо");
