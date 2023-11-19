@@ -16,77 +16,117 @@ public class Person {
     private LocalDate birthday; //дата рождения
     private String address; // адрес проживания
 
-    public int getFullMonths(){ //вывод прожитых месяцев
+    /**
+     * Получение полных прожитых месяцев.
+     *
+     * @return целое число месяцев.
+     */
+    public int getFullMonths() {
         LocalDate now = LocalDate.now();
-        Period diff = Period.between(this.birthday, now); //через период это просто
-        return diff.getMonths()+12* diff.getYears();
+        Period diff = Period.between(this.birthday, now);
+        return diff.getMonths() + 12 * diff.getYears();
     }
 
-    public int getFullYears() {//вывод полных прожитых лет
+    /**
+     * Получение полных прожитых лет.
+     *
+     * @return целое число лет.
+     */
+    public int getFullYears() {
         LocalDate now = LocalDate.now();
-        Period diff = Period.between(this.birthday, now); //также через период
+        Period diff = Period.between(this.birthday, now);
         return diff.getYears();
     }
-    public void printShortAddress(String regex){ //вывод короткой записи адреса
+
+    /**
+     * Вывод адреса человека в коротком формате.
+     *
+     * @param regex - регулярное выражение, поторое показывает,
+     *              какие радлелительные знаки использованиы в адресе.
+     */
+    public void printShortAddress(String regex) {
         //String regex = ":.+?,$?";
-        Pattern pattern = Pattern.compile(regex); //регулярное выражение
+        Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(this.address); //поисковик регулярных выражений в строке
         int countString = 0; //на 2-5 выводе нужно добавить г., ул. и тд
-        while(matcher.find()){ //поиск всех вхождений
+        while (matcher.find()) { //поиск всех вхождений
             countString++;
-            switch (countString){
-                case 2:{
+            switch (countString) {
+                case 2: {
                     System.out.print("г. ");
                     break;
                 }
-                case 3:{
+                case 3: {
                     System.out.print("ул. ");
                     break;
                 }
-                case 4:{
+                case 4: {
                     System.out.print("д. ");
                     break;
                 }
-                case 5:{
+                case 5: {
                     System.out.print("кв. ");
                     break;
                 }
             }
-            int start=matcher.start(); //индекс символа ":"
-            int end=matcher.end(); //индекс символа ","
-            System.out.println(this.address.substring(start+2,end-1)); //выбираем очередную подстроку без ":" и ","
+            int start = matcher.start(); //индекс символа ":"
+            int end = matcher.end(); //индекс символа ","
+            System.out.println(this.address.substring(start + 2, end - 1)); //выбираем очередную подстроку без ":" и ","
         }
     }
+
+    /**
+     * Получение даты рождения в виде строки определённого формата.
+     *
+     * @param regex - регулярное выражения, которое задает формат строки.
+     * @return строку, которая соответствует дате рождения.
+     */
     public String getBirthday(String regex) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(regex); //задаем формат строки
-        return this.birthday.format(formatter); //переводим дату в строку по формату
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(regex);
+        return this.birthday.format(formatter);
     }
 
+    /**
+     * Устанавливает дату рождения данного человека.
+     *
+     * @param strDate - строка, которая содержит дату рождения в заданном формате.
+     * @param regex   - регулярное выражения, которое задаёт формат строки с датой рождения.
+     * @return - true, если дата роджения была установлена; false, если установить дату рождения не получилось.
+     */
     public boolean setBirthday(String strDate, String regex) {
-        //String regex  = "dd.MM.yyyy";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(regex);//задаем формат строки
-        try{
-            this.birthday = LocalDate.parse(strDate, formatter); //переводим строку с форматом в дату
-            return true; //если получилось перевести, то мы ввели всё правильно и нужно возвратить true
-        }
-        catch (DateTimeParseException ex){
-            return false; //если формат строки не такой, или дата не правильная(месяц = 13), то выскачет исключение
-        }
-    }
-
-    public boolean setAddres(String strAddres, String regex) {
-        //String regex = "^страна: .+, город: .+, улица: .+, дом: \\d{2}, квартира: \\d{2}$";
-        Pattern pattern = Pattern.compile(regex); //задаем регулярное выражение
-        if(Pattern.matches(regex, strAddres)){ //если строка соответствует этому выражени.
-            this.address = strAddres; //то мы считываем её
-            return true; //и сообщаем об успешном считывании
-        }
-        else{
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(regex);
+        try {
+            this.birthday = LocalDate.parse(strDate, formatter);
+            return true;
+        } catch (DateTimeParseException ex) {
             return false;
         }
     }
 
-    public void setFIO(String name, String surname, String secondName){ //вводим всё ФИО сразу
+    /**
+     * Устанавливает адрес данного человека.
+     *
+     * @param strAddres - строка, содержащая адрес.
+     * @param regex     - регулярное выражение, которое задаёт формат строки с адресом.
+     * @return - true, если строка strAddres удовлетворяет регулярному выражения, иначе false.
+     */
+    public boolean setAddres(String strAddres, String regex) {
+        if (Pattern.matches(regex, strAddres)) {
+            this.address = strAddres;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Устанавлявает ФИО данного человека.
+     *
+     * @param name       - имя человека.
+     * @param surname    - фамилия человека
+     * @param secondName - отчество человека.
+     */
+    public void setFIO(String name, String surname, String secondName) {
         this.name = name;
         this.surname = surname;
         this.secondName = secondName;
@@ -104,5 +144,18 @@ public class Person {
 
     public String getSecondName() {
         return secondName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) && Objects.equals(surname, person.surname) && Objects.equals(secondName, person.secondName) && Objects.equals(birthday, person.birthday) && Objects.equals(address, person.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, secondName, birthday, address);
     }
 }

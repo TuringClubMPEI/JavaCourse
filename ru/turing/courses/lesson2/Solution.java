@@ -1,9 +1,11 @@
 package ru.turing.courses.lesson2;
+
 import ru.turing.courses.lesson2.animals.Cat;
 import ru.turing.courses.lesson2.animals.Person;
 import ru.turing.courses.lesson2.animals.Snail;
 
 import java.util.Scanner;
+
 public class Solution {
     public static void main(String[] args) {
         Person oleg = new Person();
@@ -26,10 +28,10 @@ public class Solution {
             birthday = in.next();
         } while (!oleg.setBirthday(birthday, dateFormat));
         in.nextLine();//этот метод считывает перенос строки предыдущего ввода, чтобы не пропускать 1-ую итерацию цикла, идущего сразу после in.nextLine();
-        do{
+        do {
             System.out.print("Введите адрес:");
             address = in.nextLine();//"страна: .+, город: .+, улица: .+, дом: 22, квартира: 22"
-        }while(!(oleg.setAddres(address, addressRegex)));
+        } while (!(oleg.setAddres(address, addressRegex)));
         System.out.println("Вы ввели человека с ФИО: " + oleg.getName() + " " + oleg.getSurname()
                 + " " + oleg.getSecondName() + ".");
         System.out.println("Дата рождения: " + oleg.getBirthday(dateFormat));
