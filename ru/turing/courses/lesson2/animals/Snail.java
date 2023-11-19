@@ -9,8 +9,8 @@ public class Snail extends Animal {
     /**
      * Конструктор класа Snail.
      *
-     * @param colorOfShell         - цвет ракушки данной улитки.
-     * @param countOfDroppedShells - кол-во сброшенных ракушек данной улитки.
+     * @param colorOfShell цвет ракушки данной улитки.
+     * @param countOfDroppedShells кол-во сброшенных ракушек данной улитки.
      */
     public Snail(String colorOfShell, int countOfDroppedShells) {
         super("Листочки", "Место, где сыро и много листочков)");

@@ -15,8 +15,8 @@ public abstract class Animal {
     /**
      * Конструктор класса
      *
-     * @param foodType - любимый еда этого животного
-     * @param habitat  - среда обитания этого животного
+     * @param foodType любимый еда этого животного
+     * @param habitat  среда обитания этого животного
      */
     public Animal(String foodType, String habitat) {
         this.foodType = foodType;

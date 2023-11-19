@@ -1,6 +1,5 @@
 package ru.turing.courses.lesson2.animals;
 
-import java.text.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -15,6 +14,46 @@ public class Person {
     private String secondName; //отчество
     private LocalDate birthday; //дата рождения
     private String address; // адрес проживания
+
+    /**
+     * Пустой конструктор.
+     */
+    public Person() {
+    }
+
+    /**
+     * Конструктор для объявления объекта с всеми заполненными полями.
+     *
+     * @param name имя человека.
+     * @param surname фамилия человека.
+     * @param secondName отчество человека.
+     * @param strBirthday строка, содержащая дату рождения в заданном формате.
+     * @param regexBirthday формат строки, содержащей дату рождения.
+     * @param address адрес проживания человека.
+     * @param regexAddress формат адреса проживания человека.
+     */
+    public Person(String name, String surname, String secondName, String strBirthday, String regexBirthday, String address, String regexAddress) {
+        this.name = name;
+        this.surname = surname;
+        this.secondName = secondName;
+        this.setBirthday(strBirthday, regexBirthday);
+        this.setAddres(address, regexAddress);
+    }
+
+    /**
+     * Вывод полной информации о данном человеке.
+     *
+     * @param regexBirthday формат строки с датой рождения.
+     * @param regexAddress формат адреса проживания человека.
+     */
+    public void printPerson(String regexBirthday, String regexAddress) {
+        System.out.println("ФИО: " + this.getSurname() + " "
+                + this.getName() + " "
+                + this.getSecondName() + " ");
+        System.out.println("Дата рождения: " + this.getBirthday(regexBirthday));
+        System.out.println("Адрес:");
+        this.printShortAddress(regexAddress);
+    }
 
     /**
      * Получение полных прожитых месяцев.
@@ -41,7 +80,7 @@ public class Person {
     /**
      * Вывод адреса человека в коротком формате.
      *
-     * @param regex - регулярное выражение, поторое показывает,
+     * @param regex регулярное выражение, поторое показывает,
      *              какие радлелительные знаки использованиы в адресе.
      */
     public void printShortAddress(String regex) {
@@ -78,7 +117,7 @@ public class Person {
     /**
      * Получение даты рождения в виде строки определённого формата.
      *
-     * @param regex - регулярное выражения, которое задает формат строки.
+     * @param regex регулярное выражения, которое задает формат строки.
      * @return строку, которая соответствует дате рождения.
      */
     public String getBirthday(String regex) {
@@ -89,9 +128,9 @@ public class Person {
     /**
      * Устанавливает дату рождения данного человека.
      *
-     * @param strDate - строка, которая содержит дату рождения в заданном формате.
-     * @param regex   - регулярное выражения, которое задаёт формат строки с датой рождения.
-     * @return - true, если дата роджения была установлена; false, если установить дату рождения не получилось.
+     * @param strDate строка, которая содержит дату рождения в заданном формате.
+     * @param regex   регулярное выражения, которое задаёт формат строки с датой рождения.
+     * @return true, если дата роджения была установлена; false, если установить дату рождения не получилось.
      */
     public boolean setBirthday(String strDate, String regex) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(regex);
@@ -106,9 +145,9 @@ public class Person {
     /**
      * Устанавливает адрес данного человека.
      *
-     * @param strAddres - строка, содержащая адрес.
-     * @param regex     - регулярное выражение, которое задаёт формат строки с адресом.
-     * @return - true, если строка strAddres удовлетворяет регулярному выражения, иначе false.
+     * @param strAddres строка, содержащая адрес.
+     * @param regex     регулярное выражение, которое задаёт формат строки с адресом.
+     * @return true, если строка strAddres удовлетворяет регулярному выражения, иначе false.
      */
     public boolean setAddres(String strAddres, String regex) {
         if (Pattern.matches(regex, strAddres)) {
@@ -122,9 +161,9 @@ public class Person {
     /**
      * Устанавлявает ФИО данного человека.
      *
-     * @param name       - имя человека.
-     * @param surname    - фамилия человека
-     * @param secondName - отчество человека.
+     * @param name       имя человека.
+     * @param surname    фамилия человека
+     * @param secondName отчество человека.
      */
     public void setFIO(String name, String surname, String secondName) {
         this.name = name;
