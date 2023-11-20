@@ -1,6 +1,7 @@
 package ru.turing.courses.lesson3;
 import ru.turing.courses.lesson2.animals.Person;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -15,14 +16,15 @@ public class Solution {
         String address = "страна: Россия, город: Москва, улица: 3, дом: 12, квартира: 13"; //здесь все наши общажники из реестра
         String name, surname, secondName;
         Integer key;
-        int choiceAction = 0;
-        while (choiceAction != 7) {
+        Integer choiceAction = 0;
+        while (choiceAction != 8) {
             System.out.println("Выбирете команду:\n1-Добавить новую запись;" +
                     "\n2-Удалить запись по ID;" +
                     "\n3-Найти запись по ID;" +
                     "\n4-Найти все записи с именем;" +
                     "\n5-Вывести все записи в реестре;" +
-                    "\n6-Очистить реестр;");
+                    "\n6-Очистить реестр;"+
+                    "\n7-Удалить по значению.");
             choiceAction = in.nextInt();
             switch (choiceAction) {
                 case 1: { //добавление нового человека в реестр
@@ -85,6 +87,26 @@ public class Solution {
                 }
                 case 6: { //очистить весь реестр
                     registry.clear();
+                    break;
+                }
+                case 7:{ //удаление всех записей об человеке
+                    System.out.println("Введите ФИО:");
+                    surname = in.next();
+                    name = in.next();
+                    secondName = in.next();
+                    do {
+                        System.out.println("Введите дату рождения:");
+                        strBirthday = in.next();
+                    } while (Pattern.matches(regexBirthday, strBirthday));
+                    Person resident = new Person(name, surname, secondName, strBirthday, regexBirthday, address, regexAddress);
+                    List<Integer> founded = registry.removeByValue(resident);
+                   if(!founded.isEmpty()){
+                       System.out.println("Удалены записи с ID:");
+                       founded.stream().forEach(item -> System.out.println(item));
+                   }
+                   else {
+                       System.out.println("Таких записей нет!");
+                   }
                     break;
                 }
                 default:

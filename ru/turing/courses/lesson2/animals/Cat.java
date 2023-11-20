@@ -1,4 +1,5 @@
 package ru.turing.courses.lesson2.animals;
+
 import java.util.Objects;
 
 public class Cat extends Animal {
@@ -8,7 +9,7 @@ public class Cat extends Animal {
     /**
      * Конструктор класса Cat.
      *
-     * @param breed порода данного кота.
+     * @param breed        порода данного кота.
      * @param countOfLives кол-во оставшихся жизней данного кота.
      */
     public Cat(String breed, int countOfLives) {

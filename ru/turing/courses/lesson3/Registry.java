@@ -1,9 +1,6 @@
 package ru.turing.courses.lesson3;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import ru.turing.courses.lesson2.animals.Person;
 
@@ -81,5 +78,24 @@ public class Registry<Key extends Number, Value extends Person> {
         for (Map.Entry<Key, Value> entry : this.storage.entrySet()) {
             entry.getValue().printPerson(regexBirthday, regexAddress);
         }
+    }
+
+    /**
+     * Удаление записей по значению.
+     *
+     * @param value значение, записи скоторым нужно удалить.
+     * @return список ключей, удаленных записей.
+     */
+    public List<Key> removeByValue(Value value) {
+        Iterator<Map.Entry<Key, Value>> iterator = this.storage.entrySet().iterator();
+        List<Key> result = new ArrayList<>();
+        while(iterator.hasNext()) {
+            Map.Entry<Key, Value> entry = iterator.next();
+            if (entry.getValue().equals(value)) {
+                result.add(entry.getKey());
+                iterator.remove();
+            }
+        }
+        return result;
     }
 }

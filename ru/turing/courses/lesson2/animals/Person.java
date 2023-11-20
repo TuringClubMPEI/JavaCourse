@@ -24,13 +24,13 @@ public class Person {
     /**
      * Конструктор для объявления объекта с всеми заполненными полями.
      *
-     * @param name имя человека.
-     * @param surname фамилия человека.
-     * @param secondName отчество человека.
-     * @param strBirthday строка, содержащая дату рождения в заданном формате.
+     * @param name          имя человека.
+     * @param surname       фамилия человека.
+     * @param secondName    отчество человека.
+     * @param strBirthday   строка, содержащая дату рождения в заданном формате.
      * @param regexBirthday формат строки, содержащей дату рождения.
-     * @param address адрес проживания человека.
-     * @param regexAddress формат адреса проживания человека.
+     * @param address       адрес проживания человека.
+     * @param regexAddress  формат адреса проживания человека.
      */
     public Person(String name, String surname, String secondName, String strBirthday, String regexBirthday, String address, String regexAddress) {
         this.name = name;
@@ -44,7 +44,7 @@ public class Person {
      * Вывод полной информации о данном человеке.
      *
      * @param regexBirthday формат строки с датой рождения.
-     * @param regexAddress формат адреса проживания человека.
+     * @param regexAddress  формат адреса проживания человека.
      */
     public void printPerson(String regexBirthday, String regexAddress) {
         System.out.println("ФИО: " + this.getSurname() + " "
