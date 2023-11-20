@@ -24,6 +24,17 @@ public class Profile {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", date=" + date +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
