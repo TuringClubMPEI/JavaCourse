@@ -4,7 +4,7 @@ import java.time.LocalDate;
 public class User {
     Scanner in = new Scanner(System.in);
     private String fio;
-    private String birthOFdate; //дд.мм.гггг
+    private String dateOfBirth; //дд.мм.гггг
     private String address;
 
 
@@ -17,13 +17,13 @@ public class User {
         this.fio = in.nextLine();
     }
 
-    public String getBirthOFdate() {
-        return birthOFdate;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setBirthOFdate() {
+    public void setDateOfBirth() {
         System.out.println("Введите дату рождения в формате: (дд.мм.гггг)");
-        this.birthOFdate = in.nextLine();
+        this.dateOfBirth = in.nextLine();
     }
 
     public void getAddress() {
@@ -45,7 +45,7 @@ public class User {
         int numberNow = Integer.parseInt(currentDataArray[2]);
         int monthNow = Integer.parseInt(currentDataArray[1]);
         int yearNow = Integer.parseInt(currentDataArray[0]);
-        String[] Data = birthOFdate.split("\\.");
+        String[] Data = dateOfBirth.split("\\.");
         int number = Integer.parseInt(Data[0]);
         int month = Integer.parseInt(Data[1]);
         int year = Integer.parseInt(Data[2]);
@@ -72,7 +72,7 @@ public class User {
         int numberNow = Integer.parseInt(currentDataArray[2]);
         int monthNow = Integer.parseInt(currentDataArray[1]);
         int yearNow = Integer.parseInt(currentDataArray[0]);
-        String[] Data = birthOFdate.split("\\.");
+        String[] Data = dateOfBirth.split("\\.");
         int number = Integer.parseInt(Data[0]);
         int month = Integer.parseInt(Data[1]);
         int year = Integer.parseInt(Data[2]);

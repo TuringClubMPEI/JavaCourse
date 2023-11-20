@@ -5,14 +5,14 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        User Mike = new User();
-        Mike.setFio();
-        Mike.setBirthOFdate();
-        Mike.setAddress();
-        System.out.println(Mike.getFio());
-        System.out.println(Mike.getBirthOFdate());
-        Mike.getAddress();
-        System.out.println("Количество полных лет: " + Mike.FullYearCount());
-        System.out.println("Количество прожитых месяцев: " + Mike.FullMonthCount());
+        User mike = new User();
+        mike.setFio();
+        mike.setDateOfBirth();
+        mike.setAddress();
+        System.out.println(mike.getFio());
+        System.out.println(mike.getDateOfBirth());
+        mike.getAddress();
+        System.out.println("Количество полных лет: " + mike.FullYearCount());
+        System.out.println("Количество прожитых месяцев: " + mike.FullMonthCount());
     }
 }

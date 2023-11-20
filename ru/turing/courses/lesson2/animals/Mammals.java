@@ -21,6 +21,11 @@ public class Mammals extends Animal {
     public Mammals() {
     }
 
+    @Override
+    public void makeSound() {
+        System.out.println("шур-шур");
+    }
+
     public int getTemperature() {
         System.out.print("Температура: ");
         return temperature;
