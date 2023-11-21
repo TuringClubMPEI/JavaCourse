@@ -2,17 +2,25 @@ package ru.turing.courses.lesson2;
 import java.util.Scanner;
 import java.time.LocalDate;
 public class User {
-    Scanner in = new Scanner(System.in);
-    private String fio;
+    protected String fio;
     private String dateOfBirth; //дд.мм.гггг
     private String address;
 
+    public User() {
+    }
+
+    public User(String fio, String dateOfBirth, String address) {
+        this.fio = fio;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+    }
 
     public String getFio() {
         return fio;
     }
 
     public void setFio() {
+        Scanner in = new Scanner(System.in);
         System.out.print("Введите фио: ");
         this.fio = in.nextLine();
     }
@@ -22,6 +30,7 @@ public class User {
     }
 
     public void setDateOfBirth() {
+        Scanner in = new Scanner(System.in);
         System.out.println("Введите дату рождения в формате: (дд.мм.гггг)");
         this.dateOfBirth = in.nextLine();
     }
@@ -35,6 +44,7 @@ public class User {
     }
 
     public void setAddress() {
+        Scanner in = new Scanner(System.in);
         System.out.println("Введите адрес в формате: (страна,город,улица,дом,квартира)");
         this.address = in.nextLine();
     }
