@@ -1,6 +1,6 @@
 package ru.turing.courses.lesson2.animals;
 
-public class bird extends Animal {
+public class Bird extends Animal {
     private boolean migration;
     //true - letit na south,false-no
     private String singing;
