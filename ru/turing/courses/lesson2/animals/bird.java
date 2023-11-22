@@ -11,6 +11,7 @@ public class Bird extends Animal {
         this.singing = singing;
     }
 
+    @Override
     public void makeSound() {
         System.out.println(this.singing);
     }
