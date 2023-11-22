@@ -2,7 +2,7 @@ package ru.turing.courses.lesson2.animals;
 
 public abstract class Animal {
 
-    protected String vid;
+    protected String type;
     protected boolean eatingmeat;
     // true - eating other animals , false - not
     protected int age;
