@@ -15,6 +15,8 @@ public class Main {
         user1.addressMy();
         Animal dogPetr = new Dog("petr", 4, "w", 5, true, "labrador");
         Dog dogFedor = new Dog("fedor", 4, "m", 12, false, "sheepdog");
+        Lion lionBoniface = new Lion("Boniface",4,"m",45,true);
+        lionBoniface.LionMakeTrick(lionBoniface.isWorkInCircus());
         dogFedor.run();
         dogPetr.run();
         dogFedor.stickOf(dogFedor.isStick());
