@@ -6,4 +6,8 @@ public class Rose extends Flower {
         super(flowerId, colorOfFlower, flowerPrice);
     }
 
+    @Override
+    public String toString() {
+        return "Rose{}";
+    }
 }

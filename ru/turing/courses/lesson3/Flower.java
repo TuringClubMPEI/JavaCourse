@@ -49,4 +49,13 @@ public abstract class Flower {
     public int hashCode() {
         return Objects.hash(flowerId, colorOfFlower, flowerPrice);
     }
+
+    @Override
+    public String toString() {
+        return "Flower{" +
+                "flowerId=" + flowerId +
+                ", colorOfFlower='" + colorOfFlower + '\'' +
+                ", flowerPrice=" + flowerPrice +
+                '}';
+    }
 }
