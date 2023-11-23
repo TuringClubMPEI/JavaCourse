@@ -28,7 +28,7 @@ public class Lion extends Animal {
         this.workInCircus = workInCircus;
     }
 
-    public void LionMakeTrick(boolean workInCircus) {
+    public void lionMakeTrick(boolean workInCircus) {
         if (workInCircus) {
             System.out.println("Лев открыл рот и ждет пока туда засунут голову");
         }
