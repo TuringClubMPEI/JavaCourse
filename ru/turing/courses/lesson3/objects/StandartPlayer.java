@@ -8,4 +8,14 @@ public class StandartPlayer extends User {
     public StandartPlayer(String id, String nickname, int balance) {
         super(id, nickname, balance);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

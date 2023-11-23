@@ -12,4 +12,14 @@ public class Developer extends User {
     public void magicCommand() {
         this.addBalance(9999999);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

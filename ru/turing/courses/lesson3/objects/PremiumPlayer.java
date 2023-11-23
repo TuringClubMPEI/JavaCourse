@@ -13,4 +13,14 @@ public class PremiumPlayer extends User {
     public void handleDailyReward() {
         addBalance(10);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

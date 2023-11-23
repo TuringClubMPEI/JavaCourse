@@ -11,13 +11,13 @@ public class Main {
         Registry<Developer> developerRegistry = new Registry<Developer>();
 
 
-        StandartPlayer player_1 = new StandartPlayer("p_001", "Nagibator2010");
-        PremiumPlayer player_2 = new PremiumPlayer("p_002", "Nagibator2014");
+        StandartPlayer playerOne = new StandartPlayer("p_001", "Nagibator2010");
+        PremiumPlayer playerTwo = new PremiumPlayer("p_002", "Nagibator2014");
         Developer dev = new Developer("d_200", "Dead");
         dev.magicCommand();
 
-        standartPlayerRegistry.add(player_1.getId(), player_1);
-        premiumPlayerRegistry.add(player_2.getId(), player_2);
+        standartPlayerRegistry.add(playerOne.getId(), playerOne);
+        premiumPlayerRegistry.add(playerTwo.getId(), playerTwo);
         developerRegistry.add(dev.getId(), dev);
 
         System.out.printf("Total developer balance is %s%n", String.valueOf(developerRegistry.getTotalUserBalance()));
