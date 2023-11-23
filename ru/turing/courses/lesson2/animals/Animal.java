@@ -2,8 +2,8 @@ package ru.turing.courses.lesson2.animals;
 
 public abstract class Animal {
 
-    protected String vid;
-    protected boolean eatingmeat;
+    protected String type;
+    protected boolean eatingMeat;
     // true - eating other animals , false - not
     protected int age;
     protected boolean wild;
@@ -11,9 +11,9 @@ public abstract class Animal {
     // true - wild animal, false - ok to live with humans
     public abstract void makeSound();
 
-    public Animal(String vid, boolean eatingmeat, int age, boolean wild) {
-        this.vid = vid;
-        this.eatingmeat = eatingmeat;
+    public Animal(String type, boolean eatingmeat, int age, boolean wild) {
+        this.type = type;
+        this.eatingMeat = eatingmeat;
         this.age = age;
         this.wild = wild;
 
@@ -21,7 +21,7 @@ public abstract class Animal {
 
     // method defines is animal dangerous for human;
     public boolean isDangerous() {
-        return eatingmeat & wild;
+        return eatingMeat & wild;
     }
 
     public void setAge(int age) {
@@ -41,19 +41,19 @@ public abstract class Animal {
     }
 
     public void setVid(String vid) {
-        this.vid = vid;
+        this.type = vid;
     }
 
     public void setEatingmeat(boolean eatingmeat) {
-        this.eatingmeat = eatingmeat;
+        this.eatingMeat = eatingmeat;
     }
 
     public String getVid() {
-        return vid;
+        return type;
     }
 
     public boolean isEatingmeat() {
-        return eatingmeat;
+        return eatingMeat;
     }
 
 }
