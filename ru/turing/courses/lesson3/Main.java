@@ -13,7 +13,7 @@ public class Main {
         flowerRegistry.add(yellowTulip.getFlowerId(), yellowTulip);
         flowerRegistry.add(whiteTulip.getFlowerId(), whiteTulip);
         List<Integer> keys = flowerRegistry.removeByValue(redRose);
-        List<Flower> values = flowerRegistry.getByName("yellow");
+        List<Flower> values = flowerRegistry.getByFlowerColor("yellow");
         flowerRegistry.printColorOfFlowers();
         System.out.println(values);
         System.out.println(keys);

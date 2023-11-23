@@ -4,7 +4,7 @@ public class Tulip extends Flower {
 
     @Override
     public String toString() {
-        return "Tulip{}";
+        return "Tulip";
     }
 
     public Tulip(int flowerId, String colorOfFlower, int flowerPrice) {

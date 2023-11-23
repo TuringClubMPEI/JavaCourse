@@ -26,12 +26,9 @@ public class Registry<T extends Flower> {
         List<Integer> keys = new ArrayList<>();
         if (storage.containsValue(value)) {
             for (Map.Entry<Integer, T> shelf : storage.entrySet()) {
-                if (value == shelf.getValue()) {
+                if (value.equals(shelf.getValue())) {
                     keys.add(shelf.getKey());
                 }
-            }
-            for (int key : keys) {
-                storage.remove(key);
             }
             storage.entrySet().removeIf(shelf -> shelf.getValue().equals(value));
             return keys;
@@ -39,7 +36,7 @@ public class Registry<T extends Flower> {
         return Collections.emptyList();
     }
 
-    public List<T> getByName(String colorOfFlower) {
+    public List<T> getByFlowerColor(String colorOfFlower) {
         return storage.values().stream()
                 .filter(value -> value != null && Objects.equals(value.getColorOfFlower(), colorOfFlower))
                 .collect(Collectors.toList());

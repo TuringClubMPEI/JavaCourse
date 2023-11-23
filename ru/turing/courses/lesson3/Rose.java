@@ -8,6 +8,6 @@ public class Rose extends Flower {
 
     @Override
     public String toString() {
-        return "Rose{}";
+        return "Rose";
     }
 }
