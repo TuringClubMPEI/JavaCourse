@@ -1,25 +1,50 @@
 package ru.turing.courses.lesson3;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import ru.turing.courses.lesson2.Person;
 
 public class Test {
 
     public static void main(String[] args) {
-        Registry<Integer> instance = new Registry();
-        instance.add(1, 3);
-        instance.add(2, 2);
-        instance.add(3, 1);
-        instance.add(4,3);
-        ArrayList<Integer> keysList=instance.getByName(3);
-        System.out.println("ключи, по которым хранится значение 3:");
-        for(Integer key:keysList)
+        Scanner in = new Scanner(System.in);
+        Registry<Person> instance = new Registry();
+        Person entityFirst = new Person();
+        Person entity = new Person();
+        String DataRegex = "dd.MM.yyyy";//шаблон даты
+        System.out.print("Введите имя ");
+        String name = in.next();
+        System.out.print("Введите фамилию ");
+        String surname = in.next();
+        System.out.print("Введите отчество ");
+        String secondName = in.next();
+        entityFirst.setFIO(surname, name, secondName);
+        instance.add(1, entityFirst);
+        System.out.print("Введите имя ");
+        name = in.next();
+        System.out.print("Введите фамилию ");
+        surname = in.next();
+        System.out.print("Введите отчество ");
+        secondName = in.next();
+        entity.setFIO(surname, name, secondName);
+        instance.add(2, entity);
+        instance.add(3, entity);
+        System.out.println(instance.getSize());
+        System.out.println("поиск по третьему имени:");
+        List<Person> names = instance.getByName(entity);
+        System.out.println(names.size() + "шт " + entity.getName()+ " " + entity.getSecondName() + " "+ entity.getSurname());
+        System.out.println("поиск по первому ключу:");
+        entity=instance.getByKey(1);
+        System.out.println(entity.getName() + " "+ entity.getSecondName() + " "+ entity.getSurname());
+        System.out.print("Удаление по второму значению.");
+        entity=instance.getByKey(2);
+        List<Integer> keys = instance.removeByValue(entity);
+        System.out.println("Удаленные ключи:");
+        for(Integer key:keys)
             System.out.print(key+" ");
-        System.out.print("\n");
-        System.out.println("размер реестра "+instance.getSize());
-        System.out.println("по ключу 1 удаляется значение " + instance.removeByKey(1));
-        System.out.println("поиск элемента по ключу 1 - "+instance.getByKey(1));
-        System.out.println("размер после удаления одного элемента - "+instance.getSize());
-        instance.clear();
-        System.out.println("размер после очистки - "+instance.getSize());
+        System.out.println();
+        System.out.println("Размер реестра равен "+instance.getSize());
     }
 }

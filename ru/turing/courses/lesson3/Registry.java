@@ -1,10 +1,10 @@
 package ru.turing.courses.lesson3;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class Registry<T extends Number> {
+import ru.turing.courses.lesson2.Person;
+
+public class Registry<T extends Person> {
     private final Map<Integer, T> storage = new HashMap<>();
 
 
@@ -19,16 +19,17 @@ public class Registry<T extends Number> {
         return value;
     }
 
-
-    public ArrayList removeByValue(T value) {
-        ArrayList<Integer> Keys = new ArrayList<Integer>();
-        for (Map.Entry<Integer, T> entry : this.storage.entrySet()) {
-            if (value == entry.getValue()) {
-                Keys.add(entry.getKey());
-                this.storage.remove(entry.getKey());
+    public List<Integer> removeByValue(T value) {
+        Iterator<Map.Entry<Integer, T>> iterator = this.storage.entrySet().iterator();
+        List<Integer> keys = new ArrayList<>();
+        while(iterator.hasNext()) {
+            Map.Entry<Integer, T> entry = iterator.next();
+            if (entry.getValue().equals(value)) {
+                keys.add(entry.getKey());
+                iterator.remove();
             }
         }
-        return Keys;
+        return keys;
     }
 
     public void clear() {
@@ -41,16 +42,16 @@ public class Registry<T extends Number> {
         return value;
     }
 
-    public ArrayList getByName(T value) {
-        ArrayList<Integer> Keys = new ArrayList<Integer>();
+    public List getByName(T value) {
+        List<Integer> keys = new ArrayList<Integer>();
         for (Map.Entry<Integer, T> entry : this.storage.entrySet()) {
-            if (value == entry.getValue())
-                Keys.add(entry.getKey());
+            if (value.equals(entry.getValue()))
+                keys.add(entry.getKey());
         }
-        return Keys;
+        return keys;
     }
 
-    public Integer getSize() {
+    public int getSize() {
         return this.storage.size();
     }
 }
