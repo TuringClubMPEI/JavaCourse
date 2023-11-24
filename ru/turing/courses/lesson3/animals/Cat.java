@@ -1,4 +1,6 @@
-package ru.turing.courses.lesson2.animals;
+package ru.turing.courses.lesson3.animals;
+
+import ru.turing.courses.lesson2.animals.Animal;
 
 public class Cat extends Animal {
     private boolean wannaPlay; // 1 - want to ... 0 - don't want to
@@ -30,7 +32,10 @@ public class Cat extends Animal {
     }
 
 
-    public Cat(String barsik, int i) {}
+    public Cat(String name, int age) {
+        super(age);
+        this.name = name;
+    }
     public Cat(String type, int age, String color, boolean wannaPlay, int miceCount, double hapiness, String name) {
         super(type, age, color);
         this.wannaPlay = wannaPlay;

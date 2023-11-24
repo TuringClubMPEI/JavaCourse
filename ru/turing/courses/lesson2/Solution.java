@@ -13,7 +13,7 @@ public class Solution {
 
 
         // Cat
-        Cat cat1 = new Cat();
+        Cat cat1 = new Cat("Barsik", 3);
         cat1.sound();
         cat1.setName("Barsik");
         System.out.println(cat1.getName());

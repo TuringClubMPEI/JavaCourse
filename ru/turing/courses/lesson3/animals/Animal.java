@@ -1,4 +1,4 @@
-package ru.turing.courses.lesson2.animals;
+package ru.turing.courses.lesson3.animals;
 
 public abstract class Animal {
     protected String type;
@@ -9,10 +9,6 @@ public abstract class Animal {
 
     public Animal() {}
     public Animal(String type, int year, String color) {this.type = type;this.age = year;this.color = color;}
-
-    public Animal(int age) {
-        this.age = age;
-    }
 
     public String getType() {
         return type;
