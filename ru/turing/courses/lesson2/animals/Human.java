@@ -63,15 +63,15 @@ public class Human {
 
     public void livedYearMonths(String date) {
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        Date date1 = null;
+        Date birthDate = null;
         Date date2 = new Date();
         try {
-            date1 = format.parse(date);
+            birthDate = format.parse(date);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        long diff = date2.getTime() - date1.getTime();
+        long diff = date2.getTime() - birthDate.getTime();
         long yearTime = 365L * 24L * 60L * 60L * 1000L;
         int livedYears = (int) (diff / (yearTime));
         int livedMonths = (int) (diff / (30L * 24L * 60L * 60L * 1000L));

@@ -5,8 +5,8 @@ public class Bird extends Animal {
     //true - letit na south,false-no
     private String singing;
 
-    public Bird(String vid, boolean eatingmeat, int age, boolean wild, boolean migration, String singing) {
-        super(vid, eatingmeat, age, wild);
+    public Bird(String type, boolean eatingMeat, int age, boolean wild, boolean migration, String singing) {
+        super(type, eatingMeat, age, wild);
         this.migration = migration;
         this.singing = singing;
     }

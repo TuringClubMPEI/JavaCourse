@@ -11,9 +11,9 @@ public abstract class Animal {
     // true - wild animal, false - ok to live with humans
     public abstract void makeSound();
 
-    public Animal(String type, boolean eatingmeat, int age, boolean wild) {
+    public Animal(String type, boolean eatingMeat, int age, boolean wild) {
         this.type = type;
-        this.eatingMeat = eatingmeat;
+        this.eatingMeat = eatingMeat;
         this.age = age;
         this.wild = wild;
 
@@ -44,15 +44,15 @@ public abstract class Animal {
         this.type = vid;
     }
 
-    public void setEatingmeat(boolean eatingmeat) {
-        this.eatingMeat = eatingmeat;
+    public void setEatingMeat(boolean eatingMeat) {
+        this.eatingMeat = eatingMeat;
     }
 
     public String getVid() {
         return type;
     }
 
-    public boolean isEatingmeat() {
+    public boolean eatingMeat() {
         return eatingMeat;
     }
 
