@@ -6,7 +6,6 @@ public class Main {
         //todo реализовать с учетом выбросов эксепшнов следующие кейсы
 
         try {
-            // позитивные сценарии
             Gender maleGender = Gender.ofName("MALE");
             Gender femaleGender = Gender.ofName("FEMALE");
 
@@ -21,9 +20,18 @@ public class Main {
         }
 
         try {
-            // негативные сценарии
             Gender nullGender = Gender.ofName(null);
+
+        } catch (NullPointerException | GenderNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
             Gender falseNameGender = Gender.ofName("Attack helicopter");
+
+        } catch (NullPointerException | GenderNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
             Gender falseCharReprName = Gender.ofShortNameRepr('\n');
 
         } catch (NullPointerException | GenderNotFoundException e) {
