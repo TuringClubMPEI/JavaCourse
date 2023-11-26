@@ -16,10 +16,8 @@ public class Main {
             Gender maleGenderByChar = Gender.ofShortNameRepr('M');
             Gender femaleGenderByChar = Gender.ofShortNameRepr('F');
 
-        } catch (NullPointerException e) {
-            System.out.println("Null input");
-        } catch (GenderNotFoundException e) {
-            System.out.printf("Test 1: %s%n", e.getMessage());
+        } catch (NullPointerException | GenderNotFoundException e) {
+            System.out.println(e.getMessage());
         }
 
         try {
@@ -28,10 +26,8 @@ public class Main {
             Gender falseNameGender = Gender.ofName("Attack helicopter");
             Gender falseCharReprName = Gender.ofShortNameRepr('\n');
 
-        } catch (NullPointerException e) {
-            System.out.println("Null input");
-        } catch (GenderNotFoundException e) {
-            System.out.printf("Test 2: %s%n", e.getMessage());
+        } catch (NullPointerException | GenderNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
