@@ -10,11 +10,17 @@ public enum Gender {
     FEMALE("Female", 'F', "Женский пол");
 
 
-    /** Техническое название */
+    /**
+     * Техническое название
+     */
     private final String name;
-    /** Символьное представление */
+    /**
+     * Символьное представление
+     */
     private final char shortNameRepr;
-    /** Описание */
+    /**
+     * Описание
+     */
     private final String description;
 
     Gender(String name, char shortNameRepr, String description) {
@@ -23,14 +29,28 @@ public enum Gender {
         this.description = description;
     }
 
-    public static Gender ofName(String name) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofName(String name) throws GenderNotFoundException, NullPointerException {
+        if (name == null){
+            throw new NullPointerException();
+        }
+        for (Gender gender : Gender.values()) {
+            if (gender.getName().equalsIgnoreCase(name)) {
+                return gender;
+            }
+        }
+        throw new GenderNotFoundException(String.format("gender with name %s not found", name));
     }
 
-    public static Gender ofShortNameRepr(Character shortNameRepr) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderNotFoundException, NullPointerException {
+        if (shortNameRepr == null){
+            throw new NullPointerException();
+        }
+        for (Gender gender : Gender.values()) {
+            if (gender.getShortNameRepr() == shortNameRepr) {
+                return gender;
+            }
+        }
+        throw new GenderNotFoundException(String.format("gender with short name %s not found", shortNameRepr));
     }
 
     public String getName() {
