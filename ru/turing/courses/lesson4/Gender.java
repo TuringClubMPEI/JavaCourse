@@ -42,7 +42,7 @@ public enum Gender {
     }
 
     public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderNotFoundException, NullPointerException {
-        if (shortNameRepr == null){
+        if (shortNameRepr == null || shortNameRepr.toString().isBlank()){
             throw new NullPointerException();
         }
         for (Gender gender : Gender.values()) {
