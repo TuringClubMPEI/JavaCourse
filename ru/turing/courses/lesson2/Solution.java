@@ -12,7 +12,7 @@ public class Solution {
         System.out.println(mike.getFio());
         System.out.println(mike.getDateOfBirth());
         mike.getAddress();
-        System.out.println("Количество полных лет: " + mike.FullYearCount());
-        System.out.println("Количество прожитых месяцев: " + mike.FullMonthCount());
+        System.out.println("Количество полных лет: " + mike.fullYearCount());
+        System.out.println("Количество прожитых месяцев: " + mike.fullMonthCount());
     }
 }

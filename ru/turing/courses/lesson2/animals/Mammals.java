@@ -5,14 +5,14 @@ public class Mammals extends Animal {
     private String habitat; // наземной, воздушной, почвенной и водной
     private String diet; //травоядное, хищник, насекомоядное
 
-    public Mammals(int temperature, String habitat, String size, String diet) {
+    public Mammals(int temperature, String habitat,  String diet) {
         this.temperature = temperature;
         this.habitat = habitat;
         this.diet = diet;
     }
 
-    public Mammals(int weight, String colour, int lifespan, int number_of_limbs, int temperature, String habitat, String diet) {
-        super(weight, colour, lifespan, number_of_limbs);
+    public Mammals(int weight, String colour, int lifespan, int numberOfLimbs, int temperature, String habitat, String diet) {
+        super(weight, colour, lifespan, numberOfLimbs);
         this.temperature = temperature;
         this.habitat = habitat;
         this.diet = diet;

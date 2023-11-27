@@ -49,16 +49,16 @@ public class User {
         this.address = in.nextLine();
     }
 
-    public int FullYearCount(){
+    public int fullYearCount(){
         LocalDate currentDate = LocalDate.now();
         String[] currentDataArray = currentDate.toString().split("-");
         int numberNow = Integer.parseInt(currentDataArray[2]);
         int monthNow = Integer.parseInt(currentDataArray[1]);
         int yearNow = Integer.parseInt(currentDataArray[0]);
-        String[] Data = dateOfBirth.split("\\.");
-        int number = Integer.parseInt(Data[0]);
-        int month = Integer.parseInt(Data[1]);
-        int year = Integer.parseInt(Data[2]);
+        String[] data = dateOfBirth.split("\\.");
+        int number = Integer.parseInt(data[0]);
+        int month = Integer.parseInt(data[1]);
+        int year = Integer.parseInt(data[2]);
         int fullyearcount = yearNow - year;
         if (monthNow > month){
             return fullyearcount;
@@ -76,16 +76,16 @@ public class User {
         }
     }
 
-    public int FullMonthCount(){
+    public int fullMonthCount(){
         LocalDate currentDate = LocalDate.now();
         String[] currentDataArray = currentDate.toString().split("-");
         int numberNow = Integer.parseInt(currentDataArray[2]);
         int monthNow = Integer.parseInt(currentDataArray[1]);
         int yearNow = Integer.parseInt(currentDataArray[0]);
-        String[] Data = dateOfBirth.split("\\.");
-        int number = Integer.parseInt(Data[0]);
-        int month = Integer.parseInt(Data[1]);
-        int year = Integer.parseInt(Data[2]);
+        String[] data = dateOfBirth.split("\\.");
+        int number = Integer.parseInt(data[0]);
+        int month = Integer.parseInt(data[1]);
+        int year = Integer.parseInt(data[2]);
         return (yearNow - year) * 12 + monthNow - 1;
     }
 }
