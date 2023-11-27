@@ -2,7 +2,7 @@ package ru.turing.courses.lesson2.animals;
 import java.util.Scanner;
 public class Mammals extends Animal {
     private int temperature;
-    private String habitat; // наземной, воздушной, почвенной и водной
+    private String habitat; //наземной, воздушной, почвенной и водной
     private String diet; //травоядное, хищник, насекомоядное
 
     public Mammals(int temperature, String habitat,  String diet) {
