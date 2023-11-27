@@ -42,13 +42,13 @@ public class Registry<T extends Person> {
         return value;
     }
 
-    public List getByName(T value) {
-        List<Integer> keys = new ArrayList<Integer>();
+    public List getByName(String value) {
+        List<T> values = new ArrayList<T>();
         for (Map.Entry<Integer, T> entry : this.storage.entrySet()) {
-            if (value.equals(entry.getValue()))
-                keys.add(entry.getKey());
+            if (value.equals(entry.getValue().getName()))
+                values.add(entry.getValue());
         }
-        return keys;
+        return values;
     }
 
     public int getSize() {

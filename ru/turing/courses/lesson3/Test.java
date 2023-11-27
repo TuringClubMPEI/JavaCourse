@@ -32,9 +32,11 @@ public class Test {
         instance.add(2, entity);
         instance.add(3, entity);
         System.out.println(instance.getSize());
-        System.out.println("поиск по третьему имени:");
-        List<Person> names = instance.getByName(entity);
-        System.out.println(names.size() + "шт " + entity.getName()+ " " + entity.getSecondName() + " "+ entity.getSurname());
+        System.out.println("поиск по имени Ярослав:");
+        List<Person> names = instance.getByName("Ярослав");
+        for(Person value:names) {
+            System.out.println(value.getName() + " " + value.getSecondName() + " " + value.getSurname());
+        }
         System.out.println("поиск по первому ключу:");
         entity=instance.getByKey(1);
         System.out.println(entity.getName() + " "+ entity.getSecondName() + " "+ entity.getSurname());
