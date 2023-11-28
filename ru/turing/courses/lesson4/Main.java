@@ -4,8 +4,6 @@ package ru.turing.courses.lesson4;
 public class Main {
     public static void main(String[] args) {
 
-        //todo реализовать с учетом выбросов эксепшнов следующие кейсы
-
         // позитивные сценарии
         GenderEnum maleGender = GenderEnum.ofName("MALE");
         System.out.println(maleGender);
@@ -27,8 +25,7 @@ public class Main {
             GenderEnum nullGender = GenderEnum.ofName(null);
             GenderEnum falseNameGender = GenderEnum.ofName("Attack helicopter");
             GenderEnum falseCharReprName = GenderEnum.ofShortNameRepr('\n');
-        }
-        catch (GenderNotFoundException e){
+        } catch (GenderNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }

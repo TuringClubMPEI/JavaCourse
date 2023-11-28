@@ -12,11 +12,17 @@ public enum GenderEnum {
     FEMALE("Female", 'F', "Женский пол");
 
 
-    /** Техническое название */
+    /**
+     * Техническое название
+     */
     private final String name;
-    /** Символьное представление */
+    /**
+     * Символьное представление
+     */
     private final char shortNameRepr;
-    /** Описание */
+    /**
+     * Описание
+     */
     private final String description;
 
     GenderEnum(String name, char shortNameRepr, String description) {
@@ -26,11 +32,11 @@ public enum GenderEnum {
     }
 
     public static GenderEnum ofName(String name) throws GenderNotFoundException {
-        if(name == null){
+        if (name == null) {
             throw new GenderNotFoundException("Имя не может быть null");
         }
-        for(GenderEnum gender : GenderEnum.values()){
-            if(gender.getName().equalsIgnoreCase(name)){
+        for (GenderEnum gender : GenderEnum.values()) {
+            if (gender.getName().equalsIgnoreCase(name)) {
                 return gender;
             }
         }
@@ -39,11 +45,11 @@ public enum GenderEnum {
     }
 
     public static GenderEnum ofShortNameRepr(Character shortNameRepr) throws GenderNotFoundException {
-        if(shortNameRepr == null){
+        if (shortNameRepr == null) {
             throw new GenderNotFoundException("Короткое имя не должно быть null");
         }
-        for(GenderEnum gender : GenderEnum.values()){
-            if(Objects.equals(gender.getShortNameRepr(),shortNameRepr)){
+        for (GenderEnum gender : GenderEnum.values()) {
+            if (shortNameRepr.equals(gender.getShortNameRepr())) {
                 return gender;
             }
         }
