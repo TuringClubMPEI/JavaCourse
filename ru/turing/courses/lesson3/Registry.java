@@ -1,13 +1,57 @@
 package ru.turing.courses.lesson3;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-//todo Задание со звездочкой - сделать Registry через generics.
-// Для этого почитать, что такое дженерики и о том, как заставить класс с ними работать
-// Сделать абстрактный доменный класс (похожий на Animal из прошлого урока для этого)
-public class Registry {
-    private final Map<Object, Object> storage = new HashMap<>(); //todo поменять Object, Object на то, что будет у вашего класса в примере
+import ru.turing.courses.lesson2.Person;
 
-    //todo написать и реализовать методы
+public class Registry<T extends Person> {
+    private final Map<Integer, T> storage = new HashMap<>();
+
+
+    public void add(Integer key, T value) {
+        this.storage.put(key, value);
+    }
+
+
+    public T removeByKey(Integer key) {
+        T value = this.storage.get(key);
+        this.storage.remove(key);
+        return value;
+    }
+
+    public List<Integer> removeByValue(T value) {
+        Iterator<Map.Entry<Integer, T>> iterator = this.storage.entrySet().iterator();
+        List<Integer> keys = new ArrayList<>();
+        while(iterator.hasNext()) {
+            Map.Entry<Integer, T> entry = iterator.next();
+            if (entry.getValue().equals(value)) {
+                keys.add(entry.getKey());
+                iterator.remove();
+            }
+        }
+        return keys;
+    }
+
+    public void clear() {
+        this.storage.clear();
+    }
+
+
+    public T getByKey(Integer key) {
+        T value = this.storage.get(key);
+        return value;
+    }
+
+    public List getByName(String value) {
+        List<T> values = new ArrayList<T>();
+        for (Map.Entry<Integer, T> entry : this.storage.entrySet()) {
+            if (value.equals(entry.getValue().getName()))
+                values.add(entry.getValue());
+        }
+        return values;
+    }
+
+    public int getSize() {
+        return this.storage.size();
+    }
 }

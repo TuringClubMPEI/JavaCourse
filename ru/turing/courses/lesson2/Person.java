@@ -4,6 +4,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 
@@ -60,6 +61,19 @@ public class Person {
         return otl.getYears();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) && Objects.equals(surname, person.surname) && Objects.equals(secondName, person.secondName) && Objects.equals(address, person.address) && Objects.equals(data, person.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, secondName, address, data);
+    }
+
     //^страна: .+, город: .+, улица: .+, дом: \\d+, квартира: \\d+$
     public String splitAddress() {//вывод сокращенного адреса
         String s = "\n";//выводимая строка
@@ -106,5 +120,6 @@ public class Person {
         }
         s += '\n';
         return s;
+
     }
 }
