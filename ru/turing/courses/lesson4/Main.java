@@ -5,19 +5,37 @@ public class Main {
 
         //todo реализовать с учетом выбросов эксепшнов следующие кейсы
 
-        // позитивные сценарии
-        Gender maleGender = Gender.ofName("MALE");
-        Gender femaleGender = Gender.ofName("FEMALE");
+        try {
+            Gender maleGender = Gender.ofName("MALE");
+            Gender femaleGender = Gender.ofName("FEMALE");
 
-        Gender maleLowerCaseCharacter = Gender.ofName("male");
-        Gender femaleLowerCaseCharacter = Gender.ofName("female");
+            Gender maleLowerCaseCharacter = Gender.ofName("male");
+            Gender femaleLowerCaseCharacter = Gender.ofName("female");
 
-        Gender maleGenderByChar = Gender.ofShortNameRepr('M');
-        Gender femaleGenderByChar = Gender.ofShortNameRepr('F');
+            Gender maleGenderByChar = Gender.ofShortNameRepr('M');
+            Gender femaleGenderByChar = Gender.ofShortNameRepr('F');
 
-        // негативные сценарии
-        Gender nullGender = Gender.ofName(null);
-        Gender falseNameGender = Gender.ofName("Attack helicopter");
-        Gender falseCharReprName = Gender.ofShortNameRepr('\n');
+        } catch (NullPointerException | GenderNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            Gender nullGender = Gender.ofName(null);
+
+        } catch (NullPointerException | GenderNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            Gender falseNameGender = Gender.ofName("Attack helicopter");
+
+        } catch (NullPointerException | GenderNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            Gender falseCharReprName = Gender.ofShortNameRepr('\n');
+
+        } catch (NullPointerException | GenderNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
