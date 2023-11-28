@@ -1,23 +1,35 @@
 package ru.turing.courses.lesson4;
 
+
 public class Main {
     public static void main(String[] args) {
 
         //todo реализовать с учетом выбросов эксепшнов следующие кейсы
 
         // позитивные сценарии
-        Gender maleGender = Gender.ofName("MALE");
-        Gender femaleGender = Gender.ofName("FEMALE");
+        GenderEnum maleGender = GenderEnum.ofName("MALE");
+        System.out.println(maleGender);
+        GenderEnum femaleGender = GenderEnum.ofName("FEMALE");
+        System.out.println(femaleGender);
 
-        Gender maleLowerCaseCharacter = Gender.ofName("male");
-        Gender femaleLowerCaseCharacter = Gender.ofName("female");
+        GenderEnum maleLowerCaseCharacter = GenderEnum.ofName("male");
+        System.out.println(maleLowerCaseCharacter);
+        GenderEnum femaleLowerCaseCharacter = GenderEnum.ofName("female");
+        System.out.println(femaleLowerCaseCharacter);
 
-        Gender maleGenderByChar = Gender.ofShortNameRepr('M');
-        Gender femaleGenderByChar = Gender.ofShortNameRepr('F');
+        GenderEnum maleGenderByChar = GenderEnum.ofShortNameRepr('M');
+        System.out.println(maleGenderByChar);
+        GenderEnum femaleGenderByChar = GenderEnum.ofShortNameRepr('F');
+        System.out.println(femaleGenderByChar);
 
         // негативные сценарии
-        Gender nullGender = Gender.ofName(null);
-        Gender falseNameGender = Gender.ofName("Attack helicopter");
-        Gender falseCharReprName = Gender.ofShortNameRepr('\n');
+        try {
+            GenderEnum nullGender = GenderEnum.ofName(null);
+            GenderEnum falseNameGender = GenderEnum.ofName("Attack helicopter");
+            GenderEnum falseCharReprName = GenderEnum.ofShortNameRepr('\n');
+        }
+        catch (GenderNotFoundException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
