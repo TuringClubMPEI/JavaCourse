@@ -1,4 +1,4 @@
-package ru.turing.courses.lesson3.animals;
+package ru.turing.courses.lesson3.animal;
 
 import ru.turing.courses.lesson2.animals.Animal;
 

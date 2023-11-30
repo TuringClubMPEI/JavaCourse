@@ -1,4 +1,4 @@
-package ru.turing.courses.lesson3.animals;
+package ru.turing.courses.lesson3.animal;
 
 public abstract class Animal {
     protected String type;
