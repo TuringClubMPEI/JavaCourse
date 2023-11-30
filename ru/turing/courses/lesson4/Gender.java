@@ -33,8 +33,8 @@ public enum Gender {
         if (name == null) {
             throw new NullPointerException("Отправлен пустой класс...");
         }
-        if (name.equals("MALE") || name.equals("FEMALE") || name.equals("male") || name.equals("female")) {
-            if (name.equals("MALE") || name.equals("male")) {
+        if (name.equalsIgnoreCase(MALE.name) || name.equalsIgnoreCase(FEMALE.name)) {
+            if (name.equalsIgnoreCase(MALE.name)) {
                 return MALE;
             } else {
                 return FEMALE;
@@ -48,8 +48,8 @@ public enum Gender {
         if (shortNameRepr == null) {
             throw new NullPointerException("Отправлен пустой класс...");
         }
-        if (shortNameRepr.equals('M') || shortNameRepr.equals('F') || shortNameRepr.equals('m') || shortNameRepr.equals('f')) {
-            if (shortNameRepr.equals('M') || shortNameRepr.equals('m')) {
+        if (shortNameRepr.toString().equalsIgnoreCase(Character.toString(MALE.shortNameRepr)) || shortNameRepr.toString().equalsIgnoreCase(Character.toString(FEMALE.shortNameRepr))) {
+            if (shortNameRepr.toString().equalsIgnoreCase(Character.toString(MALE.shortNameRepr))) {
                 return MALE;
             } else {
                 return FEMALE;

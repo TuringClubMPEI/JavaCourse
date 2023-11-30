@@ -10,6 +10,9 @@ public class Main {
             Gender maleLowerCaseCharacter = Gender.ofName("male");
             Gender femaleLowerCaseCharacter = Gender.ofName("female");
 
+            Gender maleCaseCharacter = Gender.ofName("mALe");
+            Gender femaleCaseCharacter = Gender.ofName("FeMalE");
+
             Gender maleGenderByChar = Gender.ofShortNameRepr('M');
             Gender femaleGenderByChar = Gender.ofShortNameRepr('F');
 
