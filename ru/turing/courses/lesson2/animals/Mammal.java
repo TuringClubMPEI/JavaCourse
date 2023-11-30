@@ -1,24 +1,24 @@
 package ru.turing.courses.lesson2.animals;
 import java.util.Scanner;
-public class Mammals extends Animal {
+public class Mammal extends Animal {
     private int temperature;
     private String habitat; //наземной, воздушной, почвенной и водной
     private String diet; //травоядное, хищник, насекомоядное
 
-    public Mammals(int temperature, String habitat,  String diet) {
+    public Mammal(int temperature, String habitat, String diet) {
         this.temperature = temperature;
         this.habitat = habitat;
         this.diet = diet;
     }
 
-    public Mammals(int weight, String colour, int lifespan, int numberOfLimbs, int temperature, String habitat, String diet) {
+    public Mammal(int weight, String colour, int lifespan, int numberOfLimbs, int temperature, String habitat, String diet) {
         super(weight, colour, lifespan, numberOfLimbs);
         this.temperature = temperature;
         this.habitat = habitat;
         this.diet = diet;
     }
 
-    public Mammals() {
+    public Mammal() {
     }
 
     @Override
