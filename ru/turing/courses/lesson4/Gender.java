@@ -10,11 +10,17 @@ public enum Gender {
     FEMALE("Female", 'F', "Женский пол");
 
 
-    /** Техническое название */
+    /**
+     * Техническое название
+     */
     private final String name;
-    /** Символьное представление */
+    /**
+     * Символьное представление
+     */
     private final char shortNameRepr;
-    /** Описание */
+    /**
+     * Описание
+     */
     private final String description;
 
     Gender(String name, char shortNameRepr, String description) {
@@ -23,14 +29,34 @@ public enum Gender {
         this.description = description;
     }
 
-    public static Gender ofName(String name) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofName(String name) throws IllegalGenderException, NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("Отправлен пустой класс...");
+        }
+        if (name.equalsIgnoreCase(MALE.name) || name.equalsIgnoreCase(FEMALE.name)) {
+            if (name.equalsIgnoreCase(MALE.name)) {
+                return MALE;
+            } else {
+                return FEMALE;
+            }
+        } else {
+            throw new IllegalGenderException(name);
+        }
     }
 
-    public static Gender ofShortNameRepr(Character shortNameRepr) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws IllegalGenderException, NullPointerException {
+        if (shortNameRepr == null) {
+            throw new NullPointerException("Отправлен пустой класс...");
+        }
+        if (shortNameRepr.toString().equalsIgnoreCase(Character.toString(MALE.shortNameRepr)) || shortNameRepr.toString().equalsIgnoreCase(Character.toString(FEMALE.shortNameRepr))) {
+            if (shortNameRepr.toString().equalsIgnoreCase(Character.toString(MALE.shortNameRepr))) {
+                return MALE;
+            } else {
+                return FEMALE;
+            }
+        } else {
+            throw new IllegalGenderException(shortNameRepr.toString());
+        }
     }
 
     public String getName() {
