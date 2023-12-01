@@ -1,5 +1,10 @@
 package ru.turing.courses.lesson4;
 
+import ru.turing.courses.lesson3.z.Panda;
+
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Пол человека
  *
@@ -23,14 +28,54 @@ public enum Gender {
         this.description = description;
     }
 
+    /**
+     * метод поиска пола по наименованию
+     * @param name
+     * @return
+     */
     public static Gender ofName(String name) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+        //исключение - входное данное имеет значение null
+        if(name==null)
+            throw new NullGenderException();
+        //Вариант 1
+        /**Gender result = null;
+        for (Gender gender : values()) {
+            if (gender.name().equalsIgnoreCase(name)) {
+                result = gender;
+                break;
+            }
+        }
+         //по наименованию не найден пол
+         if(result==null)
+         throw new GengerNameNotFoundException();
+        return result;**/
+
+        //Вариант 2
+        return Arrays.stream(values()).filter(gender -> gender.getName().equalsIgnoreCase(name)).findFirst().orElseThrow(GengerNameNotFoundException::new);
     }
 
+    /**
+     * метод поиска по символьному представлению
+     * @param shortNameRepr
+     * @return
+     */
     public static Gender ofShortNameRepr(Character shortNameRepr) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+        //исключение - входное данное имеет значение null
+        if(shortNameRepr==null)
+            throw new NullGenderException();
+        //Вариант 1
+        /** Gender result = null;
+        for (Gender gender : values()) {
+        if(shortNameRepr.equals(gender.getShortNameRepr())){
+                result = gender;
+                break;
+            }
+        }
+        if(result==null)
+            throw new GengerShortNameNotFoundException();
+        return result;**/
+        //Вариант 2
+        return Arrays.stream(values()).filter(gender -> shortNameRepr.equals(gender.getShortNameRepr())).findFirst().orElseThrow(GengerShortNameNotFoundException::new);
     }
 
     public String getName() {
@@ -44,4 +89,5 @@ public enum Gender {
     public String getDescription() {
         return description;
     }
+    
 }
