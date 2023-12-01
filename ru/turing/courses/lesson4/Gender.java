@@ -23,14 +23,32 @@ public enum Gender {
         this.description = description;
     }
 
-    public static Gender ofName(String name) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofName(String name) throws GenderNotFoundException, NullPointerException{
+        if(name == null) {
+            throw new NullPointerException();
+        }
+        else{
+            for(Gender gender: Gender.values()){
+                if(name.equalsIgnoreCase(gender.getName())){
+                    return gender;
+                }
+            }
+            throw new GenderNotFoundException();
+        }
     }
 
-    public static Gender ofShortNameRepr(Character shortNameRepr) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderNotFoundException, NullPointerException{
+        if(shortNameRepr == null) {
+            throw new NullPointerException();
+        }
+        else{
+            for(Gender gender: Gender.values()){
+                if(shortNameRepr.equals(gender.getShortNameRepr())){
+                    return gender;
+                }
+            }
+            throw new GenderNotFoundException();
+        }
     }
 
     public String getName() {
