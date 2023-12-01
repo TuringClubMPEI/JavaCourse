@@ -33,8 +33,8 @@ public enum Gender {
                     return gender;
                 }
             }
+            throw new GenderNotFoundException();
         }
-        return null;
     }
 
     public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderNotFoundException, NullPointerException{
@@ -47,8 +47,8 @@ public enum Gender {
                     return gender;
                 }
             }
+            throw new GenderNotFoundException();
         }
-        return null;
     }
 
     public String getName() {
