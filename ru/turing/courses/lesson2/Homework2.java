@@ -32,12 +32,23 @@ public class Homework2 {
         Scanner scan = new Scanner(System.in);
         String fio = scan.nextLine();
 
-        //ввод даты
-        System.out.println("Введите свою дату рождеиня в формате дд.мм.гггг: ");
-        String date = scan.nextLine();
-        //создаю массив типа чар и начиная с 6 символа массива беру 4 символа года, преобразую в тип int и записываю в переменную year
-        char[] dateArray = date.toCharArray();
-        int year = Integer.valueOf(String.valueOf(dateArray, 6, 4));
+
+        //считаю количество полных лет и месяцев пользователя
+
+        int age = countAge(currentYear);
+
+        System.out.println("Количество полных лет ползователя: " + age);
+
+
+        System.out.println("Количество полных месяцев ползователя: " + countMonth(age));
+
+        //вызываю функцию перевода адресса
+        shorAdressFormat();
+
+    }
+
+    public static void shorAdressFormat() {
+        Scanner scan = new Scanner(System.in);
 
         //ввод пользователем адресса
         System.out.println("Введите свой адресс одной строкой (Пример - страна: Россия, город: Москва, улица: Авиамоторная, дом: 15, квартира: 24)");
@@ -67,20 +78,6 @@ public class Homework2 {
         String kvartira = scan.next();
         kvartira = kvartira.replace(String.valueOf(charToRemove), "");
 
-        //считаю количество полных лет и месяцев пользователя
-
-        System.out.println("Количество полных лет ползователя: " + countAge(currentYear, year));
-
-
-        System.out.println("Количество полных месяцев ползователя: " + countMonth(countAge(currentYear, year)));
-
-        //вызываю функцию перевода адресса
-        shorAdressFormat(strana, gorod, ulica, dom, kvartira);
-
-
-    }
-
-    public static void shorAdressFormat(String strana, String gorod, String ulica, String dom, String kvartira) {
         System.out.println(strana);
         System.out.println("г." + gorod);
         System.out.println("ул." + ulica);
@@ -88,7 +85,15 @@ public class Homework2 {
         System.out.println("кв." + kvartira);
     }
 
-    public static int countAge(int currentYear, int year) {
+    public static int countAge(int currentYear) {
+        Scanner scan = new Scanner(System.in);
+        //ввод даты
+        System.out.println("Введите свою дату рождеиня в формате дд.мм.гггг: ");
+        String date = scan.nextLine();
+        //создаю массив типа чар и начиная с 6 символа массива беру 4 символа года, преобразую в тип int и записываю в переменную year
+        char[] dateArray = date.toCharArray();
+        int year = Integer.valueOf(String.valueOf(dateArray, 6, 4));
+
         int ageOfUser = currentYear - year;
         return ageOfUser;
     }
