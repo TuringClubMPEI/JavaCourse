@@ -1,8 +1,24 @@
 package ru.turing.courses.lesson3.animal;
 
+import java.util.Objects;
+
 public abstract class Animal {
     protected String type;
     protected int age;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return age == animal.age && Double.compare(weight, animal.weight) == 0 && Objects.equals(type, animal.type) && Objects.equals(color, animal.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, age, color, weight);
+    }
+
     protected String color;
 
     protected double weight;

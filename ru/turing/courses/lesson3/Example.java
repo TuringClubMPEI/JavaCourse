@@ -8,13 +8,6 @@ import java.util.List;
 
 public class Example {
     public static void main(String[] args) {
-        dogExample();
-    }
-
-    /**
-     *  Пример с собаками
-     */
-    public static void dogExample() {
         Dog tim = new Dog("Timmy", 7);
         Dog bob = new Dog("Bob", 10);
         Dog mitch = new Dog("Mitchy", 1);

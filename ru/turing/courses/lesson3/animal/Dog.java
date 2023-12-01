@@ -2,6 +2,8 @@ package ru.turing.courses.lesson3.animal;
 
 import ru.turing.courses.lesson2.animals.Animal;
 
+import java.util.Objects;
+
 public class Dog extends Animal {
     private boolean ownerMissing; // 1 or 0
     private boolean isAloneAtHome;
@@ -16,6 +18,19 @@ public class Dog extends Animal {
 
     public boolean isAloneAtHome() {
         return isAloneAtHome;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dog dog = (Dog) o;
+        return ownerMissing == dog.ownerMissing && isAloneAtHome == dog.isAloneAtHome && Double.compare(hapiness, dog.hapiness) == 0 && age == dog.age && Objects.equals(name, dog.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ownerMissing, isAloneAtHome, hapiness, name, age);
     }
 
     public double getHapiness() {
