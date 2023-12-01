@@ -1,6 +1,9 @@
 package ru.turing.courses.lesson4;
 
+import ru.turing.courses.lesson3.z.Panda;
+
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Пол человека
@@ -52,7 +55,7 @@ public enum Gender {
     }
 
     /**
-     * метод поиска символьному представлению
+     * метод поиска по символьному представлению
      * @param shortNameRepr
      * @return
      */
@@ -60,16 +63,19 @@ public enum Gender {
         //исключение - входное данное имеет значение null
         if(shortNameRepr==null)
             throw new NullGenderException();
-        Gender result = null;
+        //Вариант 1
+        /** Gender result = null;
         for (Gender gender : values()) {
-            if (gender.getShortNameRepr()==shortNameRepr) {
+        if(shortNameRepr.equals(gender.getShortNameRepr())){
                 result = gender;
                 break;
             }
         }
         if(result==null)
             throw new GengerShortNameNotFoundException();
-        return result;
+        return result;**/
+        //Вариант 2
+        return Arrays.stream(values()).filter(gender -> shortNameRepr.equals(gender.getShortNameRepr())).findFirst().orElseThrow(GengerShortNameNotFoundException::new);
     }
 
     public String getName() {
@@ -83,4 +89,5 @@ public enum Gender {
     public String getDescription() {
         return description;
     }
+    
 }

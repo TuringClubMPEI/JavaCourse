@@ -2,7 +2,6 @@ package ru.turing.courses.lesson4;
 
 public class Main {
     public static void main(String[] args) {
-
         //todo реализовать с учетом выбросов эксепшнов следующие кейсы
 
         // позитивные сценарии
@@ -24,6 +23,7 @@ public class Main {
         catch (NullGenderException e){
             System.out.println("Обработка случая, когда значение входного данного null");
         }
+
         try{
         Gender falseNameGender = Gender.ofName("Attack helicopter");
         }catch (GengerNameNotFoundException e){
@@ -31,6 +31,7 @@ public class Main {
         }catch (NullGenderException e){
             System.out.println("Обработка случая, когда значение входного данного null");
         }
+
         try{
         Gender falseCharShortName = Gender.ofShortNameRepr('\n');
         }catch (GengerShortNameNotFoundException e){
