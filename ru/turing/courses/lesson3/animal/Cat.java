@@ -1,4 +1,8 @@
-package ru.turing.courses.lesson2.animals;
+package ru.turing.courses.lesson3.animal;
+
+import ru.turing.courses.lesson2.animals.Animal;
+
+import java.util.Objects;
 
 public class Cat extends Animal {
     private boolean wannaPlay; // 1 - want to ... 0 - don't want to
@@ -17,6 +21,19 @@ public class Cat extends Animal {
         return name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cat cat = (Cat) o;
+        return wannaPlay == cat.wannaPlay && miceCount == cat.miceCount && Double.compare(hapiness, cat.hapiness) == 0 && Objects.equals(name, cat.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(wannaPlay, miceCount, hapiness, name);
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -30,7 +47,10 @@ public class Cat extends Animal {
     }
 
 
-    public Cat(String barsik, int i) {}
+    public Cat(String name, int age) {
+        super(age);
+        this.name = name;
+    }
     public Cat(String type, int age, String color, boolean wannaPlay, int miceCount, double hapiness, String name) {
         super(type, age, color);
         this.wannaPlay = wannaPlay;
