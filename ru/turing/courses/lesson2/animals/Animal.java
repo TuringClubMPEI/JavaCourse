@@ -1,18 +1,18 @@
 package ru.turing.courses.lesson2.animals;
 
 public class Animal {
-    protected String klichka;
+    protected String name;
     protected String color;
     protected String breed;
     protected int age;
     protected int numberOfPaws;
 
-    public String getKlichka() {
-        return klichka;
+    public String getName() {
+        return name;
     }
 
-    public void setKlichka(String klichka) {
-        this.klichka = klichka;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getColor() {
@@ -61,8 +61,9 @@ public class Animal {
 
     //напишу конструктор к классу в нутри класса
 
-    public Animal(String klichka, String color, String breed, int age, int numberOfPaws) {
-        this.klichka = klichka;
+
+    public Animal(String name, String color, String breed, int age, int numberOfPaws) {
+        this.name = name;
         this.color = color;
         this.breed = breed;
         this.age = age;

@@ -3,6 +3,7 @@ package ru.turing.courses.lesson2.animals;
 public class Mouse extends Animal {
     private String favoriteTypeOfCheese;
     private String hoursOfSleep;
+    private int intHoursOfsleep;
 
     public String getFavoriteTypeOfCheese() {
         return favoriteTypeOfCheese;
@@ -20,18 +21,29 @@ public class Mouse extends Animal {
         this.hoursOfSleep = hoursOfSleep;
     }
 
-    public Mouse(String klichka, String color, String breed, int age, int numberOfPaws, String favoriteTypeOfCheese, String hoursOfSleep) {
-        super(klichka, color, breed, age, numberOfPaws);
-        this.favoriteTypeOfCheese = favoriteTypeOfCheese;
-        this.hoursOfSleep = hoursOfSleep;
+    public int getIntHoursOfsleep() {
+        return intHoursOfsleep;
     }
 
+    public void setIntHoursOfsleep(int intHoursOfsleep) {
+        this.intHoursOfsleep = intHoursOfsleep;
+    }
+
+    public Mouse(String name, String color, String breed, int age, int numberOfPaws, String favoriteTypeOfCheese, String hoursOfSleep, int intHoursOfsleep) {
+        super(name, color, breed, age, numberOfPaws);
+        this.favoriteTypeOfCheese = favoriteTypeOfCheese;
+        this.hoursOfSleep = hoursOfSleep;
+        this.intHoursOfsleep = intHoursOfsleep;
+    }
+
+    @Override
     public void eat(String favoriteTypeOfCheese) {
         System.out.println("Мышич поел своего любимого сыра " + favoriteTypeOfCheese);
     }
 
-    public void sleep(String hoursOfsleep) {
-        System.out.println("Мышич подремал " + hoursOfsleep + " минут");
+    @Override
+    public void sleep(int intHoursOfsleep) {
+        System.out.println("Мышич подремал " + intHoursOfsleep + " минут");
     }
 
     public void krodetsya() {

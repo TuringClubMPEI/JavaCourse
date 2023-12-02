@@ -5,8 +5,8 @@ public class Cat extends Animal {
     protected String playWithLaser;
     protected String favoriteTypeOfFeed;
 
-    public Cat(String klichka, String color, String breed, int age, int numberOfPaws, String playWithLaser, String favoriteTypeOfFeed) {
-        super(klichka, color, breed, age, numberOfPaws);
+    public Cat(String name, String color, String breed, int age, int numberOfPaws, String playWithLaser, String favoriteTypeOfFeed) {
+        super(name, color, breed, age, numberOfPaws);
         this.playWithLaser = playWithLaser;
         this.favoriteTypeOfFeed = favoriteTypeOfFeed;
     }
@@ -27,11 +27,12 @@ public class Cat extends Animal {
         this.favoriteTypeOfFeed = favoriteTypeOfFeed;
     }
 
+    @Override
     public void play(String playWithLaser) {
         System.out.println("Вы поиграли с котом лазерной указкой " + playWithLaser + " минут");
 
     }
-
+    @Override
     public void eat(String favoriteTypeOfFeed) {
         System.out.println("Вы покормили кота его любимым " + favoriteTypeOfFeed);
     }
