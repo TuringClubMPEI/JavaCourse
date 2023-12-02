@@ -1,11 +1,26 @@
 package ru.turing.courses.lesson2.animals;
 
+import java.util.Objects;
+
 public abstract class Animal {
     protected String name;
     protected boolean isFlying;
     protected boolean isSwimming;
     protected int numberOfPaws;
     protected int age;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return isFlying == animal.isFlying && isSwimming == animal.isSwimming && numberOfPaws == animal.numberOfPaws && age == animal.age && Objects.equals(name, animal.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, isFlying, isSwimming, numberOfPaws, age);
+    }
 
     public void makeSound() {}
 
