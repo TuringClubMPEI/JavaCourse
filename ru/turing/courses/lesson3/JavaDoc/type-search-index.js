@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.turing.courses.lesson3","l":"PersonEntry"},{"p":"ru.turing.courses.lesson3","l":"Registry"},{"p":"ru.turing.courses.lesson3","l":"Solution"},{"p":"ru.turing.courses.lesson3","l":"User"}]
