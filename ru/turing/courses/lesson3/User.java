@@ -1,5 +1,6 @@
 /**
  * User class
+ *
  * @autor Ivanov Andrew
  * @version 1.0
  */
@@ -7,18 +8,20 @@ package ru.turing.courses.lesson3;
 
 import java.util.Objects;
 
-public class User extends PersonEntry{
+public class User extends PersonEntry {
     /**
      * Username field
      */
     private String name;
+
     /**
      * Constructor by name&key
      */
-    public User(String key,String name) {
+    public User(String key, String name) {
         super(key);
         this.name = name;
     }
+
     /**
      * Overriding the abstract class method
      */
@@ -26,6 +29,7 @@ public class User extends PersonEntry{
     public String getValue() {
         return name;
     }
+
     /**
      * Overriding .equals() for comparison
      */
@@ -36,6 +40,7 @@ public class User extends PersonEntry{
         User user = (User) o;
         return Objects.equals(name, user.name);
     }
+
     /**
      * Overriding .hashCode() to get hashcode by name
      */

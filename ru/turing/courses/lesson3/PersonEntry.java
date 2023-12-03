@@ -1,12 +1,13 @@
 /**
  * Abstract class from which the User inherits
+ *
  * @autor Ivanov Andrew
  * @version 1.0
  * @see User
  */
 package ru.turing.courses.lesson3;
 
-abstract class PersonEntry{
+abstract class PersonEntry {
     /**
      * Key field
      */
