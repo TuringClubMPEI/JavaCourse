@@ -14,7 +14,7 @@ public class Main {
 
             Gender maleGenderByChar = Gender.ofShortNameRepr('M');
             Gender femaleGenderByChar = Gender.ofShortNameRepr('F');
-        } catch (notFound | NullPointerException e) {
+        } catch (NotFound | NullPointerException e) {
             System.out.println(e.getMessage());
         }
 
@@ -24,7 +24,7 @@ public class Main {
 
             Gender maleGenderByChar = Gender.ofShortNameRepr('M');
             Gender femaleGenderByChar = Gender.ofShortNameRepr('F');
-        } catch (notFound | NullPointerException e) {
+        } catch (NotFound | NullPointerException e) {
             System.out.println(e.getMessage());
         }
 
@@ -32,7 +32,7 @@ public class Main {
             Gender nullGender = Gender.ofName(null);
             Gender falseNameGender = Gender.ofName("Attack helicopter");
             Gender falseCharReprName = Gender.ofShortNameRepr('\n');
-        } catch (notFound | NullPointerException e) {
+        } catch (NotFound | NullPointerException e) {
             System.out.println(e.getMessage());
         }
         // негативные сценарии

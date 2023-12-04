@@ -25,7 +25,7 @@ public enum Gender {
         this.description = description;
     }
 
-    public static Gender ofName(String name) throws notFound, NullPointerException {
+    public static Gender ofName(String name) throws NotFound, NullPointerException {
         for (var value : Gender.values()){
             if (name != null){
                 if (Objects.equals(value.name.toLowerCase(), name.toLowerCase())){
@@ -36,18 +36,18 @@ public enum Gender {
                 throw new NullPointerException("Введенное значение null...");
             }
         }
-        throw new notFound("Пол " + name + " не найден");
+        throw new NotFound("Пол " + name + " не найден");
         //return null;
     }
 
-    public static Gender ofShortNameRepr(Character shortNameRepr) throws notFound {
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws NotFound {
         //todo реализовать с кастомным эксепшном
         for (var value : Gender.values()) {
-            if (value.shortNameRepr == shortNameRepr){
+            if (shortNameRepr.equals(value.shortNameRepr)){
                 return value;
             }
         }
-        throw new notFound("Пол " + shortNameRepr + " не найден");
+        throw new NotFound("Пол " + shortNameRepr + " не найден");
     }
 
     public String getName() {
