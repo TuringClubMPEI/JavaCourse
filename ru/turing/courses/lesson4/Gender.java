@@ -1,5 +1,7 @@
 package ru.turing.courses.lesson4;
 
+import java.util.Objects;
+
 /**
  * Пол человека
  *
@@ -23,14 +25,29 @@ public enum Gender {
         this.description = description;
     }
 
-    public static Gender ofName(String name) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofName(String name) throws NotFound, NullPointerException {
+        for (var value : Gender.values()){
+            if (name != null){
+                if (Objects.equals(value.name.toLowerCase(), name.toLowerCase())){
+                    return value;
+                }
+            }
+            else {
+                throw new NullPointerException("Введенное значение null...");
+            }
+        }
+        throw new NotFound("Пол " + name + " не найден");
+        //return null;
     }
 
-    public static Gender ofShortNameRepr(Character shortNameRepr) {
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws NotFound {
         //todo реализовать с кастомным эксепшном
-        return null;
+        for (var value : Gender.values()) {
+            if (shortNameRepr.equals(value.shortNameRepr)){
+                return value;
+            }
+        }
+        throw new NotFound("Пол " + shortNameRepr + " не найден");
     }
 
     public String getName() {
@@ -44,4 +61,5 @@ public enum Gender {
     public String getDescription() {
         return description;
     }
+
 }
