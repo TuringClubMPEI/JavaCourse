@@ -19,16 +19,6 @@ public class Main {
         }
 
         try {
-            Gender maleLowerCaseCharacter = Gender.ofName("male");
-            Gender femaleLowerCaseCharacter = Gender.ofName("female");
-
-            Gender maleGenderByChar = Gender.ofShortNameRepr('M');
-            Gender femaleGenderByChar = Gender.ofShortNameRepr('F');
-        } catch (NotFound | NullPointerException e) {
-            System.out.println(e.getMessage());
-        }
-
-        try {
             Gender nullGender = Gender.ofName(null);
             Gender falseNameGender = Gender.ofName("Attack helicopter");
             Gender falseCharReprName = Gender.ofShortNameRepr('\n');
