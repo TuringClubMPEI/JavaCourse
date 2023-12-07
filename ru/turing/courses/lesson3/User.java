@@ -26,7 +26,7 @@ public class User extends PersonEntry {
      * Overriding the abstract class method
      */
     @Override
-    public String getValue() {
+    public String getName() {
         return name;
     }
 

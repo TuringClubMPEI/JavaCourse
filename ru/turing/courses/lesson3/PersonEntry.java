@@ -15,6 +15,7 @@ abstract class PersonEntry {
 
     /**
      * Constructor by key
+     *
      * @param key key
      */
     public PersonEntry(String key) {
@@ -23,6 +24,7 @@ abstract class PersonEntry {
 
     /**
      * Method to get users key
+     *
      * @return key
      */
     public String getKey() {
@@ -31,7 +33,8 @@ abstract class PersonEntry {
 
     /**
      * Method to get users value
+     *
      * @return value
      */
-    public abstract String getValue();
+    public abstract String getName();
 }
