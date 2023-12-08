@@ -1,8 +1,8 @@
 package ru.turing.courses.lesson4;
 
 public enum Gender {
-    MALE("MALE", 'M', "Мужской пол"),
-    FEMALE("FEMALE", 'F', "Женский пол");
+    MALE("Male", 'M', "Мужской пол"),
+    FEMALE("Female", 'F', "Женский пол");
 
     //Техническое название
     private final String name;
@@ -17,7 +17,7 @@ public enum Gender {
 
     public static Gender ofName(String name) throws GenderDoesNotExist {
         if (name == null) {
-            throw new GenderDoesNotExist("Гендер не может быть null");
+            throw new GenderDoesNotExist("Гендер не найден");
         }
         for (Gender gender : Gender.values()) {
             if (gender.getName().equalsIgnoreCase(name)) {
@@ -29,8 +29,8 @@ public enum Gender {
 
     public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderDoesNotExist {
 
-        if (shortNameRepr == '\n') {
-            throw new GenderDoesNotExist("Гендер не моежет быть символом переноса строки");
+        if (shortNameRepr == null) {
+            throw new GenderDoesNotExist("Гендер не должен быть null");
         }
 
         for (Gender gender : Gender.values()) {

@@ -24,7 +24,7 @@ public class Main {
            Gender nullGender = Gender.ofName(null);
            Gender falseNameGender = Gender.ofName("Attack helicopter");
            Gender falseCharReprName = Gender.ofShortNameRepr('\n');
-       }catch (Exception e){
+       }catch (GenderDoesNotExist e){
            System.out.println(e.getMessage());
        }
     }
