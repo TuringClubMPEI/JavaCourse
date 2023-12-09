@@ -1,43 +1,52 @@
 package ru.turing.courses.lesson4;
 
-/**
- * Пол человека
- *
- * @author diagorn
- */
 public enum Gender {
     MALE("Male", 'M', "Мужской пол"),
     FEMALE("Female", 'F', "Женский пол");
 
-
-    /** Техническое название */
+    //Техническое название
     private final String name;
-    /** Символьное представление */
-    private final char shortNameRepr;
-    /** Описание */
+    private final Character shortNameRepr;
     private final String description;
 
-    Gender(String name, char shortNameRepr, String description) {
+    Gender(String name, Character shortNameRepr, String description) {
         this.name = name;
         this.shortNameRepr = shortNameRepr;
         this.description = description;
     }
 
-    public static Gender ofName(String name) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofName(String name) throws GenderDoesNotExist {
+        if (name == null) {
+            throw new GenderDoesNotExist("Гендер не найден");
+        }
+        for (Gender gender : Gender.values()) {
+            if (gender.getName().equalsIgnoreCase(name)) {
+                return gender;
+            }
+        }
+        throw new GenderDoesNotExist("Существует только 2 гендера.");
     }
 
-    public static Gender ofShortNameRepr(Character shortNameRepr) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderDoesNotExist {
+
+        if (shortNameRepr == null) {
+            throw new GenderDoesNotExist("Гендер не должен быть null");
+        }
+
+        for (Gender gender : Gender.values()) {
+            if (gender.getShortNameRepr().equals(shortNameRepr)) {
+                return gender;
+            }
+        }
+
+        throw new GenderDoesNotExist("Гендер не найден");
     }
 
     public String getName() {
         return name;
     }
 
-    public char getShortNameRepr() {
+    public Character getShortNameRepr() {
         return shortNameRepr;
     }
 
