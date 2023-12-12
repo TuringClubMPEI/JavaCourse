@@ -3,9 +3,9 @@ package ru.turing.courses.lesson4;
 public class Main {
     public static void main(String[] args) {
 
-        //todo СЂРµР°Р»РёР·РѕРІР°С‚СЊ СЃ СѓС‡РµС‚РѕРј РІС‹Р±СЂРѕСЃРѕРІ СЌРєСЃРµРїС€РЅРѕРІ СЃР»РµРґСѓСЋС‰РёРµ РєРµР№СЃС‹
+        // эксепшены реализовал сразу в классе Gender, чтобы не портить User Interface
 
-        // РїРѕР·РёС‚РёРІРЅС‹Рµ СЃС†РµРЅР°СЂРёРё
+        // позитивные сценарии
         Gender maleGender = Gender.ofName("MALE");
         Gender femaleGender = Gender.ofName("FEMALE");
 
@@ -15,7 +15,7 @@ public class Main {
         Gender maleGenderByChar = Gender.ofShortNameRepr('M');
         Gender femaleGenderByChar = Gender.ofShortNameRepr('F');
 
-        // РЅРµРіР°С‚РёРІРЅС‹Рµ СЃС†РµРЅР°СЂРёРё
+        // негативные сценарии
         Gender nullGender = Gender.ofName(null);
         Gender falseNameGender = Gender.ofName("Attack helicopter");
         Gender falseCharReprName = Gender.ofShortNameRepr('\n');
