@@ -50,7 +50,7 @@ public enum Gender {
         }
 
         for (Gender obj : values()) {
-            if ((obj.shortNameRepr + "").equalsIgnoreCase(shortNameRepr + "")) {
+            if (obj.shortNameRepr == shortNameRepr) {
                 System.out.println(shortNameRepr + " success!");
                 return obj;
             }
