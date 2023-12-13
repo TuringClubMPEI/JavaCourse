@@ -10,11 +10,17 @@ public enum Gender {
     FEMALE("Female", 'F', "Женский пол");
 
 
-    /** Техническое название */
+    /**
+     * Техническое название
+     */
     private final String name;
-    /** Символьное представление */
+    /**
+     * Символьное представление
+     */
     private final char shortNameRepr;
-    /** Описание */
+    /**
+     * Описание
+     */
     private final String description;
 
     Gender(String name, char shortNameRepr, String description) {
@@ -23,46 +29,33 @@ public enum Gender {
         this.description = description;
     }
 
-    public static Gender ofName(String name) {
-        try {
-            if (name == null)
-                throw new GenderNotFoundException("Null name!");
-
-            String newName = name.toLowerCase();
-            String myName;
-            for (Gender obj : values()) {
-                myName = obj.name.toLowerCase();
-                if (myName.equals(newName)) {
-                    System.out.println(name + " success!");
-                    return obj;
-                }
-            }
-            throw new GenderNotFoundException("Not found gender with name " + name);
-        } catch (GenderNotFoundException e){
-            System.out.println(e.getMessage());
+    public static Gender ofName(String name) throws GenderNotFoundException {
+        if (name == null) {
+            throw new GenderNotFoundException("Null name!");
         }
-        return null;
+
+        for (Gender obj : values()) {
+            if (obj.name.equalsIgnoreCase(name)) {
+                System.out.println(name + " success!");
+                return obj;
+            }
+        }
+        throw new GenderNotFoundException("Not found gender with name " + name);
+
     }
 
-    public static Gender ofShortNameRepr(Character shortNameRepr) {
-        try {
-            if (shortNameRepr == null)
-                throw new GenderNotFoundException("Null short name!");
-
-            String newShName = shortNameRepr.toString().toLowerCase();
-            String myShName;
-            for (Gender obj : values()) {
-                myShName = (obj.shortNameRepr + "").toLowerCase();
-                if (myShName.equals(newShName)) {
-                    System.out.println(shortNameRepr + " success!");
-                    return obj;
-                }
-            }
-            throw new GenderNotFoundException("Not found gender with short name " + shortNameRepr);
-        } catch (GenderNotFoundException e){
-            System.out.println(e.getMessage());
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderNotFoundException {
+        if (shortNameRepr == null) {
+            throw new GenderNotFoundException("Null short name!");
         }
-        return null;
+
+        for (Gender obj : values()) {
+            if ((obj.shortNameRepr + "").equalsIgnoreCase(shortNameRepr + "")) {
+                System.out.println(shortNameRepr + " success!");
+                return obj;
+            }
+        }
+        throw new GenderNotFoundException("Not found gender with short name " + shortNameRepr);
     }
 
     public String getName() {
