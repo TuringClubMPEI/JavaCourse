@@ -10,11 +10,17 @@ public enum Gender {
     FEMALE("Female", 'F', "Женский пол");
 
 
-    /** Техническое название */
+    /**
+     * Техническое название
+     */
     private final String name;
-    /** Символьное представление */
+    /**
+     * Символьное представление
+     */
     private final char shortNameRepr;
-    /** Описание */
+    /**
+     * Описание
+     */
     private final String description;
 
     Gender(String name, char shortNameRepr, String description) {
@@ -23,14 +29,33 @@ public enum Gender {
         this.description = description;
     }
 
-    public static Gender ofName(String name) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofName(String name) throws GenderNotFoundException {
+        if (name == null) {
+            throw new GenderNotFoundException("Null name!");
+        }
+
+        for (Gender obj : values()) {
+            if (obj.name.equalsIgnoreCase(name)) {
+                System.out.println(name + " success!");
+                return obj;
+            }
+        }
+        throw new GenderNotFoundException("Not found gender with name " + name);
+
     }
 
-    public static Gender ofShortNameRepr(Character shortNameRepr) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderNotFoundException {
+        if (shortNameRepr == null) {
+            throw new GenderNotFoundException("Null short name!");
+        }
+
+        for (Gender obj : values()) {
+            if (obj.shortNameRepr == shortNameRepr) {
+                System.out.println(shortNameRepr + " success!");
+                return obj;
+            }
+        }
+        throw new GenderNotFoundException("Not found gender with short name " + shortNameRepr);
     }
 
     public String getName() {
