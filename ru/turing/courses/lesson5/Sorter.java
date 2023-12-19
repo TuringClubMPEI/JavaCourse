@@ -8,8 +8,6 @@ public class Sorter {
         for (int i = 0; i < mas.length - 1; i++) {
             for (int j = 0; j < mas.length - i - 1; j++) {
                 if (mas[j] > mas[j + 1]) {
-                    // ТОЛЬКО СЕЙЧАС Я УЗНАЛ, ЧТО НЕТ ПЕРЕДАЧИ ПО ССЫЛКЕ, ААААААААА
-                    // как бы было удобно реализовать swap(Object, Object)....
                     buf = mas[j];
                     mas[j] = mas[j + 1];
                     mas[j + 1] = buf;
