@@ -37,7 +37,7 @@ public class Main {
 
         // негативные сценарии
         try {
-            // Gender falseNameGender = Gender.ofName("Attack helicopter");
+            Gender falseNameGender = Gender.ofName("Attack helicopter");
             Gender nullGender = Gender.ofName(null);
             Gender falseCharReprName = Gender.ofShortNameRepr('\n');
         } catch (GenderException | NullPointerException e) {

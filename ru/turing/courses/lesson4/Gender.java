@@ -30,6 +30,9 @@ public enum Gender {
 
     public static Gender ofName(String name) throws GenderException  {
         Gender gender = null;
+
+        if (name == null)
+            throw new GenderException("Переданный параметр name -> null");
         for (Gender g: Gender.values()) {
                 if (name.equalsIgnoreCase(g.name)) {
                     gender = g;
@@ -37,7 +40,8 @@ public enum Gender {
                 }
         }
         if (gender == null)
-            throw new GenderException();
+            throw new GenderException("Такого пола не существует!");
+
 
         return gender;
     }
@@ -45,14 +49,18 @@ public enum Gender {
     public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderException  {
         //todo реализовать с кастомным эксепшном
         Gender gender = null;
+
+        if (shortNameRepr == null)
+            throw new GenderException("Переданный параметр shortNameRepr -> null");
         for (Gender g: Gender.values()) {
             if (shortNameRepr.equals(g.shortNameRepr)) {
                 gender = g;
                 break;
             }
         }
+
         if (gender == null)
-            throw new GenderException();
+            throw new GenderException("Такого пола не существует!");
 
         return gender;
     }
