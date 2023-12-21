@@ -7,7 +7,12 @@ package ru.turing.courses.lesson4;
  */
 public enum Gender {
     MALE("Male", 'M', "Мужской пол"),
-    FEMALE("Female", 'F', "Женский пол");
+    FEMALE("Female", 'F', "Женский пол"),
+    HELICOPTER("Helicopter", 'H', "Вертолёт"),
+    DEER("Deer", 'D', "Олень"),
+    BUS("Bus", 'B', "Автобус"),
+    BUMBLBEE("Bumblbee", 'B', "Бамблби :)");
+
 
 
     /** Техническое название */
@@ -23,14 +28,41 @@ public enum Gender {
         this.description = description;
     }
 
-    public static Gender ofName(String name) {
-        //todo реализовать с кастомным эксепшном
-        return null;
+    public static Gender ofName(String name) throws GenderException  {
+        Gender gender = null;
+
+        if (name == null)
+            throw new GenderException("Переданный параметр name -> null");
+        for (Gender g: Gender.values()) {
+                if (name.equalsIgnoreCase(g.name)) {
+                    gender = g;
+                    break;
+                }
+        }
+        if (gender == null)
+            throw new GenderException("Такого пола не существует!");
+
+
+        return gender;
     }
 
-    public static Gender ofShortNameRepr(Character shortNameRepr) {
+    public static Gender ofShortNameRepr(Character shortNameRepr) throws GenderException  {
         //todo реализовать с кастомным эксепшном
-        return null;
+        Gender gender = null;
+
+        if (shortNameRepr == null)
+            throw new GenderException("Переданный параметр shortNameRepr -> null");
+        for (Gender g: Gender.values()) {
+            if (shortNameRepr.equals(g.shortNameRepr)) {
+                gender = g;
+                break;
+            }
+        }
+
+        if (gender == null)
+            throw new GenderException("Такого пола не существует!");
+
+        return gender;
     }
 
     public String getName() {
