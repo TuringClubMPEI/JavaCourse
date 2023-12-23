@@ -1,42 +1,41 @@
 package ru.turing.courses.lesson5;
 
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         //todo вставить сюда сортировки пузырьком, сделать для каждой свой метод
-        int[] mass = new int[]{8, 4, 9, 15, 26, -1, 0};
-        bubbleSort(mass);
+        int[] integer_mass = new int[]{8, 4, 9, 15, 26, -1, 0};
+        bubbleSort(integer_mass);
 
         System.out.println("---------");
         System.out.println();
 
-        String[] mass1 = new String[] {"abc", "efghj", null, "."};
-        bubbleSort(mass1);
+        String[] string_mass = new String[] {"abc", "efghj", null, "."};
+        bubbleSort(string_mass);
 
         System.out.println("---------");
         System.out.println();
 
 
-        User u1 = new User("Nicky", 1111110000, 18);
-        User u2 = new User("Mark Tsukenberg", 10010, 35); // возможно ему и не 35, я хз
-        User u3 = new User("Somebody", 9999999, 23);
-        User u4 = new User("Hacker", 22222, 999);
+        User nicky = new User("Nicky", 1111110000, 18);
+        User mark_tsukenberg = new User("Mark Tsukenberg", 10010, 35); // возможно ему и не 35, я хз
+        User anon = new User("Somebody", 9999999, 23);
+        User hacker = new User("Hacker", 22222, 999);
 
 
-        User[] mass2 = new User[] {u1, u2, u3, u4};
+        User[] user_mass = new User[] {nicky, mark_tsukenberg, anon, hacker};
 
-        bubbleSortUserAge(mass2);
-
-        System.out.println("---------");
-        System.out.println();
-
-        bubbleSortId(mass2);
+        bubbleSortUserAge(user_mass);
 
         System.out.println("---------");
         System.out.println();
 
-        bubbleSortName(mass2);
+        bubbleSortId(user_mass);
+
+        System.out.println("---------");
+        System.out.println();
+
+        bubbleSortName(user_mass);
 
 
     }
