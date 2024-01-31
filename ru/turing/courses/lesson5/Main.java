@@ -1,26 +1,64 @@
 package ru.turing.courses.lesson5;
 
-import java.sql.Array;
 
 public class Main {
     public static void main(String[] args) {
-        //todo вставить сюда сортировки пузырьком, сделать для каждой свой метод
-        intBubbleSort();
-        stringBubbleSort();
-        myClassBubbleSort("name");
-        myClassBubbleSort("age");
-        myClassBubbleSort("id");
+
+        int[] arrayOfInt = {2,6,1,5};
+        int[] array = intBubbleSort(arrayOfInt);
+        //вывод отсортированного массива
+        for (int tmp:
+                array) {
+            System.out.print(tmp + " ");
+        }
+        System.out.println("");
+
+        String[] arrayOfString = {null, "aa", null,"b", null,"cccc", "ddd", null, null};
+        String[] newArray = stringBubbleSort(arrayOfString);
+        //вывод отсортированного массива
+        for (String s:
+                newArray) {
+            System.out.println(s);
+        }
+        System.out.println("");
+
+        Student student1 = new Student("Matveeey", 19, 555L);
+        Student student2 = new Student("Kirill", 21, 1010L);
+        Student student3 = new Student("Misha", 23, 333L);
+        Student[] students = {student1, student2, student3};
+
+        Student[] studentsByName = myClassBubbleSort("name", students);
+        //вывод отсортированного массива
+        System.out.println("Отсортированный массив:");
+        for (Student s:
+                studentsByName) {
+            System.out.println(s);
+        }
+        System.out.println('\n');
+
+        Student[] studentsByAge = myClassBubbleSort("age", students);
+        //вывод отсортированного массива
+        System.out.println('\n' +"Отсортированный массив по возрасту:" + '\n');
+        for (Student s:
+                studentsByAge) {
+            System.out.println(s);
+        }
+        System.out.println('\n');
+
+
+        Student[] studentsById = myClassBubbleSort("id", students);
+        //вывод отсортированного массива
+        System.out.println('\n'+"Сортирую массив по id..."+'\n');
+        for (Student s:
+                studentsById) {
+            System.out.println(s);
+        }
+        System.out.println('\n');
 
     }
 
     //на вход поступает поле по которому нужно сортировать
-    private static void myClassBubbleSort(String sortBy) throws NullPointerException{
-        /*Student student1 = new Student("Matveeey", 19, 555L);
-        Student student2 = new Student("Kirill", 21, 1010L);
-        Student student3 = new Student("Misha", 23, 333L);*/
-
-        //создание массива
-        Student[] students = {};
+    private static Student[] myClassBubbleSort(String sortBy, Student[] students) throws NullPointerException{
 
         //Проверка массива на все null
         if (students == null){
@@ -51,14 +89,6 @@ public class Main {
                 }
             }
 
-            //вывод отсортированного массива
-            System.out.println("Отсортированный массив:");
-            for (Student s:
-                    students) {
-                System.out.println(s);
-            }
-            System.out.println('\n');
-
             //студенты с самым большим возрастом будут в конце массива
         } else if (sortBy.equals("age")) {
             boolean isSorted = false;
@@ -75,15 +105,6 @@ public class Main {
                 }
             }
 
-            //вывод отсортированного массива
-            System.out.println('\n'+"Сортирую массив по возрасту..."+'\n');
-            System.out.println("Отсортированный массив: ");
-            for (Student s:
-                    students) {
-                System.out.println(s);
-            }
-            System.out.println('\n');
-
             //студенты с самым больщим айди будут в конце массива
         } else if (sortBy.equals("id")) {
             boolean isSorted = false;
@@ -99,20 +120,13 @@ public class Main {
                 }
             }
 
-            //вывод отсортированного массива
-            System.out.println('\n'+"Сортирую массив по id..."+'\n');
-            for (Student s:
-                    students) {
-                System.out.println(s);
-            }
-            System.out.println('\n');
         }
+        return students;
     }
 
-    private static void stringBubbleSort() throws NullPointerException{
-        /*String[] array = {null, "aa", null,"b", null,"cccc", "ddd", null, null};*/
-        String[] array = {};
-        if(array== null){
+    private static String[] stringBubbleSort(String[] array) throws NullPointerException{
+
+        if(array == null){
             throw new NullPointerException("нельзя так");
         }
         System.out.println("Сортировка строчного массива: ");
@@ -150,18 +164,16 @@ public class Main {
             }
         }
         System.out.println("Отсортированный массив: ");
-        //вывод отсортированного массива
-        for (String s:
-                newArray) {
-            System.out.println(s);
-        }
-        System.out.println("");
-        return;
+
+        return newArray;
     }
 
-    private static void intBubbleSort() {
+    private static int[] intBubbleSort(int [] array) {
+
+        if(array == null){
+            throw new NullPointerException("Целочисленный массив не может быть null. Ты чего?");
+        }
         System.out.println("Сортировка целочисленного массива: ");
-        int[] array = {2,6,1,5};
 
         //вывод массива
         for (int tmp:
@@ -182,13 +194,7 @@ public class Main {
             }
         }
         System.out.println("Отсортированный массив: ");
-        //вывод отсортированного массива
-        for (int tmp:
-                array) {
-            System.out.print(tmp + " ");
-        }
-        System.out.println("");
-        return;
-    }
 
+        return array;
+    }
 }
