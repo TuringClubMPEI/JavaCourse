@@ -4,16 +4,18 @@ import java.util.Comparator;
 import java.util.Objects;
 
 /**
- * Класс Student с тремя полями: id, name, phone
+ * Класс Student с четырьмя полями: id, name, yearOfAdmission, phone,
  */
-public class Student {
+public class Student implements Comparable<Student> {
     private Long id;
     private String name;
+    private int yearOfAdmission;
     private String phone;
 
-    public Student(Long id, String name, String phone) {
+    public Student(Long id, String name, int yearOfAdmission, String phone) {
         this.id = id;
         this.name = name;
+        this.yearOfAdmission = yearOfAdmission;
         this.phone = phone;
     }
 
@@ -33,12 +35,31 @@ public class Student {
         this.name = name;
     }
 
+    public int getYearOfAdmission() {
+        return yearOfAdmission;
+    }
+
+    public void setYearOfAdmission(int yearOfAdmission) {
+        this.yearOfAdmission = yearOfAdmission;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    /**
+     * По умолчанию сортировка студентов по году поступления в институт
+     *
+     * @param other the object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(Student other) {
+        return Integer.compare(this.yearOfAdmission, other.yearOfAdmission);
     }
 
     /**
@@ -71,75 +92,13 @@ public class Student {
         }
     };
 
-    /**
-     * перестановка 2-х элементов с индексами first, second массива String[]
-     * @param array
-     * @param first
-     * @param second
-     */
-    private static void toSwap( String[] array, int first, int second){
-        String buffer = array[first];
-        array[first] =  array[second];
-        array[second]= buffer;
-    }
-
-    /**
-     * перестановка 2-х элементов с индексами first, second массива int[]
-     * @param array
-     * @param first
-     * @param second
-     */
-    private static void toSwap( int[] array, int first, int second){
-        int buffer = array[first];
-        array[first] =  array[second];
-        array[second]= buffer;
-    }
-    /**
-     * сортировка пузырьком элементов в массиве String[]
-     * @param array
-     */
-    public static void bubbleSort(String[] array){
-        if(array==null)
-            throw new NullArrayException();
-        int len = array.length;
-        for (int i = 0; i< len -1; i++){  //Внешний цикл
-            for (int j = 0; j < len - i - 1; j++){       //Внутренний цикл
-                if(array[j+1]!=null) {
-                    if (array[j] == null) {
-                        toSwap(array, j, j + 1);
-                    } else if (array[j].length() > array[j + 1].length()) {
-                        toSwap(array, j, j + 1);
-                    }
-                }
-            }
-        }
-    }
-    /**
-     * сортировка пузырьком для массива int[]
-     * @param array
-     */
-    public static void bubbleSort(int[] array){
-        if(array==null)
-            throw new NullArrayException();
-        int len = array.length;
-        for (int i = 0; i< len -1; i++){  //Внешний цикл
-            for (int j = 0; j < len - i - 1; j++){       //Внутренний цикл
-                if(array[j] > array[j + 1]) {
-                    //Если порядок элементов нарушен
-                    int tmp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = tmp;
-                }
-            }
-        }
-    }
-
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", phone=" + phone +
+                ", yearOfAdmission=" + yearOfAdmission +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 
@@ -148,11 +107,11 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return Objects.equals(phone, student.phone) && Objects.equals(id, student.id) && Objects.equals(name, student.name);
+        return yearOfAdmission == student.yearOfAdmission && Objects.equals(id, student.id) && Objects.equals(name, student.name) && Objects.equals(phone, student.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, phone);
+        return Objects.hash(id, name, yearOfAdmission, phone);
     }
 }

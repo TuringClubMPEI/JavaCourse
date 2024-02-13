@@ -1,4 +1,11 @@
 package ru.turing.courses.lesson5;
 
-public class NullArrayException extends IllegalArgumentException{
+/**
+ * Исключение с сообщением
+ */
+public class NullArrayException extends IllegalArgumentException {
+    public NullArrayException(String message) {
+        super(message);
+    }
+
 }
