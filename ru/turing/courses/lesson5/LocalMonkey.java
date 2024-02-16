@@ -7,10 +7,11 @@ public class LocalMonkey {
     private String name;
     private boolean hasBanana;
 
-    public void print() {
-        System.out.print(id.toString() + ") monkey " + name + " has");
-        if (!hasBanana) System.out.print("n't got");
-        System.out.println(" a banana");
+    public String toString() {
+        String ans = id.toString() + ") monkey " + name + " has";
+        if (!hasBanana) ans = ans + "n't got";
+        ans = ans + " a banana";
+        return ans;
     }
 
     public Long getId() {
@@ -44,26 +45,16 @@ public class LocalMonkey {
     }
 
     public LocalMonkey() {
+        input();
     }
 
-    public static LocalMonkey[] newMonkeys() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Print quantity of monkeys: ");
-        int n = in.nextInt();
-        LocalMonkey[] monkeys = new LocalMonkey[n];
-        long id;
-        String name;
+    public void input() {
         int banana;
-        boolean ban;
-        System.out.println(monkeys.length);
-        for (int i = 0; i < monkeys.length; i++) {
-            System.out.println("Print ID (int), name (String) and the presence of a banana (0/1) for a monkey:");
-            id = in.nextLong();
-            name = in.next();
-            banana = in.nextInt();
-            ban = banana == 1;
-            monkeys[i] = new LocalMonkey(id, name, ban);
-        }
-        return monkeys;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter ID (int), name (String) and the presence of a banana (0/1) for a monkey:");
+        this.id = in.nextLong();
+        this.name = in.next();
+        banana = in.nextInt();
+        this.hasBanana = banana == 1;
     }
 }

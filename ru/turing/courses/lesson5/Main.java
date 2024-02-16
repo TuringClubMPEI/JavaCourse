@@ -1,6 +1,9 @@
 package ru.turing.courses.lesson5;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,12 +12,7 @@ public class Main {
             ms1[i] = (int)(Math.random() * 100);
         }
         System.out.println(Arrays.toString(ms1));
-        int[] ms1sorted = new int[0];
-        try {
-            ms1sorted = Sorter.sortBubble(ms1);
-        } catch (NullPointerException e) {
-            System.out.println("Got null instead of not-null object");
-        }
+        int[] ms1sorted = Sorter.sortBubble(ms1);
 
         System.out.println(Arrays.toString(ms1sorted) + "\n--------------");
 
@@ -37,19 +35,25 @@ public class Main {
         }
         System.out.println(Arrays.toString(ms2sorted) + "\n--------------");
 
-        LocalMonkey[] ms3 = LocalMonkey.newMonkeys();
+        ArrayList<LocalMonkey> ms3 = new ArrayList<>();
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter the number of monkeys: ");
+        int quantity3 = in.nextInt();
+        for (int i = 0; i < quantity3; i++) {
+            ms3.set(i, new LocalMonkey());
+        }
 
         for (LocalMonkey elem : ms3) {
-            elem.print();
+            System.out.println(elem.toString());
         }
-        LocalMonkey[] ms3sorted = new LocalMonkey[0];
+        List<LocalMonkey> ms3sorted = new ArrayList<>();
         try {
             ms3sorted = Sorter.sortBubble(ms3);
         } catch (NullPointerException e) {
             System.out.println("Got null instead of not-null object");
         }
         for (LocalMonkey elem : ms3sorted) {
-            elem.print();
+            System.out.println(elem.toString());
         }
     }
 }
