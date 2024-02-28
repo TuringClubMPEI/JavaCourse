@@ -115,7 +115,6 @@
 --left join usr on (teacher.id_usr=usr.id)
 --ORDER BY elective_course.name ASC;
 
-
 --Выведем команды со студентами и олимпиадами
 --select team.name,olymp_tour.name,usr.surname,usr.usrname,usr.patronymic from team
 --left join team_olymp_tour on (team.id=team_olymp_tour.id_olymp_tour)

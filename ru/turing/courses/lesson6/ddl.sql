@@ -10,7 +10,6 @@
 -- ;
 -- -- ddl-end --
 --
-
 -- object: public.usr | type: TABLE --
 CREATE TABLE public.usr(
                            id bigint,
